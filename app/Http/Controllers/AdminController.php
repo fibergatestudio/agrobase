@@ -16,4 +16,31 @@ class AdminController extends Controller
             'users' => $users,
         ]);
     }
+
+
+    //Страница редактирование пользователя
+    public function user_edit($user_id){
+
+        $user_info = DB::table('users')->where('id', $user_id)->first();
+
+        return view('admin.user_edit', compact('user_info'));
+    }
+
+    //Применение изменения пользователя
+    public function user_edit_apply(Request $request){
+
+        $user_id = $request->user_id;
+        $new_role = $request->role;
+        $new_status = $request->status;
+
+        DB::table('users')
+            ->where('id', '=', $user_id)
+            ->update([
+                'role' => $new_role,
+                'status' => $new_status
+                ]);
+
+
+        return redirect()->back()->with('message_success', 'Пользователь изменен!');
+    }
 }

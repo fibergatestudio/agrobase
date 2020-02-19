@@ -37064,11 +37064,18 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /***/ (function(module, exports, __webpack_require__) {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+
+__webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'datatables.net-bs4'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'datatables.net-buttons-bs4'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
+
 
 try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
@@ -37108,7 +37115,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleNotFoundError: Module not found: Error: Can't resolve 'datatables.net-bs4/css/dataTables.bootstrap4.css' in 'C:\\xampp\\htdocs\\agrobase\\resources\\sass'\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\webpack\\lib\\Compilation.js:925:10\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\webpack\\lib\\NormalModuleFactory.js:401:22\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\webpack\\lib\\NormalModuleFactory.js:130:21\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\webpack\\lib\\NormalModuleFactory.js:224:22\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\neo-async\\async.js:2830:7\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\neo-async\\async.js:6877:13\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\webpack\\lib\\NormalModuleFactory.js:214:25\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:213:14\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\UnsafeCachePlugin.js:44:7\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:67:43\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:28:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\ModuleKindPlugin.js:30:40\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\forEachBail.js:30:14\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\UnsafeCachePlugin.js:44:7\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:67:43\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\xampp\\htdocs\\agrobase\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (C:\\xampp\\htdocs\\agrobase\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)");
 
 /***/ }),
 

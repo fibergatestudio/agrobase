@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('tables');
 });
 
 
@@ -20,12 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 
 /* Путь к таблицам */
-Route::get('/tables', 'TablesController@index'); //->middleware('can:client_rights');
+Route::get('/tables', 'TablesController@index')->name('tables.index'); //->middleware('can:client_rights');
 
 
 /*** Админ ***/
     /* Управление пользователями */
     Route::get('/admin/users', 'AdminController@users_index')->middleware('can:admin_rights');
+    /* Редактирование пользователя */
+    Route::get('/admin/users/edit/{user_id}', 'AdminController@user_edit')->middleware('can:admin_rights');
+    /* Применить изменения пользователя */
+    Route::post('/admin/users/edit/{user_id}/apply', 'AdminController@user_edit_apply')->middleware('can:admin_rights');
 
 //Route::get('users', ['uses'=>'UsersController@index', 'as'=>'users.index']);
 

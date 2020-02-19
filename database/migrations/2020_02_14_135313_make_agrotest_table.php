@@ -27,7 +27,7 @@ class MakeAgrotestTable extends Migration
             $table->text('egrpou');
             $table->longText('address');
             $table->longText('email_website');
-            $table->timestamp('failed_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

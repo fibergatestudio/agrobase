@@ -10,6 +10,18 @@
 
 <div class="container-fluid">
     <h1>AgroBase Tables</h1>
+    <div class="row">
+        <div class="col-md-6">
+            Filter:
+            <a href="tables/?area=Area">Area</a>
+            <a href="tables/?region=reg">Test</a>
+        </div>
+        <div class="col-md-6 text-right">
+            Sort:
+            <a href="{{ route('tables.index', ['area' => request('area'), 'region' => request('region'), 'sort' => 'asc']) }}">ASC</a>
+            <a href="{{ route('tables.index', ['area' => request('area'), 'region' => request('region'), 'sort' => 'desc']) }}">DESC</a>
+        </div>
+    </div>
             <div id="home" class="tab-pane fade in active show">
                 <table class="table table-bordered data-table">
                     <thead class="thead-dark">

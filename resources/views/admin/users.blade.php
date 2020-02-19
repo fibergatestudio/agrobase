@@ -27,7 +27,7 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->status}}</td>
                 <td>{{$user->role}}</td>
-                <td><a href="tel:{{$user->id}}"><button class="btn btn-warning">Редактировать</button></a></td>
+                <td><a href="/admin/users/edit/{{$user->id}}"><button class="btn btn-warning">Редактировать</button></a></td>
             </tr>
         @endforeach
         </tbody>
