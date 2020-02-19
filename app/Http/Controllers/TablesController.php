@@ -29,13 +29,16 @@ class TablesController extends Controller
         }
 
         if(request()->has('sort')){
-            $agro = $agro->orderBy('title', request('sort'));
+            $agro = $agro->orderBy('id', request('sort'));
             $queries['sort'] = request('sort');
         }
 
-        $agro = $agro->paginate(5)->appends($queries);
+        $agro = $agro->paginate(10)->appends($queries);
 
-        return view('tables/index', compact('agro'));
+        //Уникальные фильтры
+        //$regions = DB::table('')
+
+        return view('tables/index', compact('agro', 'regions'));
 
 
         //return Datatables::of(User::query())->make(true);

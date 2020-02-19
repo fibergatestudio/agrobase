@@ -15,18 +15,18 @@ class MakeAgrotestTable extends Migration
     {
         Schema::create('agrotest', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('title');
-            $table->text('region');
-            $table->text('area');
-            $table->text('supervisor');
-            $table->text('landline_phone');
-            $table->text('mobile_phone');
-            $table->text('fax');
-            $table->text('concil_number');
-            $table->text('land_bank');
-            $table->text('egrpou');
-            $table->longText('address');
-            $table->longText('email_website');
+            $table->text('title')->nullable();
+            $table->text('region')->nullable();
+            $table->text('area')->nullable();
+            $table->text('supervisor')->nullable();
+            $table->text('landline_phone')->nullable();
+            $table->text('mobile_phone')->nullable();
+            $table->text('fax')->nullable();
+            $table->text('concil_number')->nullable();
+            $table->text('land_bank')->nullable();
+            $table->text('egrpou')->nullable();
+            $table->longText('address')->nullable();
+            $table->longText('email_website')->nullable();
             $table->timestamps();
         });
     }

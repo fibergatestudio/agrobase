@@ -31,8 +31,14 @@ Route::get('/tables', 'TablesController@index')->name('tables.index'); //->middl
     /* Применить изменения пользователя */
     Route::post('/admin/users/edit/{user_id}/apply', 'AdminController@user_edit_apply')->middleware('can:admin_rights');
 
+/*** Импорт ***/
+Route::get('/import', 'ImportController@index')->middleware('can:admin_rights'); //->middleware('can:client_rights');
+    /* Отправка формы */
+    Route::post('/import/import_excel', 'ImportController@import')->middleware('can:admin_rights'); //->middleware('can:client_rights');
 //Route::get('users', ['uses'=>'UsersController@index', 'as'=>'users.index']);
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

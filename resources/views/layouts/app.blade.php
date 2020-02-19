@@ -45,6 +45,7 @@
                         <a href=""><button class="btn btn-default">Таблица 1</button></a>
                         <a href=""><button class="btn btn-default">Таблица 2</button></a>
                         <a href=""><button class="btn btn-default">Таблица 3</button></a>
+                        <a href="{{ url('/import') }}"><button class="btn btn-default">Импорт</button></a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

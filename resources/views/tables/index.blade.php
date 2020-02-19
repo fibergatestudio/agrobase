@@ -13,8 +13,8 @@
     <div class="row">
         <div class="col-md-6">
             Filter:
-            <a href="tables/?area=Area">Area</a>
-            <a href="tables/?region=reg">Test</a>
+            <a href="tables/?region=Харьковская">Харьковская</a>
+            <a href="tables/?region=ХАРКІВ">ХАРКІВ</a>
         </div>
         <div class="col-md-6 text-right">
             Sort:
