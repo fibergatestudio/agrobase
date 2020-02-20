@@ -8,20 +8,42 @@
 
 @section('content')
 
-<div class="container-fluid">
+
+@if(isset($user))
+    @if($user->status == "confirmed")
+    <div class="container-fluid">
     <h1>AgroBase Tables</h1>
     <div class="row">
-        <div class="col-md-6">
-            Filter:
-            <a href="tables/?region=Харьковская">Харьковская</a>
-            <a href="tables/?region=ХАРКІВ">ХАРКІВ</a>
+        <div class="col-md-6 row p-2">
+            <div class="col-md-6">
+                @if(isset($regions))
+                    Области:
+                    <select name="region" class="form-control" onchange="location = this.value;">
+                        <option>Выберите Область</option>
+                    @foreach($regions as $region)
+                        <option value="tables/?region={{ $region->region }}">{{ $region->region }}</option>
+                    @endforeach
+                    </select>
+                @endif
+            </div>
+            <div class="col-md-6">
+                    @if(isset($areas))
+                        Районы:
+                        <select name="region" class="form-control" onchange="location = this.value;">
+                            <option>Выберите Район</option>
+                        @foreach($areas as $area)
+                            <option value="tables/?area={{ $area->area }}">{{ $area->area }}</option>
+                        @endforeach
+                        </select>
+                    @endif
+            </div>
+            </div>
+            <div class="col-md-6 text-right">
+                Сортировать по:<br>
+                <a href="{{ route('tables.index', ['area' => request('area'), 'region' => request('region'), 'sort' => 'asc']) }}"><button class="btn btn-success">Возрастанию</button></a>
+                <a href="{{ route('tables.index', ['area' => request('area'), 'region' => request('region'), 'sort' => 'desc']) }}"><button class="btn btn-success">Убыванию</button></a>
+            </div>
         </div>
-        <div class="col-md-6 text-right">
-            Sort:
-            <a href="{{ route('tables.index', ['area' => request('area'), 'region' => request('region'), 'sort' => 'asc']) }}">ASC</a>
-            <a href="{{ route('tables.index', ['area' => request('area'), 'region' => request('region'), 'sort' => 'desc']) }}">DESC</a>
-        </div>
-    </div>
             <div id="home" class="tab-pane fade in active show">
                 <table class="table table-bordered data-table">
                     <thead class="thead-dark">
@@ -66,8 +88,23 @@
             
                 {{$agro}}
             </div>
+        </div>
+    @else
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            Пользователь не подтвержден!
+        </div>
+    </div>
+    @endif
+@else
+    <div class="container">
+        <div class="alert alert-success" role="alert">
+            Пожалуйста залогиньтесь!
+        </div>
+    </div>
+@endif
 
-</div>
+
 
 @stop
 

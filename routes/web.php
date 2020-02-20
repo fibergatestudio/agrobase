@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 /* Путь к таблицам */
-Route::get('/tables', 'TablesController@index')->name('tables.index'); //->middleware('can:client_rights');
+Route::get('/tables', 'TablesController@index')->name('tables.index'); //->middleware('can:user_confirmed'); //->middleware('can:client_rights');
 
 
 /*** Админ ***/
@@ -28,17 +28,12 @@ Route::get('/tables', 'TablesController@index')->name('tables.index'); //->middl
     Route::get('/admin/users', 'AdminController@users_index')->middleware('can:admin_rights');
     /* Редактирование пользователя */
     Route::get('/admin/users/edit/{user_id}', 'AdminController@user_edit')->middleware('can:admin_rights');
-    /* Применить изменения пользователя */
-    Route::post('/admin/users/edit/{user_id}/apply', 'AdminController@user_edit_apply')->middleware('can:admin_rights');
+        /* Применить изменения пользователя */
+        Route::post('/admin/users/edit/{user_id}/apply', 'AdminController@user_edit_apply')->middleware('can:admin_rights');
+        /* Удаление пользователя */
+        Route::post('/admin/users/delete/{user_id}/apply', 'AdminController@user_delete_apply')->middleware('can:admin_rights');
 
 /*** Импорт ***/
 Route::get('/import', 'ImportController@index')->middleware('can:admin_rights'); //->middleware('can:client_rights');
     /* Отправка формы */
     Route::post('/import/import_excel', 'ImportController@import')->middleware('can:admin_rights'); //->middleware('can:client_rights');
-//Route::get('users', ['uses'=>'UsersController@index', 'as'=>'users.index']);
-
-
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');

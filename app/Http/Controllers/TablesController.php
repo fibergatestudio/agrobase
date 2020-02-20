@@ -12,13 +12,14 @@ class TablesController extends Controller
     // Главная страница таблиц
     public function index(){
 
-
         $agro = new AgroTable;
         $queries = [];
 
-
         $columns = [
-            'title', 'region', 'area', 'supervisor', 'landline_phone', 'mobile_phone', 'fax', 'concil_number', 'land_bank', 'egrpou', 'address', 'email_website'
+            'title', 'region', 'area', 'supervisor', 
+            'landline_phone', 'mobile_phone', 'fax', 
+            'concil_number', 'land_bank', 'egrpou', 
+            'address', 'email_website'
         ];
 
         foreach($columns as $column){
@@ -36,20 +37,17 @@ class TablesController extends Controller
         $agro = $agro->paginate(10)->appends($queries);
 
         //Уникальные фильтры
-        //$regions = DB::table('')
+        //Регионы
+        $regions = AgroTable::select('region')->distinct()->get();
+        //Области
+        $areas = AgroTable::select('area')->distinct()->get();
+        //dd($regions);
 
-        return view('tables/index', compact('agro', 'regions'));
+        //Текущий пользователь
+        $user = auth()->user();
 
 
-        //return Datatables::of(User::query())->make(true);
+        return view('tables/index', compact('agro', 'regions', 'areas', 'user'));
 
-        // $users = DB::table('users')->paginate(10);
-        // $agro = DB::table('agrotest')->paginate(5);
-
-
-        // return view('tables/index',[
-        //     'users' => $users,
-        //     'agro' => $agro
-        // ]);
     }
 }

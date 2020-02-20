@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\AgroTable;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class ImportAgrotest implements ToModel
+class ImportAgrotest implements ToModel, WithStartRow
 {
     
     /**
@@ -33,8 +34,8 @@ class ImportAgrotest implements ToModel
         
     }
 
-    public function headingRow(): int
+    public function startRow(): int
     {
-        return 0;
+        return 2;
     }
 }

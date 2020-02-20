@@ -29,5 +29,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin_rights', function($user){
             return $user->isAdmin();
         });
+
+        /* Гейт: Администратор */
+        Gate::define('user_confirmed', function($user){
+            return $user->isConfirmedUser();
+        });
     }
 }

@@ -46,4 +46,13 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    public function isConfirmedUser(){
+        if($this->role == 'admin' && $this->status == 'confirmed')
+        {
+            return true;
+        } else{
+            return false;
+        }
+    }
 }

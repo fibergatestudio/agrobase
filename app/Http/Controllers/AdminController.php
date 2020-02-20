@@ -43,4 +43,13 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message_success', 'Пользователь изменен!');
     }
+
+    public function user_delete_apply($user_id){
+
+        //dd($user_id);
+
+        DB::table('users')->where('id', $user_id)->delete();
+
+        return redirect()->back()->with('message_delete', 'Пользователь удален!');
+    }
 }

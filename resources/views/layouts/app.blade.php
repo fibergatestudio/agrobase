@@ -42,9 +42,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a href=""><button class="btn btn-default">Таблица 1</button></a>
-                        <a href=""><button class="btn btn-default">Таблица 2</button></a>
-                        <a href=""><button class="btn btn-default">Таблица 3</button></a>
                         <a href="{{ url('/import') }}"><button class="btn btn-default">Импорт</button></a>
                     </ul>
 
