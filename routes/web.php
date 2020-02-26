@@ -37,3 +37,6 @@ Route::get('/tables', 'TablesController@index')->name('tables.index'); //->middl
 Route::get('/import', 'ImportController@index')->middleware('can:admin_rights'); //->middleware('can:client_rights');
     /* Отправка формы */
     Route::post('/import/import_excel', 'ImportController@import')->middleware('can:admin_rights'); //->middleware('can:client_rights');
+    
+    /* Импорт с папки */
+    Route::get('import/import_directory', 'ImportController@import_directory')->middleware('can:admin_rights');

@@ -6,7 +6,7 @@ use App\AgroTable;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class ImportAgrotest implements ToModel, WithStartRow
+class ImportAgrotest implements ToModel , WithStartRow
 {
     
     /**
@@ -33,6 +33,13 @@ class ImportAgrotest implements ToModel, WithStartRow
 
         
     }
+    // public function sheets(): array
+    // {
+    //     return [
+    //         // Select by sheet index
+    //         0 => new pricelist_items(),
+    //     ];
+    // }
 
     public function startRow(): int
     {

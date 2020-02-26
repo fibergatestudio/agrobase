@@ -15,7 +15,6 @@ class CreateAdminUser extends Migration
     {
         $demo_values = [
             [
-                'id' => '1',
                 'name' => 'admin',
                 'email'=> 'admin@mail.com',
                 'password' => Hash::make('qwerty'),
@@ -35,6 +34,6 @@ class CreateAdminUser extends Migration
      */
     public function down()
     {
-        DB::table('users')->where('id', '=', '2')->delete();
+        DB::table('users')->where('name', '=', 'admin')->delete();
     }
 }

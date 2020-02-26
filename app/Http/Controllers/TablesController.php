@@ -36,18 +36,44 @@ class TablesController extends Controller
 
         $agro = $agro->paginate(10)->appends($queries);
 
+        //Правки номеров из базы
+        foreach($agro as $agr){
+
+            //Убираем лишние символы
+            $agr->landline_phone = str_replace(array('-',';'), '', $agr->landline_phone);
+            $agr->mobile_phone = str_replace(array('-',';'), '', $agr->mobile_phone);
+            $agr->fax = str_replace(array('-',';', ' '), '', $agr->fax);
+            //Разбиваем стак телефонов
+            $agr->landline_phone = preg_split('/\s+/', $agr->landline_phone, NULL, PREG_SPLIT_NO_EMPTY);
+            $agr->mobile_phone = preg_split('/\s+/', $agr->mobile_phone, NULL, PREG_SPLIT_NO_EMPTY);
+            $agr->fax = preg_split('/\s+/', $agr->fax, NULL, PREG_SPLIT_NO_EMPTY);
+            //unset($land_phone);
+            //dd($agr->mobile_phone);
+        }
+
         //Уникальные фильтры
         //Регионы
         $regions = AgroTable::select('region')->distinct()->get();
         //Области
-        $areas = AgroTable::select('area')->distinct()->get();
-        //dd($regions);
+        $areas = AgroTable::select('area')->whereNotNull('area')->distinct()->get();
+
+        //Для дропдаунов
+        if(request()->has('region')){
+            $f_region = request('region');
+        } else {
+            $f_region = '';
+        }
+        if(request()->has('area')){
+            $f_area = request('area');
+        } else {
+            $f_area = '';
+        }
 
         //Текущий пользователь
         $user = auth()->user();
 
 
-        return view('tables/index', compact('agro', 'regions', 'areas', 'user'));
+        return view('tables/index', compact('agro', 'regions', 'areas', 'user', 'f_region', 'f_area'));
 
     }
 }
