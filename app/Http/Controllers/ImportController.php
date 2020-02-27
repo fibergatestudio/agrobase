@@ -39,7 +39,7 @@ class ImportController extends Controller
         foreach($files as $file){
             $filename = $file->getFileName();
             if($filename = "test_imp.xlsx"){
-                //$import = Excel::import(new ImportAgrotest, storage_path('import/' . $filename));
+                $import = Excel::import(new ImportAgrotest, storage_path('import/' . $filename));
             } else if($filename == "goroh.xlsx"){
                 $import = Excel::import(new ImportGoroh, storage_path('import/' . $filename));
             }
