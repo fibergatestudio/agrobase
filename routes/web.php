@@ -19,6 +19,11 @@ Route::get('/', function () {
 /* Стандартная авторизация ларавела */
 Auth::routes();
 
+/* Все таблицы */
+Route::get('/all_tables', 'TablesController@all_tables');
+/* Таблица "Горох" */
+Route::get('/all_tables/goroh', 'TablesController@goroh_table');
+
 /* Путь к таблицам */
 Route::get('/tables', 'TablesController@index')->name('tables.index'); //->middleware('can:user_confirmed'); //->middleware('can:client_rights');
 

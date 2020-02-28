@@ -17,18 +17,21 @@ class ImportGoroh implements ToModel , WithStartRow
     public function model(array $row)
     {
         return new GorohTable([
-            'title'             => isset($row[0]) ? $row[0] : null,
-            'region'            => isset($row[1]) ? $row[1] : null,
-            'area'              => isset($row[2]) ? $row[2] : null,
-            'supervisor'        => isset($row[3]) ? $row[3] : null,
-            'landline_phone'    => isset($row[4]) ? $row[4] : null,
-            'mobile_phone'      => isset($row[5]) ? $row[5] : null,
-            'fax'               => isset($row[6]) ? $row[6] : null,
-            'concil_number'     => isset($row[7]) ? $row[7] : null,
-            'land_bank'         => isset($row[8]) ? $row[8] : null,
-            'egrpou'            => isset($row[9]) ? $row[9] : null,
-            'address'           => isset($row[10]) ? $row[10] : null,
-            'email_website'     => isset($row[11]) ? $row[11] : null,
+            'sender_egrpou'           => isset($row[0]) ? $row[0] : null,
+            'sender_name'             => isset($row[1]) ? $row[1] : null,
+            'sender_address'          => isset($row[2]) ? $row[2] : null,
+            'recipient_name'          => isset($row[3]) ? $row[3] : null,
+            'recipient_address'       => isset($row[4]) ? $row[4] : null,
+            'contract_holder'         => isset($row[5]) ? $row[5] : null,
+            'contract_address'        => isset($row[6]) ? $row[6] : null,
+            'declarant_egrpou'        => isset($row[7]) ? $row[7] : null,
+            'product_code'            => isset($row[8]) ? $row[8] : null,
+            'product_descr'           => isset($row[9]) ? $row[9] : null,
+            'trading_country'         => isset($row[10]) ? $row[10] : null,
+            'destination_country'     => isset($row[11]) ? $row[11] : null,
+            'delivery_conditions'     => isset($row[11]) ? $row[11] : null,
+            'delivery_place'          => isset($row[11]) ? $row[11] : null,
+            'rvf_usd'                 => isset($row[11]) ? $row[11] : null,
         ]);
 
         

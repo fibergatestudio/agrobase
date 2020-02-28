@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\User;
 use App\AgroTable;
+use App\GorohTable;
 
 class TablesController extends Controller
 {
@@ -75,5 +76,23 @@ class TablesController extends Controller
 
         return view('tables/index', compact('agro', 'regions', 'areas', 'user', 'f_region', 'f_area'));
 
+    }
+
+    public function all_tables(){
+
+        $user = auth()->user();
+
+        return view('tables/all_tables', compact('user') );
+    }
+
+    public function goroh_table(){
+
+        $goroh = new GorohTable;
+
+        $goroh = $goroh->paginate(10);
+
+        $user = auth()->user();
+
+        return view('tables/goroh_table', compact('goroh', 'user') );
     }
 }

@@ -16821,3 +16821,14 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
+.tablelink{
+  width: 100%;
+  color: aliceblue;
+  text-underline-position: under;
+  font-size: 25px;
+}
+
+.tablelink:hover{
+  color: aliceblue;
+}
+

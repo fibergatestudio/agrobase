@@ -9,6 +9,8 @@ class GorohTable extends Model
     protected $table = "gorohtable";
 
     protected $fillable = [
-        'title', 'region', 'area', 'supervisor', 'landline_phone', 'mobile_phone', 'fax', 'concil_number', 'land_bank', 'egrpou', 'address', 'email_website' 
+        'sender_egrpou', 'sender_name', 'sender_address', 'recipient_name', 'recipient_address', 
+        'contract_holder', 'contract_address', 'declarant_egrpou', 'product_code', 'product_descr', 
+        'trading_country', 'destination_country', 'delivery_conditions', 'delivery_place', 'rvf_usd'
     ];
 }

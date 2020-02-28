@@ -21,6 +21,8 @@
     @if($user->status == "confirmed")
     <div class="container-fluid">
     <h1> AgroBase Tables</h1>
+    <a href="{{ url('/all_tables') }}"><button class="btn btn-success">Выбор Таблицы</button></a>
+    <br>
     <div class="row">
         <div class="col-md-6 row p-2">
             <div class="col-md-6">
@@ -63,10 +65,10 @@
                             <th>Область</th>
                             <th>Район</th>
                             <th>Руководитель</th>
-                            <th>Стац. телефон</th>
+                            <!-- <th>Стац. телефон</th> -->
                             <th>Моб. телефон</th>
                             <th>Доп. телефон</th>
-                            <th>Номер Сельсовета</th>
+                            <!-- <th>Номер Сельсовета</th> -->
                             <th>Зем. банк</th>
                             <th>ЕГРПОУ</th>
                             <th>Адрес</th>
@@ -83,19 +85,15 @@
                             <td>{{$agr->region}}</td>
                             <td>{{$agr->area}}</td>
                             <td>{{$agr->supervisor}}</td>
-                                <td>                            
+                                <!-- <td>                            
                                     @foreach($agr->landline_phone as $land_phone)
                                     <a href="tel:+38{{$land_phone}}">
-                                        <button class="btn btn-success m-1"><i class="fas fa-phone-alt"></i> 
-                                            <?php 
-                                                $land_phone_full = '+38' . $land_phone;
-                                                echo 'Телефон ' . $test++; 
-                                            ?>       
+                                        <button class="btn btn-success m-1"><i class="fas fa-phone-alt"></i>    
                                                                    
                                         </button>
                                     </a>
                                     @endforeach
-                                </td>
+                                </td> -->
                             <td>
                                 @foreach($agr->mobile_phone as $mob)
                                     <a href="tel:+38{{$mob}}">
@@ -129,7 +127,7 @@
                                     </a>
                                 @endforeach
                             </td>
-                            <td>{{$agr->concil_number}}</td>
+                            <!-- <td>{{$agr->concil_number}}</td> -->
                             <td>{{$agr->land_bank}}</td>
                             <td>{{$agr->egrpou}}</td>
                             <td>{{$agr->address}}</td>

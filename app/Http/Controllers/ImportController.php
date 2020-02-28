@@ -32,21 +32,22 @@ class ImportController extends Controller
 
     function import_directory()
     {
-
         $files = File::allFiles(storage_path('import')); 
-
 
         foreach($files as $file){
             $filename = $file->getFileName();
             if($filename = "test_imp.xlsx"){
+
+                DB::table('agrotest')->truncate();
                 $import = Excel::import(new ImportAgrotest, storage_path('import/' . $filename));
-            } else if($filename == "goroh.xlsx"){
+            } 
+            if($filename == "goroh.xlsx"){
+
+                dd($filename);
+                DB::table('gorohtable')->truncate();
                 $import = Excel::import(new ImportGoroh, storage_path('import/' . $filename));
             }
         }
-
-        //$import = Excel::import(new ImportAgrotest, storage_path('import/test_imp.xlsx'));
-
         return redirect('/tables')->with('success', 'Данные успешно импортированы!');
     }
 }
