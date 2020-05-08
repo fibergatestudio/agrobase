@@ -36,12 +36,27 @@ position:absolute;
     <br>
     <div class="row text-center">
 
-            <div class="col-sm-3 bg-success border">
+
+    @foreach($tables as $t)
+        <div class="col-sm-3 bg-success border">
+            <div class="row text-center h-100">
+                <a href="{{ url('/table/'. $t->id) }}" class="thumbnail tablelink" style="width: 100%;">
+                    <div class=" card-block justify-content-center" style="line-height: 200px;">
+                        <div class="card-body text-center">
+                            {{ $t->table_name }}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    @endforeach
+
+            <!-- <div class="col-sm-3 bg-success border">
                 <div class="row text-center h-100">
-                    <a href="{{ url('/tables') }}" class="thumbnail tablelink" style="width: 100%;">
+                    <a href="{{ url('/kharkiv') }}" class="thumbnail tablelink" style="width: 100%;">
                         <div class=" card-block justify-content-center" style="line-height: 200px;">
                             <div class="card-body text-center">
-                                AgroTest
+                                Харьков
                             </div>
                         </div>
                     </a>
@@ -57,7 +72,7 @@ position:absolute;
                         </div>
                     </a>
                 </div>
-            </div>
+            </div> -->
            <div class="col-sm-3 bg-success border">
                 <a href="#" class="thumbnail">
                     <div class="frontpage_square">
@@ -74,6 +89,12 @@ position:absolute;
                 </a>
            </div>
           
+    </div>
+    @elseif($user->status == "expired")
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            Подписка истекла!
+        </div>
     </div>
     @else
     <div class="container">

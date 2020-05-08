@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('tables/index');
+        return view('tables/all_tables');
     }
 }

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('tables');
+    return redirect('all_tables');
 });
 
 
@@ -23,10 +23,13 @@ Auth::routes();
 Route::get('/all_tables', 'TablesController@all_tables');
 /* Таблица "Горох" */
 Route::get('/all_tables/goroh', 'TablesController@goroh_table');
+    Route::get('/all_tables/goroh/import_goroh', 'TablesController@goroh_import');
+      /* Отправка формы */
+      Route::post('/all_tables/goroh/import_goroh/import_excel', 'ImportController@import_goroh')->middleware('can:admin_rights'); //->middleware('can:client_rights');
 
 /* Путь к таблицам */
-Route::get('/tables', 'TablesController@index')->name('tables.index'); //->middleware('can:user_confirmed'); //->middleware('can:client_rights');
-
+Route::get('/table/{table_id}', 'TablesController@index')->name('tables.index'); //->middleware('can:user_confirmed'); //->middleware('can:client_rights');
+//Route::get('/table', 'TablesController@index_old')->name('tables.index_old');
 
 /*** Админ ***/
     /* Управление пользователями */
@@ -37,6 +40,10 @@ Route::get('/tables', 'TablesController@index')->name('tables.index'); //->middl
         Route::post('/admin/users/edit/{user_id}/apply', 'AdminController@user_edit_apply')->middleware('can:admin_rights');
         /* Удаление пользователя */
         Route::post('/admin/users/delete/{user_id}/apply', 'AdminController@user_delete_apply')->middleware('can:admin_rights');
+    /* Управление Таблицами */
+    Route::get('/admin/tables_control', 'AdminController@tables_control_index')->middleware('can:admin_rights');
+        /* Удаление пользователя */
+        Route::post('/admin/tables_control/delete/{table_id}/apply', 'AdminController@table_delete_apply')->middleware('can:admin_rights');
 
 /*** Импорт ***/
 Route::get('/import', 'ImportController@index')->middleware('can:admin_rights'); //->middleware('can:client_rights');

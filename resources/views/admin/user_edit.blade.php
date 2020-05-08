@@ -7,7 +7,7 @@
 @section('content')
     
 <div class="container">
-    <h1>Edit user {{$user_info->name}}</h1>
+    <h1>Редактирование пользователя: {{$user_info->name}}</h1>
     @if(session()->has('message_success'))
         <div class="alert alert-success">
             {{ session()->get('message_success') }}
@@ -36,6 +36,7 @@
                     <select class="form-control" name="status">
                         <option value="confirmed" @if($user_info->status == 'confirmed') selected @endif>Подтвержден</option>
                         <option value="unconfirmed" @if($user_info->status == 'unconfirmed') selected @endif>Не подтвержден</option>
+                        <option value="unconfirmed" @if($user_info->status == 'expired') selected @endif>Истекший</option>
                     </select>
                 </div>
             </div>
@@ -47,6 +48,20 @@
                         <option value="admin" @if($user_info->role == 'admin') selected @endif>Админ</option>
                         <option value="user" @if($user_info->role == 'user') selected @endif>Пользователь</option>
                     </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="role">Действителен До</label>
+
+                <div class="col-sm-10">   
+                    <input type="text" class="form-control" placeholder="{{ $user_info->expiry_date }}" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="role">Изменить дату</label>
+
+                <div class="col-sm-10">   
+                    <input class="form-control datepicker" id="datetimepicker1" placeholder="Выберите дату" name="expiry_date" type="text">
                 </div>
             </div>
             <div class="form-group">        
@@ -61,4 +76,14 @@
 
 @section('scripts')
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datetimepicker1" ).datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
 @stop

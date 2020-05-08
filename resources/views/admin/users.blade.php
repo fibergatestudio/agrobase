@@ -30,7 +30,19 @@
                 <td>{{$user->id}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td>{{$user->status}}</td>
+                @if($user->status == 'expired')
+                    <td class="table-danger">
+                        {{$user->status}}
+                    </td>
+                @elseif($user->status == 'unconfirmed')
+                    <td class="table-warning">
+                        {{$user->status}}
+                    </td>
+                @else
+                    <td class="table-success">
+                        {{$user->status}}
+                    </td>
+                @endif
                 <td>{{$user->role}}</td>
                 <td><a href="/admin/users/edit/{{$user->id}}"><button class="btn btn-success">Редактировать</button></a></td>
                 <td>

@@ -9,15 +9,85 @@ use Excel;
 use File;
 use App\Imports\ImportAgrotest;
 use App\Imports\ImportGoroh;
+use App\Imports\ImportHeaders;
+use App\Imports\ImportRows;
+use App\Tables;
+use App\TableHeads;
+use Illuminate\Support\Str;
+
+//Создание таблиц
+use Illuminate\Support\Facades\Schema;
+
+use Maatwebsite\Excel\HeadingRowImport;
+
 
 class ImportController extends Controller
 {
     public function index(){
 
-        return view('import.index');
+        $test_headers = DB::table('table_imports')->get();
+
+        return view('import.index', compact('test_headers'));
     }
 
-    function import(Request $request)
+    function import(Request $request){
+
+        //Создаем Главную таблицу
+        $new_table = new Tables();
+        $new_table->save();
+
+        //dd($new_table->id);
+
+        $this->validate($request, [
+            'select_file'  => 'required|mimes:xls,xlsx'
+        ]);
+
+        $path = $request->file('select_file')->getRealPath();
+        $filename = $request->file('select_file')->getClientOriginalName();
+
+        $filename = str_replace(array('.xlsx','.xls'), '', $filename);
+        //dd($filename);
+
+        $random_name = Str::random(12);
+
+        $headings = (new HeadingRowImport)->toArray($request->file('select_file'));
+        $headings_array = array_filter($headings[0][0]);
+        //dd($headings_array);
+
+        Schema::create($random_name, function($table) use ($headings_array)
+        {
+            $table->increments('id');
+            foreach($headings_array as $heading){
+                $table->string($heading)->nullable();
+            }
+        });
+
+        $import_rows = Excel::import(new ImportRows($random_name,$headings_array), $path);
+
+        $last_table = DB::table('table_imports')->where('id', $new_table->id)->update([
+            'table_name' => $filename,
+            'database_table_name' => $random_name,
+        ]);
+
+        $import_heads = Excel::import(new ImportHeaders($random_name), $path);
+
+        return back()->with('success', 'Данные успешно импортированы!');
+    }
+
+    // function import(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'select_file'  => 'required|mimes:xls,xlsx'
+    //     ]);
+
+    //     $path = $request->file('select_file')->getRealPath();
+
+    //     $import = Excel::import(new ImportAgrotest, $path);
+
+    //     return back()->with('success', 'Данные успешно импортированы!');
+    // }
+
+    function import_goroh(Request $request)
     {
         $this->validate($request, [
             'select_file'  => 'required|mimes:xls,xlsx'
@@ -25,7 +95,7 @@ class ImportController extends Controller
 
         $path = $request->file('select_file')->getRealPath();
 
-        $import = Excel::import(new ImportAgrotest, $path);
+        $import = Excel::import(new ImportGoroh, $path);
 
         return back()->with('success', 'Данные успешно импортированы!');
     }
@@ -48,6 +118,6 @@ class ImportController extends Controller
                 $import = Excel::import(new ImportGoroh, storage_path('import/' . $filename));
             }
         }
-        return redirect('/tables')->with('success', 'Данные успешно импортированы!');
+        return redirect('/kharkiv')->with('success', 'Данные успешно импортированы!');
     }
 }

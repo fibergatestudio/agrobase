@@ -36,13 +36,6 @@ class ImportGoroh implements ToModel , WithStartRow
 
         
     }
-    // public function sheets(): array
-    // {
-    //     return [
-    //         // Select by sheet index
-    //         0 => new pricelist_items(),
-    //     ];
-    // }
 
     public function startRow(): int
     {

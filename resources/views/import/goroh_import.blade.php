@@ -9,8 +9,8 @@
 @section('content')
 
 <div class="container">
-   <h3 align="center">Импорт</h3>
-   <a href="{{ url('/all_tables') }}"><button class="btn btn-success">Назад</button></a>
+   <h3 align="center">Имопрт Гороха</h3>
+   <a href="{{ url('/all_tables/goroh/') }}"><button class="btn btn-success">Назад</button></a>
     <br />
    @if(count($errors) > 0)
     <div class="alert alert-danger">
@@ -29,7 +29,7 @@
            <strong>{{ $message }}</strong>
    </div>
    @endif
-   <form method="post" enctype="multipart/form-data" action="{{ url('/import/import_excel') }}">
+   <form method="post" enctype="multipart/form-data" action="{{ url('/all_tables/goroh/import_goroh/import_excel') }}">
     @csrf
     <div class="form-group">
      <table class="table">
@@ -52,7 +52,4 @@
    </form>
 
    </div>
-
-<?php var_dump($test_headers); ?>
-
 @stop

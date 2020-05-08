@@ -7,7 +7,7 @@
 @section('content')
     
 <div class="container">
-    <h1>AgroBase Tables</h1>
+    <h1>Харьков</h1>
     <table class="table table-bordered data-table">
         <thead>
             <tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Carbon\Carbon;
 
 class LoginController extends Controller
 {
@@ -27,6 +28,26 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function authenticated()
+    {
+        $user = auth()->user();
+
+        if($user->role != 'admin'){
+            $now = Carbon::today()->toDateString();
+            $exp_date = $user->expiry_date;
+            if($now <= $exp_date){
+                //dd("TEST");
+                $user->status = 'expired';
+            }
+            //$exp_date = Carbon::createFromFormat('m/d/Y', $user->expiry_date)->format('Y-m-d')->toDateString();
+            //dd($exp_date);
+            //dd($user->expiry_date);
+        }
+
+        $user->updated_at = Carbon::now();
+        $user->save();
+    }
 
     /**
      * Create a new controller instance.

@@ -22,6 +22,7 @@
     <div class="container-fluid">
     <h1> Goroh Table</h1>
     <a href="{{ url('/all_tables') }}"><button class="btn btn-success">Выбор Таблицы</button></a>
+    <a href="{{ url('/all_tables/goroh/import_goroh') }}"><button class="btn btn-success">Импортировать горох</button></a>
     <br>
     <div class="row">
         </div>
@@ -81,6 +82,12 @@
                 {{$goroh}}
             </div>
         </div>
+    @elseif($user->status == "expired")
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            Подписка истекла!
+        </div>
+    </div>
     @else
     <div class="container">
         <div class="alert alert-danger" role="alert">
