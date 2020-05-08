@@ -43,6 +43,7 @@ class ImportController extends Controller
         ]);
 
         $path = $request->file('select_file')->getRealPath();
+        dd($path);
         $filename = $request->file('select_file')->getClientOriginalName();
 
         $filename = str_replace(array('.xlsx','.xls'), '', $filename);
