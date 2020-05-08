@@ -80,6 +80,9 @@
                                     <a class="dropdown-item" href="{{ url('/admin/tables_control') }}">
                                         Управление Таблицами
                                     </a>
+                                    <a class="dropdown-item" href="{{ url('/import') }}">
+                                        Импорт
+                                    </a>
                                     @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"

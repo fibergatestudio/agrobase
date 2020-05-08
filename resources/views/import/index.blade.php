@@ -53,6 +53,4 @@
 
    </div>
 
-<?php var_dump($test_headers); ?>
-
 @stop
