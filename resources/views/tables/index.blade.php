@@ -31,7 +31,7 @@
                         Области:
                         <select name="region" class="form-control" onchange="location = this.value;">
                         @foreach($regions as $region)
-                            <option value="{{ $table_id }}/?oblast={{ $region->oblast }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option>
+                            <!-- <option value="{{ $table_id }}/?oblast={{ $region->oblast }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option> -->
                             <option value="{{ route('tables.index', ['table_id' => $table_id,'oblast' => $region->oblast]) }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option>
                         @endforeach
                         </select>
@@ -42,9 +42,15 @@
                             Районы:
                             <select name="area" class="form-control" onchange="location = this.value;">
                             @foreach($areas as $area)
-                                <option @if($f_area == $area->rayon) value="{{ $table_id }}/?rayon={{ $area->rayon }}" selected @else
+                                <!-- <option @if($f_area == $area->rayon) value="{{ $table_id }}/?rayon={{ $area->rayon }}" selected @else
                                 value="{{ $table_id }}/?rayon={{ $f_region }}&rayon={{ $area->rayon }}"
+                                @endif>{{ $area->rayon }}</option> -->
+
+                                <option @if($f_area == $area->rayon) value="{{ route('tables.index', ['table_id' => $table_id,'rayon' => $area->rayon]) }}" selected @else
+                                value="{{ route('tables.index', ['table_id' => $table_id,'rayon' => $area->rayon]) }}"
                                 @endif>{{ $area->rayon }}</option>
+
+                                
                             @endforeach
                             </select>
                         @endif
