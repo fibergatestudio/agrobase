@@ -32,7 +32,7 @@
                         <select name="region" class="form-control" onchange="location = this.value;">
                         @foreach($regions as $region)
                             <option value="{{ $table_id }}/?oblast={{ $region->oblast }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option>
-                            <option value="{{ route('tables.index', ['table_id' => $table_id,'oblast' => request('oblast')]) }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option>
+                            <option value="{{ route('tables.index', ['table_id' => $table_id,'oblast' => $region->oblast]) }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option>
                         @endforeach
                         </select>
                     @endif
