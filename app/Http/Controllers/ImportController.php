@@ -42,8 +42,8 @@ class ImportController extends Controller
             'select_file'  => 'required|mimes:xls,xlsx'
         ]);
 
-        $path = $request->file('select_file')->getRealPath();
-        dd($path);
+        //$path = $request->file('select_file')->getRealPath();
+        //dd($path);
         $filename = $request->file('select_file')->getClientOriginalName();
 
         $filename = str_replace(array('.xlsx','.xls'), '', $filename);
@@ -59,18 +59,18 @@ class ImportController extends Controller
         {
             $table->increments('id');
             foreach($headings_array as $heading){
-                $table->string($heading)->nullable();
+                $table->text($heading)->nullable();
             }
         });
 
-        $import_rows = Excel::import(new ImportRows($random_name,$headings_array), $path);
+        $import_rows = Excel::import(new ImportRows($random_name,$headings_array), $request->file('select_file'));
 
         $last_table = DB::table('table_imports')->where('id', $new_table->id)->update([
             'table_name' => $filename,
             'database_table_name' => $random_name,
         ]);
 
-        $import_heads = Excel::import(new ImportHeaders($random_name), $path);
+        $import_heads = Excel::import(new ImportHeaders($random_name), $request->file('select_file'));
 
         return back()->with('success', 'Данные успешно импортированы!');
     }
