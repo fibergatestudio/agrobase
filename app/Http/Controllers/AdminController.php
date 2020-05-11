@@ -107,7 +107,7 @@ class AdminController extends Controller
 
         $test = $request->all();
 
-        $expiry_date = Carbon::createFromFormat('m/d/Y', $request->expiry_date)->format('Y-m-d');
+        //$expiry_date = Carbon::createFromFormat('m/d/Y', $request->expiry_date)->format('Y-m-d');
 
         //dd($test);
 
