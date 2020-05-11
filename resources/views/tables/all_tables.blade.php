@@ -90,6 +90,7 @@ position:absolute;
            </div> -->
           
     </div>
+    @if($user->role == "admin")
     <div class="row text-center">
         <div class="col-md-12 center-block pt-5">
             <a href="{{ url('/import') }}">
@@ -97,6 +98,7 @@ position:absolute;
             </a>
         </div>
     </div>
+    @endif
     @elseif($user->status == "expired")
     <div class="container">
         <div class="alert alert-danger" role="alert">

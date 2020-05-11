@@ -44,7 +44,7 @@
       </tr>
       <tr>
        <td width="40%" align="right"></td>
-       <td width="30"><span class="text-muted">.xls, .xslx</span></td>
+       <td width="30"><span class="text-muted">.xls</span></td>
        <td width="30%" align="left"></td>
       </tr>
      </table>
