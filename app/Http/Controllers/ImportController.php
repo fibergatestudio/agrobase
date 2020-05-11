@@ -32,47 +32,60 @@ class ImportController extends Controller
 
     function import(Request $request){
 
-        //Создаем Главную таблицу
-        $new_table = new Tables();
-        $new_table->save();
+        try {
 
-        //dd($new_table->id);
+            $this->validate($request, [
+                'select_file'  => 'required|mimes:xls,xlsx'
+            ]);
 
-        $this->validate($request, [
-            'select_file'  => 'required|mimes:xls,xlsx'
-        ]);
+            //dd($path);
+            $filename = $request->file('select_file')->getClientOriginalName();
 
-        //$path = $request->file('select_file')->getRealPath();
-        //dd($path);
-        $filename = $request->file('select_file')->getClientOriginalName();
+            $filename = str_replace(array('.xlsx','.xls'), '', $filename);
+            //dd($filename);
 
-        $filename = str_replace(array('.xlsx','.xls'), '', $filename);
-        //dd($filename);
+            $random_name = Str::random(12);
 
-        $random_name = Str::random(12);
+            //Создаем Главную таблицу
+            $new_table = new Tables();
+            $new_table->save();
 
-        $headings = (new HeadingRowImport)->toArray($request->file('select_file'));
-        $headings_array = array_filter($headings[0][0]);
-        //dd($headings_array);
+            $headings = (new HeadingRowImport)->toArray($request->file('select_file'));
+            $headings_array = array_filter($headings[0][0]);
+            //dd($headings_array);
 
-        Schema::create($random_name, function($table) use ($headings_array)
-        {
-            $table->increments('id');
-            foreach($headings_array as $heading){
-                $table->text($heading)->nullable();
-            }
-        });
+            Schema::create($random_name, function($table) use ($headings_array)
+            {
+                $table->increments('id');
+                foreach($headings_array as $heading){
+                    $table->text($heading)->nullable();
+                }
+            });
 
-        $import_rows = Excel::import(new ImportRows($random_name,$headings_array), $request->file('select_file'));
+            $import_rows = Excel::import(new ImportRows($random_name,$headings_array), $request->file('select_file'));
 
-        $last_table = DB::table('table_imports')->where('id', $new_table->id)->update([
-            'table_name' => $filename,
-            'database_table_name' => $random_name,
-        ]);
+            $last_table = DB::table('table_imports')->where('id', $new_table->id)->update([
+                'table_name' => $filename,
+                'database_table_name' => $random_name,
+            ]);
 
-        $import_heads = Excel::import(new ImportHeaders($random_name), $request->file('select_file'));
+            $import_heads = Excel::import(new ImportHeaders($random_name), $request->file('select_file'));
+            
+            return back()->with('success', 'Данные успешно импортированы!');
 
-        return back()->with('success', 'Данные успешно импортированы!');
+        } catch (\Exception $e) {
+            //report($e);
+
+            DB::table('table_imports')->where('id', $new_table->id)->delete();
+
+            Schema::dropIfExists($random_name);
+    
+            //return false;
+            
+            return back()->with('success', 'Ошибка!');
+        }
+
+
     }
 
     // function import(Request $request)
