@@ -37,7 +37,6 @@ class LoginController extends Controller
             $now = Carbon::today()->toDateString();
             $exp_date = $user->expiry_date;
             if($now >= $exp_date){
-                //dd("TEST");
                 $user->status = 'expired';
             }
             //$exp_date = Carbon::createFromFormat('m/d/Y', $user->expiry_date)->format('Y-m-d')->toDateString();

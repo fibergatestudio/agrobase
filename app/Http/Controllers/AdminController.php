@@ -116,7 +116,6 @@ class AdminController extends Controller
                 'name' => $request->name,
                 'email'=> $request->email,
                 'password' => Hash::make($request->password),
-                'expiry_date' => $expiry_date,
                 'status' => 'confirmed',
                 'role' => $request->role
             ]
