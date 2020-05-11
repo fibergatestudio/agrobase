@@ -53,9 +53,16 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="role">Действителен До</label>
 
-                <div class="col-sm-10">   
-                    <input type="text" class="form-control" placeholder="{{ $user_info->expiry_date }}" disabled>
-                </div>
+                @if(isset($user_info->expiry_date))
+                    <div class="col-sm-10">   
+                        <input type="text" class="form-control"  placeholder="{{ $user_info->expiry_date }}" disabled>
+                    </div>
+                @else
+                    <div class="col-sm-10">   
+                        <input type="text" class="form-control"  placeholder="NULL" disabled>
+                    </div>
+                @endif
+
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="role">Изменить дату</label>

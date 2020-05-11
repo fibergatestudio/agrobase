@@ -65,6 +65,14 @@
         @endforeach
         </tbody>
     </table>
+
+    <div class="row text-center">
+        <div class="col-md-12 center-block pt-5">
+            <a href="{{ url('/import') }}">
+                <button class="btn btn-success">Импорт Таблицы</button>
+            </a>
+        </div>
+    </div>
 </div>
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Hash;
 
 use DB;
 use Carbon\Carbon;
@@ -94,5 +95,36 @@ class AdminController extends Controller
         $table_info_delete = Tables::where('id', $table_id)->delete();
 
         return redirect()->back()->with('message_delete', 'Таблица удалена!');
+    }
+
+
+    public function user_add(){
+
+        return view('admin.user_add');
+    }
+
+    public function user_add_apply(Request $request){
+
+        $test = $request->all();
+
+        $expiry_date = Carbon::createFromFormat('m/d/Y', $request->expiry_date)->format('Y-m-d');
+
+        //dd($test);
+
+        $values = [
+            [
+                'name' => $request->name,
+                'email'=> $request->email,
+                'password' => Hash::make($request->password),
+                'expiry_date' => $expiry_date,
+                'status' => 'confirmed',
+                'role' => $request->role
+            ]
+        ];
+
+        DB::table('users')->insert($values);
+
+
+        return redirect('admin/users');
     }
 }

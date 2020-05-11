@@ -32,7 +32,7 @@ position:absolute;
 
     @if($user->status == "confirmed")
     <div class="container text-center">
-    <h1> All Tables</h1>
+    <h1>Все таблицы</h1>
     <br>
     <div class="row text-center">
 
@@ -73,7 +73,7 @@ position:absolute;
                     </a>
                 </div>
             </div> -->
-           <div class="col-sm-3 bg-success border">
+           <!-- <div class="col-sm-3 bg-success border">
                 <a href="#" class="thumbnail">
                     <div class="frontpage_square">
                         <img src="" class="img img-responsive full-width" />
@@ -87,8 +87,15 @@ position:absolute;
                         <img src="" class="img img-responsive full-width" />
                     </div>
                 </a>
-           </div>
+           </div> -->
           
+    </div>
+    <div class="row text-center">
+        <div class="col-md-12 center-block pt-5">
+            <a href="{{ url('/import') }}">
+                <button class="btn btn-success">Импорт Таблицы</button>
+            </a>
+        </div>
     </div>
     @elseif($user->status == "expired")
     <div class="container">

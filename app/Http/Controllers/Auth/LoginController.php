@@ -36,7 +36,7 @@ class LoginController extends Controller
         if($user->role != 'admin'){
             $now = Carbon::today()->toDateString();
             $exp_date = $user->expiry_date;
-            if($now <= $exp_date){
+            if($now >= $exp_date){
                 //dd("TEST");
                 $user->status = 'expired';
             }

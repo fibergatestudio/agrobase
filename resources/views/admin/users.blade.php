@@ -78,6 +78,14 @@
         @endforeach
         </tbody>
     </table>
+
+    <div class="row text-center">
+        <div class="col-md-12 center-block pt-5">
+            <a href="{{ url('/admin/users/add/') }}">
+                <button class="btn btn-success">Добавить Пользователя</button>
+            </a>
+        </div>
+    </div>
 </div>
 
 @stop

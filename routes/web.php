@@ -40,6 +40,12 @@ Route::get('/table/{table_id}', 'TablesController@index')->name('tables.index');
         Route::post('/admin/users/edit/{user_id}/apply', 'AdminController@user_edit_apply')->middleware('can:admin_rights');
         /* Удаление пользователя */
         Route::post('/admin/users/delete/{user_id}/apply', 'AdminController@user_delete_apply')->middleware('can:admin_rights');
+
+    /* Добавление пользователя */
+    Route::get('/admin/users/add/', 'AdminController@user_add')->middleware('can:admin_rights');
+    /* Добавление пользователя Принять*/
+    Route::post('/admin/users/add/apply', 'AdminController@user_add_apply')->middleware('can:admin_rights');
+    
     /* Управление Таблицами */
     Route::get('/admin/tables_control', 'AdminController@tables_control_index')->middleware('can:admin_rights');
         /* Удаление пользователя */
