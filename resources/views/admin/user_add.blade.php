@@ -44,13 +44,13 @@
                     </select>
                 </div>
             </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label class="control-label col-sm-2" for="role">Действителен До</label>
 
                 <div class="col-sm-10">   
                     <input class="form-control datepicker" id="datetimepicker1" placeholder="Выберите дату" name="expiry_date" type="text">
                 </div>
-            </div> -->
+            </div>
             <div class="form-group">        
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-success">Добавить</button>
