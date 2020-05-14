@@ -66,33 +66,64 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>#</th>
+                            <?php $column_count = 0; ?>
                             @foreach($table_heads_text as $column)
-                                <th>{{$column}}</th>
+                                <?php $column_count++; ?>
+                                @if($column_count <= 12)
+                                    <th>{{$column}}</th>
+                                @endif
                             @endforeach
+                            <th>Мессенджеры</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($table_rows as $row)
-                        <?php $phone_index = '1'; ?>
+                        <?php 
+                        $phone_index = '1'; 
+                        $row_count = 0;
+                        $row_c = 0;
+                        ?>
                             <tr>
                                 @foreach($table_head_columns as $column)
+
+                                @if($row_count <= 12)
                                 <td>
-                                
-                                <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
-                                    <a href="tel:{{ $row->$column }}">
-                                        <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
-                                            <?php 
-                                            echo 'Телефон ' . $phone_index++; 
-                                            ?>                                       
-                                        </button>
-                                    </a>
-                                <?php } else { ?>
-                                    {{ $row->$column }}
-                                <?php } ?>
+                                    <?php $row_count++; ?>
+                                    
+                                    <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
+                                        <a href="tel:{{ $row->$column }}">
+                                            <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                                <?php 
+                                                echo 'Телефон ' . $phone_index++; 
+                                                ?>                                       
+                                            </button>
+                                        </a>
+                                    <?php } else { ?>
+                                        {{ $row->$column }}
+                                    <?php } ?>
                                 </td>
+                                @endif
+
 
                                 @endforeach
+                                <td>
+                                @foreach($table_head_columns as $column)
+                                <?php $row_c++; ?>
+                                @if($row_c > 13)
+                                    @if($column == 'telegram')
+                                        <a href="https://t.me/{{ $row->$column }}"><buttom class="btn btn-success m-1">Telegram</buttom></a>
+                                    @endif
+                                    @if($column == 'vayber')
+                                        <a href="viber://add?number={{ $row->$column }}"><buttom class="btn btn-success m-1">Viber</buttom></a>
+                                    @endif
+                                    @if($column == 'vottsap')
+                                        <a href="https://wa.me/{{ $row->$column }}"><buttom class="btn btn-success m-1">Whatsup</buttom></a>
+                                    @endif
+                                @endif
+                                @endforeach
+                                
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
