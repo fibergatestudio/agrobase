@@ -69,11 +69,15 @@
                             <?php $column_count = 0; ?>
                             @foreach($table_heads_text as $column)
                                 <?php $column_count++; ?>
-                                @if($column_count <= 12)
+                                @if($column_count <= 5)
+                                    <th>{{$column}}</th>
+                                @elseif($column_count == 6)
+                                <th>Мессенджеры</th>
+                                @elseif($column_count >= 9)
                                     <th>{{$column}}</th>
                                 @endif
                             @endforeach
-                            <th>Мессенджеры</th>
+                            
 
                         </tr>
                     </thead>
@@ -86,31 +90,74 @@
                         ?>
                             <tr>
                                 @foreach($table_head_columns as $column)
-
-                                @if($row_count <= 12)
-                                <td>
-                                    <?php $row_count++; ?>
-                                    
-                                    <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
-                                        <a href="tel:{{ $row->$column }}">
-                                            <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
-                                                <?php 
-                                                echo 'Телефон ' . $phone_index++; 
-                                                ?>                                       
-                                            </button>
-                                        </a>
-                                    <?php } else { ?>
-                                        {{ $row->$column }}
-                                    <?php } ?>
-                                </td>
+                                <?php $row_count++; ?>
+                                @if($row_count <= 6)
+                                    <td>
+                                        <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
+                                            <a href="tel:{{ $row->$column }}">
+                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                                    <?php 
+                                                    echo 'Телефон ' . $phone_index++; 
+                                                    ?>                                       
+                                                </button>
+                                            </a>
+                                        <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $row->$column)) { ?>
+                                            <a href="mailto:{{ $row->$column }}">
+                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                                    Email
+                                                </button>
+                                            </a>
+                                        <?php } else { ?>
+                                            {{ $row->$column }}
+                                        <?php } ?>
+                                    </td>
+                                    @elseif($row_count == 7)
+                                    <td>
+                                        @foreach($table_head_columns as $column)
+                                        <?php $row_c++; ?>
+                                        @if($row_c > 5)
+                                            @if($column == 'telegram')
+                                                <a href="https://t.me/{{ $row->$column }}"><buttom class="btn btn-success m-1">Telegram</buttom></a>
+                                            @endif
+                                            @if($column == 'vayber')
+                                                <a href="viber://add?number={{ $row->$column }}"><buttom class="btn btn-success m-1">Viber</buttom></a>
+                                            @endif
+                                            @if($column == 'vottsap')
+                                                <a href="https://wa.me/{{ $row->$column }}"><buttom class="btn btn-success m-1">Whatsup</buttom></a>
+                                            @endif
+                                        @endif
+                                        @endforeach
+                                    </td>
+                                    @elseif($row_count >= 10)
+                                    <td>
+                                        <?php $filter_mail = str_replace("E-mail: ","", $row->$column); 
+                                        ?>
+                                        <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
+                                            <a href="tel:{{ $row->$column }}">
+                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                                    <?php 
+                                                    echo 'Телефон ' . $phone_index++; 
+                                                    ?>                                       
+                                                </button>
+                                            </a>
+                                        <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $filter_mail )) { ?>
+                                            <a href="mailto:{{ $filter_mail }}">
+                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                                    Email
+                                                </button>
+                                            </a>
+                                        <?php } else { ?>
+                                            {{ $row->$column }}
+                                        <?php } ?>
+                                    </td>
                                 @endif
 
 
                                 @endforeach
-                                <td>
+                                <!-- <td>
                                 @foreach($table_head_columns as $column)
                                 <?php $row_c++; ?>
-                                @if($row_c > 13)
+                                @if($row_c > 5)
                                     @if($column == 'telegram')
                                         <a href="https://t.me/{{ $row->$column }}"><buttom class="btn btn-success m-1">Telegram</buttom></a>
                                     @endif
@@ -123,7 +170,7 @@
                                 @endif
                                 @endforeach
                                 
-                                </td>
+                                </td> -->
                             </tr>
                         @endforeach
                     </tbody>
