@@ -142,7 +142,7 @@
                                             </a>
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $filter_mail )) { ?>
                                             <a href="mailto:{{ $filter_mail }}">
-                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                                <button class="btn btn-success m-1"> <i class="fas fa-envelope"></i>    
                                                     Email
                                                 </button>
                                             </a>
