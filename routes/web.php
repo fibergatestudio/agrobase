@@ -21,6 +21,8 @@ Auth::routes();
 
 /* Все таблицы */
 Route::get('/all_tables', 'TablesController@all_tables');
+/* Все таблицы Международные */
+Route::get('/all_tables_international', 'TablesController@all_tables_international');
 /* Таблица "Горох" */
 Route::get('/all_tables/goroh', 'TablesController@goroh_table');
     Route::get('/all_tables/goroh/import_goroh', 'TablesController@goroh_import');
@@ -58,3 +60,8 @@ Route::get('/import', 'ImportController@index')->middleware('can:admin_rights');
     
     /* Импорт с папки */
     Route::get('import/import_directory', 'ImportController@import_directory')->middleware('can:admin_rights');
+
+/*** Импорт Международных Таблиц ***/
+Route::get('/import_international', 'ImportController@index_international')->middleware('can:admin_rights'); //->middleware('can:client_rights');
+    /* Отправка формы */
+    Route::post('/import_international/import_excel', 'ImportController@import_international')->middleware('can:admin_rights'); //->middleware('can:client_rights');

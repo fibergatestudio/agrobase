@@ -67,9 +67,14 @@
     </table>
 
     <div class="row text-center">
-        <div class="col-md-12 center-block pt-5">
+        <div class="col-md-6 center-block pt-5">
             <a href="{{ url('/import') }}">
                 <button class="btn btn-success">Импорт Таблицы</button>
+            </a>
+        </div>
+        <div class="col-md-6 center-block pt-5">
+            <a href="{{ url('/import_international') }}">
+                <button class="btn btn-success">Импорт Международн. Таблицы</button>
             </a>
         </div>
     </div>

@@ -18,6 +18,7 @@ class CreateTableImportsTable extends Migration
             $table->string('table_name')->nullable();
             $table->string('database_table_name')->nullable();
             $table->text('head_names')->nullable();
+            $table->text('location')->nullable();
             $table->timestamps();
         });
     }

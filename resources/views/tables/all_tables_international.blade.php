@@ -32,77 +32,38 @@ position:absolute;
 
     @if($user->status == "confirmed")
     <div class="container text-center">
-    <h1>Все таблицы</h1> 
-        <a href="{{ url('/all_tables_international') }}"><button>Меж.</button></a>
+    <h1>Все международные таблицы </h1>
+    <a href="{{ url('/all_tables') }}"><button>Укр.</button></a>
     <br>
     <div class="row text-center">
 
-
-    @foreach($tables_ua as $t)
-        <div class="col-sm-3 bg-success border">
-            <div class="row text-center h-100">
-                <a href="{{ url('/table/'. $t->id) }}" class="thumbnail tablelink" style="width: 100%;">
-                    <div class=" card-block justify-content-center" style="line-height: 200px;">
-                        <div class="card-body text-center">
-                            {{ $t->table_name }}
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    @endforeach
-
-            <!-- <div class="col-sm-3 bg-success border">
+        @foreach($tables_en as $t)
+            <div class="col-sm-3 bg-success border">
                 <div class="row text-center h-100">
-                    <a href="{{ url('/kharkiv') }}" class="thumbnail tablelink" style="width: 100%;">
+                    <a href="{{ url('/table/'. $t->id) }}" class="thumbnail tablelink" style="width: 100%;">
                         <div class=" card-block justify-content-center" style="line-height: 200px;">
                             <div class="card-body text-center">
-                                Харьков
+                                {{ $t->table_name }}
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-sm-3 bg-success border">
-                <div class="row text-center h-100">
-                    <a href="{{ url('/all_tables/goroh') }}" class="thumbnail tablelink" style="width: 100%;">
-                        <div class=" card-block justify-content-center" style="line-height: 200px;">
-                            <div class="card-body text-center">
-                                Goroh
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div> -->
-           <!-- <div class="col-sm-3 bg-success border">
-                <a href="#" class="thumbnail">
-                    <div class="frontpage_square">
-                        <img src="" class="img img-responsive full-width" />
-                    </div>
-                </a>
-           </div>  
-   
-            <div class="col-sm-3 bg-success border">
-                <a href="#" class="thumbnail">
-                    <div class="frontpage_square">
-                        <img src="" class="img img-responsive full-width" />
-                    </div>
-                </a>
-           </div> -->
+        @endforeach
           
     </div>
     @if($user->role == "admin")
     <div class="row text-center">
-        <div class="col-md-12 center-block pt-5">
+        <!-- <div class="col-md-6 center-block pt-5">
             <a href="{{ url('/import') }}">
                 <button class="btn btn-success">Импорт Таблицы</button>
             </a>
-        </div>
-        <!-- <div class="col-md-6 center-block pt-5">
+        </div> -->
+        <div class="col-md-12 center-block pt-5">
             <a href="{{ url('/import_international') }}">
                 <button class="btn btn-success">Импорт Международн. Таблицы</button>
             </a>
-        </div> -->
+        </div>
     </div>
     @endif
     @elseif($user->status == "expired")

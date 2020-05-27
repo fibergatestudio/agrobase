@@ -114,10 +114,21 @@ class TablesController extends Controller
         }
 
         //Уникальные фильтры
-        //Регионы
-        $regions = DB::table($table_name)->select('oblast')->distinct()->get();
-        //Области
-        $areas = DB::table($table_name)->select('rayon')->whereNotNull('rayon')->distinct()->get();
+
+        $table_columns_arr = DB::getSchemaBuilder()->getColumnListing($table_name);
+        if(in_array('oblast', $table_columns_arr)){
+            //dd("True");
+            //Регионы
+            $regions = DB::table($table_name)->select('oblast')->distinct()->get();
+            //Области
+            $areas = DB::table($table_name)->select('rayon')->whereNotNull('rayon')->distinct()->get();
+
+        } else {
+            //dd("False");
+        }
+        //dd($test);
+
+
         //Для дропдаунов
         if(request()->has('oblast')){
             $f_region = request('oblast');
@@ -138,16 +149,51 @@ class TablesController extends Controller
         $table_heads_text = json_decode($table_info->head_names);
         //dd($table_heads_text);
 
-        return view('tables/index', compact('user', 'table_info', 'table_head_columns', 'table_rows', 'table_id', 'regions', 'areas', 'f_region', 'f_area', 'table_heads_text'));
+        $table_columns_arr = DB::getSchemaBuilder()->getColumnListing($table_name);
+        if(in_array('oblast', $table_columns_arr)){
+            //dd("True");
+            //Регионы
+            $regions = DB::table($table_name)->select('oblast')->distinct()->get();
+            //Области
+            $areas = DB::table($table_name)->select('rayon')->whereNotNull('rayon')->distinct()->get();
+
+            return view('tables/index', compact('user', 'table_info', 'table_head_columns', 'table_rows', 'table_id', 'regions', 'areas', 'f_region', 'f_area', 'table_heads_text'));
+
+        } else {
+            //dd("False");
+            return view('tables/index_international', compact('user', 'table_info', 'table_head_columns', 'table_rows', 'table_id', 'f_region', 'f_area', 'table_heads_text'));
+
+        }
+
+        //return view('tables/index', compact('user', 'table_info', 'table_head_columns', 'table_rows', 'table_id', 'regions', 'areas', 'f_region', 'f_area', 'table_heads_text'));
     }
+
+    // public function checkColumnExist($column_name){
+
+
+
+    //     return true;
+    // }
 
     public function all_tables(){
 
         $user = auth()->user();
 
-        $tables = DB::table('table_imports')->get();
+        $tables_ua = DB::table('table_imports')->where('location', 'UA')->get();
 
-        return view('tables/all_tables', compact('user', 'tables') );
+
+        return view('tables/all_tables', compact('user', 'tables_ua') );
+    }
+
+    public function all_tables_international(){
+
+        $user = auth()->user();
+
+        $tables_en = DB::table('table_imports')->where('location', 'EN')->get();
+
+
+        return view('tables/all_tables_international', compact('user', 'tables_en') );
+
     }
 
     public function goroh_table(){
