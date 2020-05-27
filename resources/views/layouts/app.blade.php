@@ -49,9 +49,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <!-- <ul class="navbar-nav mr-auto">
-                        <a href="{{ url('/import') }}"><button class="btn btn-default">Импорт</button></a>
-                    </ul> -->
+                    <ul class="navbar-nav ml-1 mr-1">
+                        <a href="{{ url('/all_tables') }}"><button class="btn btn btn-success">Таблицы</button></a>
+                    </ul>
+                    <ul class="navbar-nav ml-1 mr-1">
+                        <a href="{{ url('/all_tables_international') }}"><button class="btn btn btn-success">Таблицы Международн.</button></a>
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

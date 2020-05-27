@@ -33,7 +33,7 @@ position:absolute;
     @if($user->status == "confirmed")
     <div class="container text-center">
     <h1>Все международные таблицы </h1>
-    <a href="{{ url('/all_tables') }}"><button>Укр.</button></a>
+    
     <br>
     <div class="row text-center">
 
@@ -42,7 +42,12 @@ position:absolute;
                 <div class="row text-center h-100">
                     <a href="{{ url('/table/'. $t->id) }}" class="thumbnail tablelink" style="width: 100%;">
                         <div class=" card-block justify-content-center" style="line-height: 200px;">
-                            <div class="card-body text-center">
+                            <div class="card-body text-center" style="    
+                            clear: both;
+                            display: inline-block;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            font-size: 22px;">
                                 {{ $t->table_name }}
                             </div>
                         </div>
