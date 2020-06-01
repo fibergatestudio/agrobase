@@ -21,6 +21,7 @@
     @if($user->status == "confirmed")
     <div class="container-fluid">
     <h1> Таблица </h1>
+    Кол-во предприятий: {{ $t_count }}<br>
     <a href="{{ url('/all_tables') }}"><button class="btn btn-success">Выбор Таблицы</button></a>
     <!-- <a href="{{ url('/import') }}"><button class="btn btn-success">Импортировать</button></a> -->
     <br>

@@ -157,11 +157,15 @@ class TablesController extends Controller
             //Области
             $areas = DB::table($table_name)->select('rayon')->whereNotNull('rayon')->distinct()->get();
 
-            return view('tables/index', compact('user', 'table_info', 'table_head_columns', 'table_rows', 'table_id', 'regions', 'areas', 'f_region', 'f_area', 'table_heads_text'));
+            $t_count = DB::table($table_name)->distinct('nazvanie_predpriyatiya')->count('nazvanie_predpriyatiya');
+
+            return view('tables/index', compact('user', 'table_info', 't_count', 'table_head_columns', 'table_rows', 'table_id', 'regions', 'areas', 'f_region', 'f_area', 'table_heads_text'));
 
         } else {
+
+            $t_count = DB::table($table_name)->distinct('naymenuvannya_oderzhuvacha')->count('naymenuvannya_oderzhuvacha');
             //dd("False");
-            return view('tables/index_international', compact('user', 'table_info', 'table_head_columns', 'table_rows', 'table_id', 'f_region', 'f_area', 'table_heads_text'));
+            return view('tables/index_international', compact('user', 'table_info', 't_count', 'table_head_columns', 'table_rows', 'table_id', 'f_region', 'f_area', 'table_heads_text'));
 
         }
 
@@ -178,9 +182,7 @@ class TablesController extends Controller
     public function all_tables(){
 
         $user = auth()->user();
-
         $tables_ua = DB::table('table_imports')->where('location', 'UA')->get();
-
 
         return view('tables/all_tables', compact('user', 'tables_ua') );
     }
@@ -188,12 +190,9 @@ class TablesController extends Controller
     public function all_tables_international(){
 
         $user = auth()->user();
-
         $tables_en = DB::table('table_imports')->where('location', 'EN')->get();
 
-
         return view('tables/all_tables_international', compact('user', 'tables_en') );
-
     }
 
     public function goroh_table(){
