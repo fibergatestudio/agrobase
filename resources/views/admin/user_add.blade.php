@@ -34,6 +34,9 @@
                     <input type="email" class="form-control" id="email" placeholder="Введите email" name="email">
                 </div>
             </div>
+            <!-- -->
+
+            <!-- -->
             <div class="form-group">
                 <label class="control-label col-sm-2" for="role">Роль</label>
                 <div class="col-sm-10">          

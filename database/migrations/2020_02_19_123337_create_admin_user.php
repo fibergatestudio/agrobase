@@ -17,6 +17,11 @@ class CreateAdminUser extends Migration
             [
                 'name' => 'admin',
                 'email'=> 'admin@mail.com',
+                'reg_code' => '322',
+                'address' => 'address',
+                'phone' => '380999999999',
+                'website' => 'website.com',
+                'contact_name' => 'Contact Name',
                 'password' => Hash::make('qwerty'),
                 'expiry_date' => '2060-05-20',
                 'status' => 'confirmed',

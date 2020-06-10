@@ -41,6 +41,12 @@ class AdminController extends Controller
         $new_role = $request->role;
         $new_status = $request->status;
 
+        $new_reg_code = $request->reg_code;
+        $new_address = $request->address;
+        $new_phone = $request->phone;
+        $new_website = $request->website;
+        $new_contact_name = $request->contact_name;
+
         //$expiry_date = $request->expiry_date;
         
 
@@ -51,7 +57,12 @@ class AdminController extends Controller
             ->update([
                 'role' => $new_role,
                 'status' => $new_status,
-                'expiry_date' => $expiry_date
+                'expiry_date' => $expiry_date,
+                'reg_code' => $new_reg_code,
+                'address' => $new_address,
+                'phone' => $new_phone,
+                'website' => $new_website,
+                'contact_name' => $new_contact_name
                 ]);
         } else {
 
@@ -59,7 +70,12 @@ class AdminController extends Controller
             ->where('id', '=', $user_id)
             ->update([
                 'role' => $new_role,
-                'status' => $new_status
+                'status' => $new_status,
+                'reg_code' => $new_reg_code,
+                'address' => $new_address,
+                'phone' => $new_phone,
+                'website' => $new_website,
+                'contact_name' => $new_contact_name
                 ]);
         }
 
