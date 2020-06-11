@@ -50,10 +50,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-1 mr-1">
-                        <a href="{{ url('/all_tables') }}"><button class="btn btn btn-success">Таблицы</button></a>
+                        <a href="{{ url('/all_tables') }}"><button class="btn btn btn-success">Фермер UA</button></a>
                     </ul>
                     <ul class="navbar-nav ml-1 mr-1">
                         <a href="{{ url('/all_tables_international') }}"><button class="btn btn btn-success">Таблицы Международн.</button></a>
+                    </ul>
+                    <ul class="navbar-nav ml-1 mr-1">
+                        <a href="{{ url('/user_cards') }}"><button class="btn btn btn-success">Карточки пользователей</button></a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,11 +86,16 @@
                                     <a class="dropdown-item" href="{{ url('/admin/tables_control') }}">
                                         Управление Таблицами
                                     </a>
+                                    <a class="dropdown-item" href="{{ url('/admin/adverts_control') }}">
+                                        Управление Обьявлениями
+                                    </a>
                                     <a class="dropdown-item" href="{{ url('/import') }}">
                                         Импорт
                                     </a>
                                     @endif
-
+                                    <a class="dropdown-item" href="{{ url('/advert/create/') }}">
+                                        Добавить Обьявление
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -105,8 +113,32 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 row">
+            <div class="col-md-10">
             @yield('content')
+            </div>
+            <div style="height:600px; overflow:auto;" class="col-md-2">
+                <h5 class="font-weight-bold mb-3">Обьявления</h5>
+                @if(!empty(array_filter((array)$adverts)))
+                    @foreach($adverts as $adv)
+                    <div class="card" style="width: auto;">
+                        <div class="card-body">
+                            <p class="mb-0">{{ $adv->short_text }}</p>
+                        </div>
+                        <!--<ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>-->
+                        <div class="card-body">
+                            <a href="{{ url('/advert/view/' . $adv->id ) }}" class="card-link">Просмотреть</a>
+                        </div>
+                    </div>
+                    @endforeach
+                @else
+                    Нет обьявлений!
+                @endif
+            </div>
         </main>
     </div>
 

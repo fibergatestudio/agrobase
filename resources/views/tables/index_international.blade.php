@@ -20,7 +20,7 @@
 
     @if($user->status == "confirmed")
     <div class="container-fluid">
-    <h1> Таблица </h1>
+    <h1> Таблица {{ $table_info->table_name }}</h1>
     Кол-во предприятий: {{ $t_count }}<br>
     <a href="{{ url('/all_tables') }}"><button class="btn btn-success">Выбор Таблицы</button></a>
     <!-- <a href="{{ url('/import') }}"><button class="btn btn-success">Импортировать</button></a> -->
@@ -100,6 +100,8 @@
                                                     Email
                                                 </button>
                                             </a>
+                                        <?php } else if (preg_match("/(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/", $row->$column) && $row_count == 7) { ?>
+                                            <a href="{{ $row->$column }}">{{ $row->$column }}</a>
                                         <?php } else { ?>
                                             {{ $row->$column }}
                                         <?php } ?>
@@ -116,6 +118,7 @@
                 {{ $table_rows->links() }}
             </div>
         </div>
+    </div>
     @elseif($user->status == "expired")
     <div class="container">
         <div class="alert alert-danger" role="alert">

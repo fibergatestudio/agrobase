@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Schema\Builder;
+use View;
+use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +26,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //$adverts = "TEST";
+
+        View::composer('layouts.app', function ($view) {
+            $adverts = DB::table('adverts')->where('status', 'confirmed')->get();
+            $view->with('adverts', $adverts);
+        });
+
         Builder::defaultStringLength(191); // Update defaultStringLength
     }
 }

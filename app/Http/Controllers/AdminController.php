@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\TableHeads;
 use App\TableRows;
 use App\Tables;
+use App\Adverts;
 
 //Удаление таблиц
 use Illuminate\Support\Facades\Schema;
@@ -142,5 +143,29 @@ class AdminController extends Controller
 
 
         return redirect('admin/users');
+    }
+
+    public function adverts_control_index(){
+
+        $adverts = DB::table('adverts')->get();
+
+        return view('admin.adverts', compact('adverts'));
+    }
+
+    public function adverts_control_apply($advert_id){
+
+        Adverts::where('id', $advert_id)->update([
+            'status' => 'confirmed',
+        ]);
+
+
+        return redirect()->back()->with('message_success', 'Обьявление потверждено!');
+    }
+
+    public function adverts_control_delete($advert_id){
+
+        Adverts::where('id', $advert_id)->delete();
+
+        return redirect()->back()->with('message_delete', 'Обьявление удалено!');
     }
 }

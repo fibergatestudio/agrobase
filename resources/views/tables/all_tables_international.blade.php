@@ -55,7 +55,7 @@ position:absolute;
                 </div>
             </div>
         @endforeach
-          
+          </div>
     </div>
     @if($user->role == "admin")
     <div class="row text-center">

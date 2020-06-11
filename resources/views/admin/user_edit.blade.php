@@ -33,31 +33,31 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="reg_code">Регистрационный код</label>
                 <div class="col-sm-10">          
-                    <input type="reg_code" class="form-control" id="reg_code" placeholder="{{$user_info->reg_code}}"  name="reg_code" >
+                    <input type="reg_code" class="form-control" id="reg_code" value="{{$user_info->reg_code}}" placeholder="{{$user_info->reg_code}}"  name="reg_code" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="address">Адрес</label>
                 <div class="col-sm-10">          
-                    <input type="address" class="form-control" id="address" placeholder="{{$user_info->address}}"  name="address" >
+                    <input type="address" class="form-control" id="address" value="{{$user_info->address}}" placeholder="{{$user_info->address}}"  name="address" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="phone">Телефон</label>
                 <div class="col-sm-10">          
-                    <input type="phone" class="form-control" id="phone" placeholder="{{$user_info->phone}}" name="phone" >
+                    <input type="phone" class="form-control" id="phone" value="{{$user_info->phone}}" placeholder="{{$user_info->phone}}" name="phone" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="website">Сайт</label>
                 <div class="col-sm-10">          
-                    <input type="website" class="form-control" id="website" placeholder="{{$user_info->website}}" name="website" >
+                    <input type="website" class="form-control" id="website" value="{{$user_info->website}}" placeholder="{{$user_info->website}}" name="website" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="contact_name">Контактное лицо</label>
                 <div class="col-sm-10">          
-                    <input type="contact_name" class="form-control" id="contact_name" placeholder="{{$user_info->contact_name}}" name="contact_name" >
+                    <input type="contact_name" class="form-control" id="contact_name" value="{{$user_info->contact_name}}" placeholder="{{$user_info->contact_name}}" name="contact_name" >
                 </div>
             </div>
             <!-- -->

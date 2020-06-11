@@ -53,6 +53,14 @@ Route::get('/table/{table_id}', 'TablesController@index')->name('tables.index');
         /* Удаление пользователя */
         Route::post('/admin/tables_control/delete/{table_id}/apply', 'AdminController@table_delete_apply')->middleware('can:admin_rights');
 
+    /* Управление Обьявлениями */
+    Route::get('/admin/adverts_control', 'AdminController@adverts_control_index')->middleware('can:admin_rights');
+        /* Принять обьявления */
+        Route::get('/admin/adverts_control/{advert_id}/apply', 'AdminController@adverts_control_apply')->middleware('can:admin_rights');
+         /* Удалить обьявления */
+         Route::get('/admin/adverts_control/{advert_id}/delete', 'AdminController@adverts_control_delete')->middleware('can:admin_rights');
+    //adverts_control
+
 /*** Импорт ***/
 Route::get('/import', 'ImportController@index')->middleware('can:admin_rights'); //->middleware('can:client_rights');
     /* Отправка формы */
@@ -65,3 +73,17 @@ Route::get('/import', 'ImportController@index')->middleware('can:admin_rights');
 Route::get('/import_international', 'ImportController@index_international')->middleware('can:admin_rights'); //->middleware('can:client_rights');
     /* Отправка формы */
     Route::post('/import_international/import_excel', 'ImportController@import_international')->middleware('can:admin_rights'); //->middleware('can:client_rights');
+
+
+
+/** Карточки Пользователей */
+Route::get('/user_cards', 'UserCardsController@index'); //->middleware('can:client_rights');
+
+
+/** Обьявления */
+    /* Страница обьявления */
+    Route::get('/advert/view/{advert_id}', 'AdvertsController@view_advert');
+    /* Страница добавление обьявления */
+    Route::get('/advert/create/', 'AdvertsController@create_advert');
+        /* Добавить обьявление POST */
+        Route::post('/advert/create/apply', 'AdvertsController@create_advert_apply');

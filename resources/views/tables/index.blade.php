@@ -20,7 +20,7 @@
 
     @if($user->status == "confirmed")
     <div class="container-fluid">
-    <h1> Таблица </h1>
+    <h1> Таблица {{ $table_info->table_name }}</h1>
     Кол-во предприятий: {{ $t_count }}<br>
     <a href="{{ url('/all_tables') }}"><button class="btn btn-success">Выбор Таблицы</button></a>
     <!-- <a href="{{ url('/import') }}"><button class="btn btn-success">Импортировать</button></a> -->
@@ -147,6 +147,15 @@
                                                     Email
                                                 </button>
                                             </a>
+                                          
+                                            
+                                            <input type="hidden" id="copy_{{ $row->id }}" value="{{ $filter_mail }}">
+                                            <!-- <button onclick="copyToClipboard('copy_{{ $row->id }}')" class="btn btn-success m-1">Copy</button> -->
+                                            <button class="btn btn-success m-1" onclick="copyToClipboard('#copy_{{ $row->id }}')">
+                                                <i class="fa fa-clone" aria-hidden="true"></i>
+                                                Копировать
+                                            </button> 
+
                                         <?php } else { ?>
                                             {{ $row->$column }}
                                         <?php } ?>
@@ -180,6 +189,7 @@
                 {{ $table_rows->links() }}
             </div>
         </div>
+    </div>
     @elseif($user->status == "expired")
     <div class="container">
         <div class="alert alert-danger" role="alert">
@@ -201,11 +211,28 @@
     </div>
 @endif
 
+<!-- <p id="p1">Hello, I'm TEXT 1</p>
+<p id="p2">Hi, I'm the 2nd TEXT</p><br/>
 
+<button onclick="copyToClipboard('#p1')">Copy TEXT 1</button>
+<button onclick="copyToClipboard('#p2')">Copy TEXT 2</button> -->
 
 @stop
 
 @section('scripts')
+
+<script>
+function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val(
+        $(element).val()
+        ).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
+
+</script>
 
 <!-- <script type="text/javascript">
  $(function () {
