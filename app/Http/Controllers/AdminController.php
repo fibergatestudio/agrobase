@@ -132,12 +132,18 @@ class AdminController extends Controller
             [
                 'name' => $request->name,
                 'email'=> $request->email,
+                'reg_code' => $request->reg_code,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'website' => $request->website,
+                'contact_name' => $request->contact_name,
                 'password' => Hash::make($request->password),
                 'expiry_date' => $expiry_date,
                 'status' => 'confirmed',
                 'role' => $request->role
             ]
         ];
+        //dd($values);
 
         DB::table('users')->insert($values);
 

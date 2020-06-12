@@ -35,7 +35,41 @@
                 </div>
             </div>
             <!-- -->
+            <div class="form-group row">
+                <label for="reg_code" class="col-md-4 col-form-label text-md-right">Регистрационный код</label>
 
+                <div class="col-md-6">
+                    <input id="reg_code" type="text" class="form-control" name="reg_code" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="address" class="col-md-4 col-form-label text-md-right">Адрес</label>
+
+                <div class="col-md-6">
+                    <input id="address" type="text" class="form-control" name="address" required >
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="phone" class="col-md-4 col-form-label text-md-right">Телефон</label>
+
+                <div class="col-md-6">
+                    <input id="phone" type="text" class="form-control" name="phone" required >
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="website" class="col-md-4 col-form-label text-md-right">Сайт</label>
+
+                <div class="col-md-6">
+                    <input id="website" type="text" class="form-control" name="website" ">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="contact_name" class="col-md-4 col-form-label text-md-right">Контактное лицо</label>
+
+                <div class="col-md-6">
+                    <input id="contact_name" type="text" class="form-control" name="contact_name" required ">
+                </div>
+            </div>
             <!-- -->
             <div class="form-group">
                 <label class="control-label col-sm-2" for="role">Роль</label>
