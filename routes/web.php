@@ -77,13 +77,15 @@ Route::get('/import_international', 'ImportController@index_international')->mid
 
 
 /** Карточки Пользователей */
-Route::get('/user_cards', 'UserCardsController@index'); //->middleware('can:client_rights');
+Route::get('/user_cards', 'UserCardsController@index')->middleware('can:admin_rights');
+    /** Карточка Пользователя */
+    Route::get('/user_cards/{user_id}', 'UserCardsController@single_card')->middleware('can:admin_rights');
 
 
 /** Обьявления */
     /* Страница обьявления */
     Route::get('/advert/view/{advert_id}', 'AdvertsController@view_advert');
     /* Страница добавление обьявления */
-    Route::get('/advert/create/', 'AdvertsController@create_advert');
+    Route::get('/advert/create/', 'AdvertsController@create_advert')->middleware(['can:client_rights' || 'can:admin_rights']);
         /* Добавить обьявление POST */
         Route::post('/advert/create/apply', 'AdvertsController@create_advert_apply');

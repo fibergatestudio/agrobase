@@ -17,11 +17,11 @@
             <div class="col-sm-12 blog-main">
             <div class="blog-post">
                 <h2 class="blog-post-title"> Обьявление № {{ $advert_id }}</h2>
-                <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+                <p class="blog-post-meta">{{ $beatiful_date }}</p>
 
                 <p>{{ $advert_info->short_text }}</p>
                 <hr>
-                <p><b>Предприятие:</b> {{ $advert_info->company }}</p>
+                <p><b>Предприятие:</b> <a href="{{ url('/user_cards/'. $advert_info->creator_id) }}">{{ $advert_info->company }}</a></p>
                 <p><b>Предмет торговли:</b> {{ $advert_info->trading_item }}</p>
                 <p><b>Место продажи:</b> {{ $advert_info->sale_place }}</p>
                 <p><b>Вид продажи:</b> {{ $advert_info->sale_type }}</p>

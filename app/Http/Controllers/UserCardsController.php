@@ -17,4 +17,13 @@ class UserCardsController extends Controller
 
         return view('user_cards.index', compact('users'));
     }
+
+
+    public function single_card($user_id){
+
+        $user = DB::table('users')->where('id', $user_id)->first();
+
+
+        return view('user_cards.single_card', compact('user'));
+    }
 }

@@ -48,16 +48,27 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav ml-1 mr-1">
-                        <a href="{{ url('/all_tables') }}"><button class="btn btn btn-success">Фермер UA</button></a>
-                    </ul>
-                    <ul class="navbar-nav ml-1 mr-1">
-                        <a href="{{ url('/all_tables_international') }}"><button class="btn btn btn-success">Таблицы Международн.</button></a>
-                    </ul>
-                    <ul class="navbar-nav ml-1 mr-1">
-                        <a href="{{ url('/user_cards') }}"><button class="btn btn btn-success">Карточки пользователей</button></a>
-                    </ul>
+
+                    @guest
+
+                    @else
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav ml-1 mr-1">
+                            <a href="{{ url('/all_tables') }}"><button class="btn btn btn-success">Фермер UA</button></a>
+                        </ul>
+                        <ul class="navbar-nav ml-1 mr-1">
+                            <a href="{{ url('/all_tables_international') }}"><button class="btn btn btn-success">Таблицы Международн.</button></a>
+                        </ul>
+                        <ul class="navbar-nav ml-1 mr-1">
+                            <a href="{{ url('/advert/create/') }}"><button class="btn btn btn-success">Добавить обьявление</button></a>
+                        </ul>
+                        @if(Auth::user()->role  == 'admin')
+                        <ul class="navbar-nav ml-1 mr-1">
+                            <a href="{{ url('/user_cards') }}"><button class="btn btn btn-success">Карточки пользователей</button></a>
+                        </ul>
+                        @endif
+                    @endif
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

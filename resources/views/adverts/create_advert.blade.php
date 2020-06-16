@@ -13,6 +13,11 @@
 
 <div class="container-fluid">
     <div class="container">
+    @if(session()->has('message_success'))
+        <div class="alert alert-success">
+            {{ session()->get('message_success') }}
+        </div>
+    @endif
         <div class="row">
             <div class="col-sm-12 blog-main">
                 <div class="blog-post">

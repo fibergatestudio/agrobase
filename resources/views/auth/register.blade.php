@@ -12,8 +12,8 @@
                         @csrf
                         <input type="hidden" name="role" value="user">
                         <input type="hidden" name="status" value="unconfirmed">
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Имя</label>
+                        <div class="form-group row required">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Наименование</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,7 +26,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row required">
                             <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                             <div class="col-md-6">
@@ -40,7 +40,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row required">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Пароль</label>
 
                             <div class="col-md-6">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row required">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Повторите пароль</label>
 
                             <div class="col-md-6">
@@ -63,21 +63,21 @@
                         </div>
 
                         <!-- NEW -->
-                        <div class="form-group row">
+                        <div class="form-group row required">
                             <label for="reg_code" class="col-md-4 col-form-label text-md-right">Регистрационный код</label>
 
                             <div class="col-md-6">
                                 <input id="reg_code" type="text" class="form-control @error('email') is-invalid @enderror" name="reg_code" value="" required autocomplete="reg_code">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row required">
                             <label for="address" class="col-md-4 col-form-label text-md-right">Адрес</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('email') is-invalid @enderror" name="address" value="" required autocomplete="address">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row required">
                             <label for="phone" class="col-md-4 col-form-label text-md-right">Телефон</label>
 
                             <div class="col-md-6">
@@ -91,7 +91,7 @@
                                 <input id="website" type="text" class="form-control @error('email') is-invalid @enderror" name="website" value="" autocomplete="website">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row required">
                             <label for="contact_name" class="col-md-4 col-form-label text-md-right">Контактное лицо</label>
 
                             <div class="col-md-6">

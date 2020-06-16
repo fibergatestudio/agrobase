@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use Carbon\Carbon;
 use App\Adverts;
 
 class AdvertsController extends Controller
@@ -14,13 +15,13 @@ class AdvertsController extends Controller
 
     public function view_advert($advert_id){
 
-
-        //dd($advert_id);
-        $agro = "TEST";
         $advert_info = DB::table('adverts')->where('id', $advert_id)->first();
-        
 
-        return view('adverts.single_advert', compact('advert_id', 'advert_info') );
+        $date = $advert_info->created_at;
+        $beatiful_date = Carbon::parse($date)->format('j m Y h:i:s A');
+
+
+        return view('adverts.single_advert', compact('advert_id', 'advert_info', 'beatiful_date') );
     }
 
     public function create_advert(){
@@ -47,6 +48,8 @@ class AdvertsController extends Controller
 
         //dd($new_advert);
 
-        return redirect('/');
+        return redirect()->back()->with('message_success', 'Спасибо, ваше объявление отправлено на модерацию.');
+
+        //return redirect('/');
     }
 }

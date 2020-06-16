@@ -31,7 +31,7 @@
                         @foreach($users as $user)
                         <tr>
                             <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
+                            <td><a href="{{ url('/user_cards/'. $user->id) }}">{{ $user->name }}</a></td>
                             <td>{{ $user->reg_code }}</td>
                             <td>{{ $user->address }}</td>
                             <td>
