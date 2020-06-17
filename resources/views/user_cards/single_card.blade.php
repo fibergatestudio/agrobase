@@ -59,7 +59,7 @@
                             </div> -->
 
                             <a style="padding-left: 10px;" href="mailto:{{ $user->email }}">
-                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                <button class="btn btn-success m-1"> <i class="fas fa-envelope"></i>      
                                     Email
                                 </button>
                             </a>
