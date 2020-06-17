@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
         <div class="col-sm-12 blog-main">
-        <h1>Карточка пользователя {{ $user->name }}</h1>
+        <h1>Карточка организации {{ $user->name }}</h1>
                 <div class="blog-post">
                         <div class="form-group row">
                             <label for="short_text" class="col-md-4 col-form-label text-md-right">Имя</label>
@@ -41,23 +41,40 @@
                         </div>
                         <div class="form-group row">
                             <label for="sale_place" class="col-md-4 col-form-label text-md-right">Телефон</label>
-
+<!-- 
                             <div class="col-md-6">
                                 <input id="sale_place" type="text" class="form-control" placeholder="{{ $user->phone }}" disabled>
-                            </div>
+                            </div> -->
+                            <a style="padding-left: 10px;" href="tel:{{ $user->phone }}">
+                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                    Позвонить                                     
+                                </button>
+                            </a>
                         </div>
                         <div class="form-group row">
                             <label for="sale_type" class="col-md-4 col-form-label text-md-right">Email</label>
 
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <input id="sale_type" type="text" class="form-control" placeholder="{{ $user->email }}" disabled>
-                            </div>
+                            </div> -->
+
+                            <a style="padding-left: 10px;" href="mailto:{{ $user->email }}">
+                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                    Email
+                                </button>
+                            </a>
+
+                            <input type="hidden" id="copy_{{ $user->id }}" value="{{ $user->email }}">
+                            <button class="btn btn-success m-1" onclick="copyToClipboard('#copy_{{ $user->id }}')">
+                                <i class="fa fa-clone" aria-hidden="true"></i>
+                                Копировать
+                            </button> 
                         </div>
                         <div class="form-group row">
                             <label for="price" class="col-md-4 col-form-label text-md-right">Сайт</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="number" class="form-control" placeholder="{{ $user->website }}" disabled>
+                                <input id="price" type="text" class="form-control" placeholder="{{ $user->website }}" disabled>
                             </div>
                         </div>
 
@@ -65,7 +82,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">Контактное лицо</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="number" class="form-control" placeholder="{{ $user->contact_name }}" disabled>
+                                <input id="price" type="text" class="form-control" placeholder="{{ $user->contact_name }}" disabled>
                             </div>
                         </div>
                         <!-- END NEW -->
@@ -78,5 +95,17 @@
 
 @section('scripts')
 
+<script>
+function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val(
+        $(element).val()
+        ).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
+
+</script>
     
 @stop
