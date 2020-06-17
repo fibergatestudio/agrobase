@@ -79,7 +79,7 @@ Route::get('/import_international', 'ImportController@index_international')->mid
 /** Карточки Пользователей */
 Route::get('/user_cards', 'UserCardsController@index')->middleware('can:admin_rights');
     /** Карточка Пользователя */
-    Route::get('/user_cards/{user_id}', 'UserCardsController@single_card')->middleware('can:admin_rights');
+    Route::get('/user_cards/{user_id}', 'UserCardsController@single_card')->middleware(['can:client_rights' || 'can:admin_rights']);
 
 
 /** Обьявления */
