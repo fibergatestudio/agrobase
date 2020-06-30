@@ -24,12 +24,11 @@
                 <p><b>Предприятие:</b> <a href="{{ url('/user_cards/'. $advert_info->creator_id) }}">{{ $advert_info->company }}</a></p>
 
                 @if( $advert_info->action == 'Купить')
-                <p style="display: contents;"><b>Действие:</b><div class="btn btn-primary">{{$advert_info->action}}</div></p>
+                    <div class="alert alert-primary">Покупка</div>
                 @else
-                <p style="display: contents;"><b>Действие:</b><div class="btn btn-success">{{$advert_info->action}}</div></p>
+                    <div class="alert alert-success">Продажа</div>
                 @endif
                 <p><b>Товар:</b> {{ $advert_info->prod }}</p>
-                <p><b>Предмет торговли:</b> {{ $advert_info->trading_item }}</p>
                 <p><b>Место поставки:</b> {{ $advert_info->sale_place }}</p>
                 <p><b>Вид продажи:</b> {{ $advert_info->sale_type }}</p>
                 <p><b>Количество:</b> {{ $advert_info->amount }} {{ $advert_info->weight }}</p>

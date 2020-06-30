@@ -139,13 +139,13 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                             @if( $adv->action == 'Купить')
-                                <div class="btn btn-primary">{{$adv->action}}</div>
+                                <div class="alert alert-primary">Покупка</div>
                             @else
-                                <div class="btn btn-success">{{$adv->action}}</div>
+                                <div class="alert alert-success">Продажа</div>
                             @endif
                             </li>
                             <li class="list-group-item">Предприятие: <a href="{{ url('/advert/view/' . $adv->id ) }}">ссылка</a></li>
-                            <li class="list-group-item">Предмет торговли: {{ $adv->prod }}</li>
+                            <li class="list-group-item">Товар: {{ $adv->prod }}</li>
                             <li class="list-group-item">Место поставки: {{ $adv->sale_place }}</li>
                             <li class="list-group-item">Вид поставки: {{ $adv->delivery }}</li>
                             <li class="list-group-item">Цена: {{ $adv->price }}</li>

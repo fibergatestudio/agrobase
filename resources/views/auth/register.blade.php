@@ -112,13 +112,13 @@
                             <label for="phone" class="col-md-2 col-form-label text-md-right">Телефон (основной)</label>
 
                             <div class="col-md-4">
-                                <input id="phone" type="text" class="form-control " name="phone" value="" required autocomplete="phone">
+                                <input id="phone" type="text" class="form-control " name="phone" value="" autocomplete="phone">
                             </div>
 
                             <label for="messenger" class="col-md-2 col-form-label text-md-right">Телефон (мессенджер)</label>
 
                             <div class="col-md-4">
-                                <input id="messenger" type="text" class="form-control " name="messenger" value="" required autocomplete="messenger">
+                                <input id="messenger" type="text" class="form-control " name="messenger" value="" autocomplete="messenger">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -139,7 +139,8 @@
                             <label for="work_activity" class="col-md-2 col-form-label text-md-right">Краткое описание деятельности</label>
 
                             <div class="col-md-4">
-                                <input id="work_activity" type="text" class="form-control " name="work_activity" value="" required autocomplete="work_activity">
+                                <textarea id="work_activity" type="text" class="form-control " name="work_activity" value="" required autocomplete="work_activity">
+                                </textarea>
                             </div>
 
                             <label for="activity" class="col-md-2 col-form-label text-md-right">Вид деятельности</label>
@@ -155,7 +156,7 @@
                             <label for="logo" class="col-md-4 col-form-label text-md-right">Логотип</label>
 
                             <div class="col-md-6">
-                                <input id="logo" type="file" class="form-control " name="logo" value="" required autocomplete="logo">
+                                <input id="logo" type="file" class="form-control " name="logo" value="" autocomplete="logo">
                             </div>
                         </div>
                         <hr>

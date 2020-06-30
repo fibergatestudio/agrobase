@@ -94,7 +94,7 @@ class AdvertsController extends Controller
         $new_advert->creator_id = $userId;
         $new_advert->short_text = $all_info['short_text'];
         $new_advert->company = $all_info['company'];
-        $new_advert->trading_item = $all_info['trading_item'];
+        $new_advert->trading_item = "NULL";
         $new_advert->sale_place = $all_info['sale_place'];
         $new_advert->sale_type = $all_info['sale_type'];
         $new_advert->price = $all_info['price'];
