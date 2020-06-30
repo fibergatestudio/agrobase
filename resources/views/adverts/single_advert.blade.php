@@ -22,10 +22,32 @@
                 <p>{{ $advert_info->short_text }}</p>
                 <hr>
                 <p><b>Предприятие:</b> <a href="{{ url('/user_cards/'. $advert_info->creator_id) }}">{{ $advert_info->company }}</a></p>
+
+                @if( $advert_info->action == 'Купить')
+                <p style="display: contents;"><b>Действие:</b><div class="btn btn-primary">{{$advert_info->action}}</div></p>
+                @else
+                <p style="display: contents;"><b>Действие:</b><div class="btn btn-success">{{$advert_info->action}}</div></p>
+                @endif
+                <p><b>Товар:</b> {{ $advert_info->prod }}</p>
                 <p><b>Предмет торговли:</b> {{ $advert_info->trading_item }}</p>
-                <p><b>Место продажи:</b> {{ $advert_info->sale_place }}</p>
+                <p><b>Место поставки:</b> {{ $advert_info->sale_place }}</p>
                 <p><b>Вид продажи:</b> {{ $advert_info->sale_type }}</p>
+                <p><b>Количество:</b> {{ $advert_info->amount }} {{ $advert_info->weight }}</p>
                 <p><b>Цена:</b> {{ $advert_info->price }}</p>
+                <p><b>Валюта:</b> {{ $advert_info->currency }} </p>
+                <p><b>Вид поставки:</b> {{ $advert_info->delivery }} </p>
+                <p><b>Описание товара:</b> {{ $advert_info->prod_descr }} </p>
+                <p><b>Фото</b>     
+
+                <?php $photos = explode("|",$advert_info->prod_photo); ?>
+                <?php foreach($photos as $photo) { ?>
+                    <img src="{{ $photo }}"  width="125" height="125">
+                <?php } ?>
+
+                </p>
+                <p><b></b>  </p>
+                <p><b></b>  </p>
+                <p><b></b>  </p>
                 <!-- <blockquote>
                 <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                 </blockquote>

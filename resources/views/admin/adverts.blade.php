@@ -21,6 +21,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th></th>
                 <th>Краткий текст</th>
                 <th>Предприятие</th>
                 <th>Предмет торговли</th>
@@ -29,14 +30,22 @@
                 <th>Цена</th>
                 <th>Статус</th>
                 <th>Действия</th>
-                <!-- <th width="100px">Ред.</th>
-                <th width="100px">Удалить</th> -->
+
             </tr>
         </thead>
         <tbody>
         @foreach($adverts as $advert)
             <tr>
                 <td>{{$advert->id}}</td>
+
+                <td>
+                <?php $photos = explode("|",$advert->prod_photo); ?>
+                <?php foreach($photos as $photo) { ?>
+                    <img src="{{ $photo }}"  width="125" height="125">
+                <?php } ?>
+
+                </td>
+
                 <td>{{$advert->short_text}}</td>
                 <td>{{$advert->company}}</td>
                 <td>{{$advert->trading_item}}</td>
@@ -89,14 +98,6 @@
         @endforeach
         </tbody>
     </table>
-
-    <!-- <div class="row text-center">
-        <div class="col-md-12 center-block pt-5">
-            <a href="{{ url('/admin/users/add/') }}">
-                <button class="btn btn-success">Добавить Пользователя</button>
-            </a>
-        </div>
-    </div> -->
 </div>
 
 @stop

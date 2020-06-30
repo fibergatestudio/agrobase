@@ -89,3 +89,9 @@ Route::get('/user_cards', 'UserCardsController@index')->middleware('can:admin_ri
     Route::get('/advert/create/', 'AdvertsController@create_advert')->middleware(['can:client_rights' || 'can:admin_rights']);
         /* Добавить обьявление POST */
         Route::post('/advert/create/apply', 'AdvertsController@create_advert_apply');
+
+
+
+/* Автокомплит */
+
+Route::post('/autocomplete/fetch', 'AdminController@fetch')->name('autocomplete.fetch');

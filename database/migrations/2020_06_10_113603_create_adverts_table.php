@@ -23,6 +23,16 @@ class CreateAdvertsTable extends Migration
             $table->string('sale_type')->nullable();
             $table->string('price')->nullable();
             $table->string('status')->default('unconfirmed');
+
+            $table->string('action')->nullable();
+            $table->string('prod')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('delivery')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('currency')->nullable();
+            $table->string('prod_descr')->nullable();
+            $table->string('prod_photo')->nullable();
+
             $table->timestamps();
         });
     }

@@ -16,10 +16,12 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Лого</th>
                 <th>Имя</th>
                 <th>Email</th>
                 <th>Статус</th>
                 <th>Роль</th>
+                <th>Оплачен до: </th>
                 <th width="100px">Ред.</th>
                 <th width="100px">Удалить</th>
             </tr>
@@ -28,6 +30,7 @@
         @foreach($users as $user)
             <tr>
                 <td>{{$user->id}}</td>
+                <td><img src="{{$user->logo}}" width="125" height="125"></td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 @if($user->status == 'expired')
@@ -44,6 +47,13 @@
                     </td>
                 @endif
                 <td>{{$user->role}}</td>
+                <td>
+                    @if($user->expiry_date >= $date)
+                        {{$user->expiry_date}} 
+                    @else
+                        Не оплачен
+                    @endif
+                </td>
                 <td><a href="/admin/users/edit/{{$user->id}}"><button class="btn btn-success">Редактировать</button></a></td>
                 <td>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$user->id}}">

@@ -25,6 +25,14 @@ class CreateUsersTable extends Migration
             $table->string('contact_name');
             $table->string('password');
             $table->date('expiry_date')->nullable();
+
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('activity')->nullable();
+            $table->string('messenger')->nullable();
+            $table->string('work_activity')->nullable();
+            $table->string('logo')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

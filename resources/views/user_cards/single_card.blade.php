@@ -16,6 +16,19 @@
         <div class="col-sm-12 blog-main">
         <h1>Карточка организации {{ $user->name }}</h1>
                 <div class="blog-post">
+
+                        <div class="form-group row">
+                            <label for="short_text" class="col-md-4 col-form-label text-md-right">Логотип</label>
+
+                            <div class="col-md-6">
+                                @if(isset($user->logo))
+                                <img src="{{ $user->logo }}" width="125" height="125">
+                                @else
+                                    Нет логотипа
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="short_text" class="col-md-4 col-form-label text-md-right">Имя</label>
 
@@ -41,11 +54,17 @@
                         </div>
                         <div class="form-group row">
                             <label for="sale_place" class="col-md-4 col-form-label text-md-right">Телефон</label>
-<!-- 
-                            <div class="col-md-6">
-                                <input id="sale_place" type="text" class="form-control" placeholder="{{ $user->phone }}" disabled>
-                            </div> -->
+
                             <a style="padding-left: 10px;" href="tel:{{ $user->phone }}">
+                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                    Позвонить                                     
+                                </button>
+                            </a>
+                           
+                        </div>
+                        <div class="form-group row">
+                        <label for="sale_place" class="col-md-4 col-form-label text-md-right">Мессенджер</label>
+                            <a style="padding-left: 10px;" href="tel:{{ $user->messenger }}">
                                 <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
                                     Позвонить                                     
                                 </button>
@@ -74,7 +93,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">Сайт</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control" placeholder="{{ $user->website }}" disabled>
+                                <input type="text" class="form-control" placeholder="{{ $user->website }}" disabled>
                             </div>
                         </div>
 
@@ -82,7 +101,34 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">Контактное лицо</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control" placeholder="{{ $user->contact_name }}" disabled>
+                                <input type="text" class="form-control" placeholder="{{ $user->contact_name }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="price" class="col-md-2 col-form-label text-md-right">Страна</label>
+
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="{{ $user->country }}" disabled>
+                            </div>
+                            <label for="price" class="col-md-2 col-form-label text-md-right">Город</label>
+
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="{{ $user->city }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="price" class="col-md-2 col-form-label text-md-right">Вид деятельности</label>
+
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="{{ $user->activity }}" disabled>
+                            </div>
+
+                            <label for="price" class="col-md-2 col-form-label text-md-right">Краткое описание деятельности</label>
+
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="{{ $user->work_activity }}" disabled>
                             </div>
                         </div>
                         <!-- END NEW -->

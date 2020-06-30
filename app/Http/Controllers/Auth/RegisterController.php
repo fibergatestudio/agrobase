@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -62,8 +63,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
     protected function create(array $data)
     {
+
+        //$request = request();
+        $file_extention = $data['logo']->getClientOriginalExtension();
+        $file_name = time().rand(99,999).'logo.'.$file_extention;
+        $file_path = $data['logo']->move(public_path().'/users/logo',$file_name);
+
+        $db_path = '/users/logo/';
+        $db_path .= $file_name;
+        //dd($db_path);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -74,7 +86,16 @@ class RegisterController extends Controller
             'contact_name' => $data['contact_name'],
             'password' => Hash::make($data['password']),
             'status' => $data['status'],
-            'role' => $data['role']
+            'role' => $data['role'],
+            'country' => $data['country'],
+            'city' => $data['city'],
+            'messenger' => $data['messenger'],
+            'activity' => $data['activity'],
+            'work_activity' => $data['work_activity'],
+            'logo' => $db_path,
         ]);
     }
+
+
+
 }

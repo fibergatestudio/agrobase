@@ -21,8 +21,11 @@ class AdminController extends Controller
 
         $users = DB::table('users')->paginate(10);
 
+        $date = new Carbon;
+
         return view('admin.users',[
             'users' => $users,
+            'date' => $date,
         ]);
     }
 
@@ -173,5 +176,25 @@ class AdminController extends Controller
         Adverts::where('id', $advert_id)->delete();
 
         return redirect()->back()->with('message_delete', 'Обьявление удалено!');
+    }
+
+    function fetch(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+            $data = DB::table('apps_countries')
+            ->where('country_name', 'LIKE', "%{$query}%")
+            ->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+        foreach($data as $row)
+        {
+            $output .= '
+            <li><a href="#">'.$row->country_name.'</a></li>
+            ';
+        }
+        $output .= '</ul>';
+        echo $output;
+        }
     }
 }

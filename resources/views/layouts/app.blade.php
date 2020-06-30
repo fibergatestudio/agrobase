@@ -133,14 +133,24 @@
                 @if(!empty(array_filter((array)$adverts)))
                     @foreach($adverts as $adv)
                     <div class="card" style="width: auto;">
-                        <div class="card-body">
+                        <!-- <div class="card-body">
                             <p class="mb-0">{{ $adv->short_text }}</p>
-                        </div>
-                        <!--<ul class="list-group list-group-flush">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>-->
+                        </div> -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                            @if( $adv->action == 'Купить')
+                                <div class="btn btn-primary">{{$adv->action}}</div>
+                            @else
+                                <div class="btn btn-success">{{$adv->action}}</div>
+                            @endif
+                            </li>
+                            <li class="list-group-item">Предприятие: <a href="{{ url('/advert/view/' . $adv->id ) }}">ссылка</a></li>
+                            <li class="list-group-item">Предмет торговли: {{ $adv->prod }}</li>
+                            <li class="list-group-item">Место поставки: {{ $adv->sale_place }}</li>
+                            <li class="list-group-item">Вид поставки: {{ $adv->delivery }}</li>
+                            <li class="list-group-item">Цена: {{ $adv->price }}</li>
+                            <li class="list-group-item">Валюта: {{ $adv->currency }}</li>
+                        </ul>
                         <div class="card-body">
                             <a href="{{ url('/advert/view/' . $adv->id ) }}" class="card-link">Просмотреть</a>
                         </div>
