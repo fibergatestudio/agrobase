@@ -20,8 +20,11 @@ class AdvertsController extends Controller
         $date = $advert_info->created_at;
         $beatiful_date = Carbon::parse($date)->format('j m Y h:i:s A');
 
+        $pred_info = DB::table('users')->where('id', $advert_info->creator_id)->first();
+        //dd($pred_info);
 
-        return view('adverts.single_advert', compact('advert_id', 'advert_info', 'beatiful_date') );
+
+        return view('adverts.single_advert', compact('advert_id', 'advert_info', 'beatiful_date', 'pred_info') );
     }
 
     public function create_advert(){
@@ -93,7 +96,7 @@ class AdvertsController extends Controller
         $new_advert = new Adverts();
         $new_advert->creator_id = $userId;
         $new_advert->short_text = $all_info['short_text'];
-        $new_advert->company = $all_info['company'];
+        $new_advert->company = "NULL";
         $new_advert->trading_item = "NULL";
         $new_advert->sale_place = $all_info['sale_place'];
         $new_advert->sale_type = "NULL";

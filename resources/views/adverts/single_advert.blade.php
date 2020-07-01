@@ -21,7 +21,7 @@
 
                 <p>{{ $advert_info->short_text }}</p>
                 <hr>
-                <p><b>Предприятие:</b> <a href="{{ url('/user_cards/'. $advert_info->creator_id) }}">{{ $advert_info->company }}</a></p>
+                <p><b>Предприятие:</b> <a href="{{ url('/user_cards/'. $advert_info->creator_id) }}">{{ $pred_info->name }}</a></p>
 
                 @if( $advert_info->action == 'Купить')
                     <div class="alert alert-primary">Покупка</div>

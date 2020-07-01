@@ -36,13 +36,13 @@
                         </div>
 
                         <!-- NEW -->
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="company" class="col-md-4 col-form-label text-md-right">Предприятие</label>
 
                             <div class="col-md-6">
                                 <input id="company" type="text" class="form-control" name="company" value="" placeholder="Предприятие" required>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group row">
 
                             <label for="prod" class="col-md-4 col-form-label text-md-right">Товар</label>
