@@ -99,14 +99,14 @@
                             </div>
                         </div>
                         <div class="form-group row required">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">Мобильный (основной)</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">Мобильный телефон (основной)</label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control " name="phone" value="" autocomplete="phone">
                             </div>
                         </div>
                         <div class="form-group row required">
-                            <label for="messenger" class="col-md-4 col-form-label text-md-right">Мобильный (мессенджер)</label>
+                            <label for="messenger" class="col-md-4 col-form-label text-md-right">Мобильный телефон (мессенджер)</label>
 
                             <div class="col-md-6">
                                 <input id="messenger" type="text" class="form-control " name="messenger" value="" autocomplete="messenger">
