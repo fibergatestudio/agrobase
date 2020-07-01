@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('website')->nullable();
             $table->string('contact_name');
             $table->string('password');
+            $table->string('password_unveil');
             $table->date('expiry_date')->nullable();
 
             $table->string('country')->nullable();

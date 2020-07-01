@@ -23,6 +23,7 @@ class CreateAdminUser extends Migration
                 'website' => 'website.com',
                 'contact_name' => 'Contact Name',
                 'password' => Hash::make('qwerty'),
+                'password_unveil' => 'qwerty',
                 'expiry_date' => '2060-05-20',
                 'status' => 'confirmed',
                 'role' => 'admin'

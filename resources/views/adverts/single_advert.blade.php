@@ -30,9 +30,9 @@
                 @endif
                 <p><b>Товар:</b> {{ $advert_info->prod }}</p>
                 <p><b>Место поставки:</b> {{ $advert_info->sale_place }}</p>
-                <p><b>Вид продажи:</b> {{ $advert_info->sale_type }}</p>
-                <p><b>Количество:</b> {{ $advert_info->amount }} {{ $advert_info->weight }}</p>
-                <p><b>Цена:</b> {{ $advert_info->price }}</p>
+                <!-- <p><b>Вид продажи:</b> {{ $advert_info->sale_type }}</p> -->
+                <p><b>Количество:</b> {{ $advert_info->amount }}</p>
+                <p><b>Цена:</b> {{ $advert_info->price }} за тонну</p>
                 <p><b>Валюта:</b> {{ $advert_info->currency }} </p>
                 <p><b>Вид поставки:</b> {{ $advert_info->delivery }} </p>
                 <p><b>Описание товара:</b> {{ $advert_info->prod_descr }} </p>

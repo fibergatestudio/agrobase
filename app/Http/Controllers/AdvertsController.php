@@ -96,13 +96,13 @@ class AdvertsController extends Controller
         $new_advert->company = $all_info['company'];
         $new_advert->trading_item = "NULL";
         $new_advert->sale_place = $all_info['sale_place'];
-        $new_advert->sale_type = $all_info['sale_type'];
+        $new_advert->sale_type = "NULL";
         $new_advert->price = $all_info['price'];
 
         $new_advert->action = $all_info['action'];
         $new_advert->prod = $prod_full_name;
         $new_advert->amount = $all_info['amount'];
-        $new_advert->weight = $all_info['weight'];
+        $new_advert->weight = "NULL";
         $new_advert->delivery = $all_info['delivery'];
         $new_advert->currency = $all_info['currency'];
         $new_advert->prod_descr = $all_info['prod_descr'];

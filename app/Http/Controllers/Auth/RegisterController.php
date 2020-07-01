@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -53,7 +54,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            //'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -67,7 +68,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        //$request = request();
+        //Манипуляции с загрузкой картинки
         $file_extention = $data['logo']->getClientOriginalExtension();
         $file_name = time().rand(99,999).'logo.'.$file_extention;
         $file_path = $data['logo']->move(public_path().'/users/logo',$file_name);
@@ -75,6 +76,10 @@ class RegisterController extends Controller
         $db_path = '/users/logo/';
         $db_path .= $file_name;
         //dd($db_path);
+
+        //Генерация пароля
+        $pass = Str::random(8);
+        //dd($pass);
 
         return User::create([
             'name' => $data['name'],
@@ -84,7 +89,8 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'website' => $data['website'],
             'contact_name' => $data['contact_name'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($pass),
+            'password_unveil' => $pass,
             'status' => $data['status'],
             'role' => $data['role'],
             'country' => $data['country'],

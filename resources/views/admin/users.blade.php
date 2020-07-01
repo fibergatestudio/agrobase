@@ -19,6 +19,7 @@
                 <th>Лого</th>
                 <th>Имя</th>
                 <th>Email</th>
+                <th>Пароль</th>
                 <th>Статус</th>
                 <th>Роль</th>
                 <th>Оплачен до: </th>
@@ -33,6 +34,7 @@
                 <td><img src="{{$user->logo}}" width="125" height="125"></td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
+                <td>{{$user->password_unveil}}</td>
                 @if($user->status == 'expired')
                     <td class="table-danger">
                         {{$user->status}}

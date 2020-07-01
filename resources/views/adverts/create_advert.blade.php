@@ -24,29 +24,29 @@
                     <form method="POST" action="{{ url('/advert/create/apply') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label for="short_text" class="col-md-4 col-form-label text-md-right">Краткий текст</label>
 
+                            <label for="action" class="col-md-4 col-form-label text-md-right">Действие</label>
                             <div class="col-md-6">
-                                <textarea id="short_text" class="form-control" name="short_text" placeholder="Краткий текст" required></textarea>
+                                <select id="action" class="form-control" name="action" value="">
+                                    <option value="Купить">Купить</option>
+                                    <option value="Продать">Продать</option>
+                                </select>
                             </div>
+
                         </div>
 
                         <!-- NEW -->
                         <div class="form-group row">
-                            <label for="company" class="col-md-2 col-form-label text-md-right">Предприятие</label>
+                            <label for="company" class="col-md-4 col-form-label text-md-right">Предприятие</label>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input id="company" type="text" class="form-control" name="company" value="" placeholder="Предприятие" required>
                             </div>
+                        </div>
+                        <div class="form-group row">
 
-                            <!-- <label for="trading_item" class="col-md-2 col-form-label text-md-right">Предмет торговли</label>
-
-                            <div class="col-md-4">
-                                <input id="trading_item" type="text" class="form-control" name="trading_item" value="" placeholder="Предмет торговли (прим. пшеница, масло, мука и тд);" required>
-                            </div> -->
-
-                            <label for="prod" class="col-md-2 col-form-label text-md-right">Товар</label>
-                            <div class="col-md-4">
+                            <label for="prod" class="col-md-4 col-form-label text-md-right">Товар</label>
+                            <div class="col-md-6">
                                 <select id="prod" class="form-control" name="prod" value="">
                                     <option>Выберите</option>
                                     <option value="ЗЕРНОВЫЕ">ЗЕРНОВЫЕ</option>
@@ -386,72 +386,20 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="sale_place" class="col-md-2 col-form-label text-md-right">Место поставки</label>
+                            <label for="sale_place" class="col-md-4 col-form-label text-md-right">Место поставки</label>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input id="sale_place" type="text" class="form-control" name="sale_place" value="" placeholder="Место поставки" required>
                             </div>
-
-                            <label for="sale_type" class="col-md-2 col-form-label text-md-right">Вид продажи</label>
+                        </div>
+                        <div class="form-group row">
+                            <!-- <label for="sale_type" class="col-md-2 col-form-label text-md-right">Вид продажи</label>
 
                             <div class="col-md-4">
                                 <input id="sale_type" type="text" class="form-control" name="sale_type" value="" placeholder="Вид продажи" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="price" class="col-md-2 col-form-label text-md-right">Цена</label>
-
-                            <div class="col-md-3">
-                                <input id="price" type="number" class="form-control" name="price" value="" placeholder="Цена" required>
-                            </div>
-
-
-                                <label for="action" class="col-md-2 col-form-label text-md-right">Действие</label>
-                            <div class="col-md-3">
-                                <select id="action" class="form-control" name="action" value="">
-                                    <option value="Купить">Купить</option>
-                                    <option value="Продать">Продать</option>
-                                </select>
-                            </div>
-
-                            <!-- <div class="col-md-3">
-                                <input id="action" type="number" class="form-control" name="action" value="" placeholder="Цена" required>
                             </div> -->
-                        </div>
-                        <div class="form-group row">
-                           
-                        </div>
-                        <div class="form-group row">
-                            <label for="amount" class="col-md-2 col-form-label text-md-right">Количество</label>
-
-                            <div class="col-md-3">
-                                <input id="amount" type="number" class="form-control" name="amount" value="" placeholder="Количество" required>
-                            </div>
-
-
-                            <label for="weight" class="col-md-2 col-form-label text-md-right">Вес</label>
-                            <div class="col-md-3">
-                                <select id="weight" class="form-control" name="weight" value="">
-                                    <option value="кг">кг</option>
-                                    <option value="тн">тн</option>
-                                    <option value="фунт">фунт</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="currency" class="col-md-2 col-form-label text-md-right">Валюта</label>
-                            <div class="col-md-3">
-                                <select id="currency" class="form-control" name="currency" value="">
-                                    <option value="грн">грн</option>
-                                    <option value="руб">руб</option>
-                                    <option value="доллар">доллар</option>
-                                    <option value="евро">евро</option>
-                                </select>
-                            </div>
-
-
-                            <label for="delivery" class="col-md-2 col-form-label text-md-right">Вид поставки</label>
-                            <div class="col-md-3">
+                            <label for="delivery" class="col-md-4 col-form-label text-md-right">Вид поставки</label>
+                            <div class="col-md-6">
                                 <select id="delivery" class="form-control" name="delivery" value="">
                                     <option default>Выберите действие</option>
                                     <option value="EXW">EXW (продажа со склада продавца)</option>
@@ -464,16 +412,58 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="prod_descr" class="col-md-2 col-form-label text-md-right">Описание товара</label>
+                            <label for="short_text" class="col-md-4 col-form-label text-md-right">Краткий текст</label>
 
-                            <div class="col-md-3">
-                                <textarea id="prod_descr" type="text" class="form-control" name="prod_descr" value="" placeholder="Описание товара" required>
-                                </textarea>
+                            <div class="col-md-6">
+                                <textarea id="short_text" class="form-control" name="short_text" placeholder="Краткий текст" required></textarea>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="price" class="col-md-4 col-form-label text-md-right">Цена (за тонну)</label>
+
+                            <div class="col-md-6">
+                                <input id="price" type="number" class="form-control" name="price" value="" placeholder="Цена" required>
                             </div>
 
-                            <label for="prod_photo" class="col-md-2 col-form-label text-md-right">Фото (множественная выборка)</label>
+                        </div>
+                        <div class="form-group row">
+                            <label for="currency" class="col-md-4 col-form-label text-md-right">Валюта</label>
+                            <div class="col-md-6">
+                                <select id="currency" class="form-control" name="currency" value="">
+                                    <option value="грн">грн</option>
+                                    <option value="руб">руб</option>
+                                    <option value="доллар">доллар</option>
+                                    <option value="евро">евро</option>
+                                </select>
+                            </div>
 
-                            <div class="col-md-3">
+                        </div>
+                        <div class="form-group row">
+                           
+                        </div>
+                        <div class="form-group row">
+                            <label for="amount" class="col-md-4 col-form-label text-md-right">Количество</label>
+
+                            <div class="col-md-6">
+                                <input id="amount" type="number" class="form-control" name="amount" value="" placeholder="Количество" required>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="prod_descr" class="col-md-4 col-form-label text-md-right">Описание товара</label>
+
+                            <div class="col-md-6">
+                                <textarea id="prod_descr" type="text" class="form-control" name="prod_descr" value="" placeholder="Описание товара" required></textarea>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+
+                            <label for="prod_photo" class="col-md-4 col-form-label text-md-right">Фото (множественная выборка)</label>
+
+                            <div class="col-md-6">
                                 <input id="prod_photo" type="file" class="form-control" name="prod_photo[]" value="" placeholder="Фото" multiple>
                             </div>
 
