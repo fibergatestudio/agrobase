@@ -54,6 +54,8 @@ class AdvertsController extends Controller
 
         }
 
+        //dd($good_values);
+
         //Формируем полный продукт
         $prod_full_name = '';
         $arr_lenght = count($good_values);
@@ -61,16 +63,20 @@ class AdvertsController extends Controller
         // Совмещаем имя 
         foreach($good_values as $g_val){
 
-            $prod_full_name .= $request[$g_val];
+            if($length == 1){
+               
+            } else {
+                $prod_full_name .= $request[$g_val];
+            }
 
             if($length < $arr_lenght){
-                $prod_full_name .= ' > ';
+                $prod_full_name .= ' ';
             }
            
             $length++;
         }
         if($request['other'] != NULL){
-            $prod_full_name .= ' > ';
+            $prod_full_name .= ' ';
             $prod_full_name .= $request['other'];
         }
 
@@ -95,7 +101,7 @@ class AdvertsController extends Controller
         //Добавляем обьявление в базу
         $new_advert = new Adverts();
         $new_advert->creator_id = $userId;
-        $new_advert->short_text = $all_info['short_text'];
+        //$new_advert->short_text = $all_info['short_text'];
         $new_advert->company = "NULL";
         $new_advert->trading_item = "NULL";
         $new_advert->sale_place = $all_info['sale_place'];

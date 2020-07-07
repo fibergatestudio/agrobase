@@ -22,7 +22,6 @@
             <tr>
                 <th>#</th>
                 <th></th>
-                <th>Краткий текст</th>
                 <th>Предприятие</th>
                 <th>Предмет торговли</th>
                 <th>Место продажи</th>
@@ -46,7 +45,6 @@
 
                 </td>
 
-                <td>{{$advert->short_text}}</td>
                 <td>{{$advert->company}}</td>
                 <td>{{$advert->trading_item}}</td>
                 <td>{{$advert->sale_place}}</td>
@@ -54,11 +52,11 @@
                 <td>{{$advert->price}}</td>
                 @if($advert->status == 'unconfirmed')
                     <td class="table-warning">
-                        {{$advert->status}}
+                        Не подтвержден
                     </td>
                 @else
                     <td class="table-success">
-                        {{$advert->status}}
+                        Подтвержден
                     </td>
                 @endif
                 <td>

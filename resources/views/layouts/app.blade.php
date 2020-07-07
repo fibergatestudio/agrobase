@@ -136,24 +136,26 @@
                         <!-- <div class="card-body">
                             <p class="mb-0">{{ $adv->short_text }}</p>
                         </div> -->
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
+                        <ul @if($adv->status == 'confirmed') style="background-color: #e8fbe8;" @endif class="list-group list-group-flush">
+                            <li style="padding: 0;" class="list-group-item">
                             @if( $adv->action == 'Купить')
                                 <div class="alert alert-primary">Покупка</div>
                             @else
                                 <div class="alert alert-success">Продажа</div>
                             @endif
                             </li>
-                            <li class="list-group-item">Предприятие: <a href="{{ url('/advert/view/' . $adv->id ) }}">ссылка</a></li>
-                            <li class="list-group-item">Товар: {{ $adv->prod }}</li>
-                            <li class="list-group-item">Место поставки: {{ $adv->sale_place }}</li>
-                            <li class="list-group-item">Вид поставки: {{ $adv->delivery }}</li>
-                            <li class="list-group-item">Цена: {{ $adv->price }}</li>
-                            <li class="list-group-item">Валюта: {{ $adv->currency }}</li>
+                            <li class="list-group-item">Предприятие: <a href="{{ url('/user_cards/' . $adv->creator_id ) }}"><b>Ссылка</b></a></li>
+                            <li class="list-group-item">Товар: <b>{{ $adv->prod }}</b></li>
+                            <li class="list-group-item">Место поставки: <b>{{ $adv->sale_place }}</b></li>
+                            <li class="list-group-item">Вид поставки: <b>{{ $adv->delivery }}</b></li>
+                            <li class="list-group-item">Цена: <b>{{ $adv->price }} {{ $adv->currency }}</b> за тонну</li>
+                            @if(!empty($adv->prod_photo))
+                            <img class="list-group-item" src="{{ $adv->prod_photo }}" height="300">
+                            @endif
                         </ul>
-                        <div class="card-body">
+                        <!-- <div class="card-body">
                             <a href="{{ url('/advert/view/' . $adv->id ) }}" class="card-link">Просмотреть</a>
-                        </div>
+                        </div> -->
                     </div>
                     @endforeach
                 @else

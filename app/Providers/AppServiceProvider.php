@@ -30,6 +30,12 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('layouts.app', function ($view) {
             $adverts = DB::table('adverts')->where('status', 'confirmed')->get();
+
+            foreach($adverts as $advert){
+                $adv = DB::table('users')->where('id', $advert->creator_id)->first();
+                $advert->status = $adv->status;
+            }
+
             $view->with('adverts', $adverts);
         });
 

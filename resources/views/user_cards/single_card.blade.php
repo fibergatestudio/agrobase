@@ -17,17 +17,19 @@
         <h1>Карточка организации {{ $user->name }}</h1>
                 <div class="blog-post">
 
+                        @if(Auth::user()->role  == 'admin')
                         <div class="form-group row">
-                            <label for="short_text" class="col-md-4 col-form-label text-md-right">Логотип</label>
+                            <label for="short_text" class="col-md-4 col-form-label text-md-right">Документ о регистрации</label>
 
                             <div class="col-md-6">
                                 @if(isset($user->logo))
-                                <img src="{{ $user->logo }}" width="125" height="125">
+                                <a href="{{ $user->logo }}"><img src="{{ $user->logo }}" width="125" height="125"></a>
                                 @else
-                                    Нет логотипа
+                                    Нет документов
                                 @endif
                             </div>
                         </div>
+                        @endif
 
                         <div class="form-group row">
                             <label for="short_text" class="col-md-4 col-form-label text-md-right">Имя</label>

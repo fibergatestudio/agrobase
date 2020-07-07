@@ -41,14 +41,20 @@
                     </td>
                 @elseif($user->status == 'unconfirmed')
                     <td class="table-warning">
-                        {{$user->status}}
+                        Не подтвержден
                     </td>
                 @else
                     <td class="table-success">
-                        {{$user->status}}
+                        Подтвержден
                     </td>
                 @endif
-                <td>{{$user->role}}</td>
+                <td>
+                @if($user->role == 'admin')
+                    Админ
+                @elseif($user->role = 'user')
+                    Пользователь
+                @endif
+                </td>
                 <td>
                     @if($user->expiry_date >= $date)
                         {{$user->expiry_date}} 

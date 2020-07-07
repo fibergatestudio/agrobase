@@ -47,8 +47,8 @@
 
                             <label for="prod" class="col-md-4 col-form-label text-md-right">Товар</label>
                             <div class="col-md-6">
-                                <select id="prod" class="form-control" name="prod" value="">
-                                    <option>Выберите</option>
+                                <select id="prod" class="form-control" name="prod" value="" required>
+                                    <option value="">Выберите</option>
                                     <option value="ЗЕРНОВЫЕ">ЗЕРНОВЫЕ</option>
                                     <option value="МАСЛИЧНЫЕ">МАСЛИЧНЫЕ</option>
                                     <option value="БОБОВЫЕ">БОБОВЫЕ</option>
@@ -400,8 +400,8 @@
                             </div> -->
                             <label for="delivery" class="col-md-4 col-form-label text-md-right">Вид поставки</label>
                             <div class="col-md-6">
-                                <select id="delivery" class="form-control" name="delivery" value="">
-                                    <option default>Выберите действие</option>
+                                <select id="delivery" class="form-control" name="delivery" required>
+                                    <option value="">Выберите действие</option>
                                     <option value="EXW">EXW (продажа со склада продавца)</option>
                                     <option value="FCA">FCA (продажа, затаможенный и загруженный на транспорт покупателя)</option>
                                     <option value="CPT">CPT (продажа на складе покупателя)</option>
@@ -411,13 +411,13 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="short_text" class="col-md-4 col-form-label text-md-right">Краткий текст</label>
 
                             <div class="col-md-6">
                                 <textarea id="short_text" class="form-control" name="short_text" placeholder="Краткий текст" required></textarea>
                             </div>
-                        </div>
+                        </div> -->
                         <hr>
                         <div class="form-group row">
                             <label for="price" class="col-md-4 col-form-label text-md-right">Цена (за тонну)</label>
@@ -443,7 +443,7 @@
                            
                         </div>
                         <div class="form-group row">
-                            <label for="amount" class="col-md-4 col-form-label text-md-right">Количество</label>
+                            <label for="amount" class="col-md-4 col-form-label text-md-right">Количество (тонн)</label>
 
                             <div class="col-md-6">
                                 <input id="amount" type="number" class="form-control" name="amount" value="" placeholder="Количество" required>
@@ -461,7 +461,7 @@
                         <hr>
                         <div class="form-group row">
 
-                            <label for="prod_photo" class="col-md-4 col-form-label text-md-right">Фото (множественная выборка)</label>
+                            <label for="prod_photo" class="col-md-4 col-form-label text-md-right">Фото (товара)</label>
 
                             <div class="col-md-6">
                                 <input id="prod_photo" type="file" class="form-control" name="prod_photo[]" value="" placeholder="Фото" multiple>
