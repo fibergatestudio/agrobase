@@ -183,116 +183,116 @@
                                 <!-- Скрипт -->
                                 <script>
                                 $(document).ready(function(){
-                                    $("select#prod_zern").hide();
-                                    $("select#prod_masl").hide();
-                                    $("select#prod_bob").hide();
-                                    $("select#prod_cult").hide();
-                                    $("select#prod_pererab").hide();
+                                    $("select#prod_zern").val("").hide();
+                                    $("select#prod_masl").val("").hide();
+                                    $("select#prod_bob").val("").hide();
+                                    $("select#prod_cult").val("").hide();
+                                    $("select#prod_pererab").val("").hide();
 
-                                        $("select#prod_muka").hide();
-                                        $("select#prod_otrub").hide();
-                                        $("select#prod_jmih").hide();
-                                        $("select#prod_shrot").hide();
-                                        $("select#prod_krupa").hide();
-                                        $("select#prod_maslo").hide();
+                                        $("select#prod_muka").val("").hide();
+                                        $("select#prod_otrub").val("").hide();
+                                        $("select#prod_jmih").val("").hide();
+                                        $("select#prod_shrot").val("").hide();
+                                        $("select#prod_krupa").val("").hide();
+                                        $("select#prod_maslo").val("").hide();
 
-                                    $("select#prod_drev").hide();
-                                    $("#other").hide();
+                                    $("select#prod_drev").val("").hide();
+                                    $("#other").val("").hide();
 
                                     $("select#prod").on('change',function(){
                                         console.log("Change");
                                         if($(this).val()=="ЗЕРНОВЫЕ"){
 
                                             $("select#prod_zern").show();
-                                            $("select#prod_masl").hide();
-                                            $("select#prod_bob").hide();
-                                            $("select#prod_cult").hide();
-                                            $("select#prod_pererab").hide();
+                                            $("select#prod_masl").val("").hide();
+                                            $("select#prod_bob").val("").hide();
+                                            $("select#prod_cult").val("").hide();
+                                            $("select#prod_pererab").val("").hide();
 
-                                                $("select#prod_muka").hide();
-                                                $("select#prod_otrub").hide();
-                                                $("select#prod_jmih").hide();
-                                                $("select#prod_shrot").hide();
-                                                $("select#prod_krupa").hide();
-                                                $("select#prod_maslo").hide();
+                                                $("select#prod_muka").val("").hide();
+                                                $("select#prod_otrub").val("").hide();
+                                                $("select#prod_jmih").val("").hide();
+                                                $("select#prod_shrot").val("").hide();
+                                                $("select#prod_krupa").val("").hide();
+                                                $("select#prod_maslo").val("").hide();
 
-                                            $("select#prod_drev").hide();
-                                            $("#other").hide();
+                                            $("select#prod_drev").val("").hide();
+                                            $("#other").val("").hide();
 
                                         }else if($(this).val()=="МАСЛИЧНЫЕ"){
 
-                                            $("select#prod_zern").hide();
+                                            $("select#prod_zern").val("").hide();
                                             $("select#prod_masl").show();
-                                            $("select#prod_bob").hide();
-                                            $("select#prod_cult").hide();
-                                            $("select#prod_pererab").hide();
+                                            $("select#prod_bob").val("").hide();
+                                            $("select#prod_cult").val("").hide();
+                                            $("select#prod_pererab").val("").hide();
 
-                                                $("select#prod_muka").hide();
-                                                $("select#prod_otrub").hide();
-                                                $("select#prod_jmih").hide();
-                                                $("select#prod_shrot").hide();
-                                                $("select#prod_krupa").hide();
-                                                $("select#prod_maslo").hide();
+                                                $("select#prod_muka").val("").hide();
+                                                $("select#prod_otrub").val("").hide();
+                                                $("select#prod_jmih").val("").hide();
+                                                $("select#prod_shrot").val("").hide();
+                                                $("select#prod_krupa").val("").hide();
+                                                $("select#prod_maslo").val("").hide();
 
-                                            $("select#prod_drev").hide();
-                                            $("#other").hide();
+                                            $("select#prod_drev").val("").hide();
+                                            $("#other").val("").hide();
                                             
                                         }else if($(this).val()=="БОБОВЫЕ"){
-                                            $("select#prod_zern").hide();
-                                            $("select#prod_masl").hide();
+                                            $("select#prod_zern").val("").hide();
+                                            $("select#prod_masl").val("").hide();
                                             $("select#prod_bob").show();
-                                            $("select#prod_cult").hide();
-                                            $("select#prod_pererab").hide();
+                                            $("select#prod_cult").val("").hide();
+                                            $("select#prod_pererab").val("").hide();
 
-                                                $("select#prod_muka").hide();
-                                                $("select#prod_otrub").hide();
-                                                $("select#prod_jmih").hide();
-                                                $("select#prod_shrot").hide();
-                                                $("select#prod_krupa").hide();
-                                                $("select#prod_maslo").hide();
+                                                $("select#prod_muka").val("").hide();
+                                                $("select#prod_otrub").val("").hide();
+                                                $("select#prod_jmih").val("").hide();
+                                                $("select#prod_shrot").val("").hide();
+                                                $("select#prod_krupa").val("").hide();
+                                                $("select#prod_maslo").val("").hide();
 
-                                            $("select#prod_drev").hide();
-                                            $("#other").hide();
+                                            $("select#prod_drev").val("").hide();
+                                            $("#other").val("").hide();
                                         }else if($(this).val()=="НИШЕВЫЕ КУЛЬТУРЫ"){
-                                            $("select#prod_zern").hide();
-                                            $("select#prod_masl").hide();
-                                            $("select#prod_bob").hide();
+                                            $("select#prod_zern").val("").hide();
+                                            $("select#prod_masl").val("").hide();
+                                            $("select#prod_bob").val("").hide();
                                             $("select#prod_cult").show();
-                                            $("select#prod_pererab").hide();
+                                            $("select#prod_pererab").val("").hide();
 
-                                                $("select#prod_muka").hide();
-                                                $("select#prod_otrub").hide();
-                                                $("select#prod_jmih").hide();
-                                                $("select#prod_shrot").hide();
-                                                $("select#prod_krupa").hide();
-                                                $("select#prod_maslo").hide();
+                                                $("select#prod_muka").val("").hide();
+                                                $("select#prod_otrub").val("").hide();
+                                                $("select#prod_jmih").val("").hide();
+                                                $("select#prod_shrot").val("").hide();
+                                                $("select#prod_krupa").val("").hide();
+                                                $("select#prod_maslo").val("").hide();
 
-                                            $("select#prod_drev").hide();
-                                            $("#other").hide();
+                                            $("select#prod_drev").val("").hide();
+                                            $("#other").val("").hide();
                                         }else if($(this).val()=="ПРОДУКТЫ ПЕРЕРАБОТКИ"){
-                                            $("select#prod_zern").hide();
-                                            $("select#prod_masl").hide();
-                                            $("select#prod_bob").hide();
-                                            $("select#prod_cult").hide();
+                                            $("select#prod_zern").val("").hide();
+                                            $("select#prod_masl").val("").hide();
+                                            $("select#prod_bob").val("").hide();
+                                            $("select#prod_cult").val("").hide();
                                             $("select#prod_pererab").show();
-                                            $("select#prod_drev").hide();
-                                            $("#other").hide();
+                                            $("select#prod_drev").val("").hide();
+                                            $("#other").val("").hide();
                                         }else if($(this).val()=="ТОПЛИВО ДРЕВЕСНОЕ"){
-                                            $("select#prod_zern").hide();
-                                            $("select#prod_masl").hide();
-                                            $("select#prod_bob").hide();
-                                            $("select#prod_cult").hide();
-                                            $("select#prod_pererab").hide();
+                                            $("select#prod_zern").val("").hide();
+                                            $("select#prod_masl").val("").hide();
+                                            $("select#prod_bob").val("").hide();
+                                            $("select#prod_cult").val("").hide();
+                                            $("select#prod_pererab").val("").hide();
 
-                                                $("select#prod_muka").hide();
-                                                $("select#prod_otrub").hide();
-                                                $("select#prod_jmih").hide();
-                                                $("select#prod_shrot").hide();
-                                                $("select#prod_krupa").hide();
-                                                $("select#prod_maslo").hide();
+                                                $("select#prod_muka").val("").hide();
+                                                $("select#prod_otrub").val("").hide();
+                                                $("select#prod_jmih").val("").hide();
+                                                $("select#prod_shrot").val("").hide();
+                                                $("select#prod_krupa").val("").hide();
+                                                $("select#prod_maslo").val("").hide();
 
                                             $("select#prod_drev").show();
-                                            $("#other").hide();
+                                            $("#other").val("").hide();
                                         }
                                     });
 
@@ -300,45 +300,45 @@
 
                                         if($(this).val()=="Мука"){
                                             $("select#prod_muka").show();
-                                            $("select#prod_otrub").hide();
-                                            $("select#prod_jmih").hide();
-                                            $("select#prod_shrot").hide();
-                                            $("select#prod_krupa").hide();
-                                            $("select#prod_maslo").hide();
+                                            $("select#prod_otrub").val("").hide();
+                                            $("select#prod_jmih").val("").hide();
+                                            $("select#prod_shrot").val("").hide();
+                                            $("select#prod_krupa").val("").hide();
+                                            $("select#prod_maslo").val("").hide();
                                         }else if($(this).val()=="Отруби"){ 
-                                            $("select#prod_muka").hide();
+                                            $("select#prod_muka").val("").hide();
                                             $("select#prod_otrub").show();
-                                            $("select#prod_jmih").hide();
-                                            $("select#prod_shrot").hide();
-                                            $("select#prod_krupa").hide();
-                                            $("select#prod_maslo").hide();
+                                            $("select#prod_jmih").val("").hide();
+                                            $("select#prod_shrot").val("").hide();
+                                            $("select#prod_krupa").val("").hide();
+                                            $("select#prod_maslo").val("").hide();
                                         }else if($(this).val()=="Жмых"){ 
-                                            $("select#prod_muka").hide();
-                                            $("select#prod_otrub").hide();
+                                            $("select#prod_muka").val("").hide();
+                                            $("select#prod_otrub").val("").hide();
                                             $("select#prod_jmih").show();
-                                            $("select#prod_shrot").hide();
-                                            $("select#prod_krupa").hide();
-                                            $("select#prod_maslo").hide();
+                                            $("select#prod_shrot").val("").hide();
+                                            $("select#prod_krupa").val("").hide();
+                                            $("select#prod_maslo").val("").hide();
                                         }else if($(this).val()=="Шрот"){ 
-                                            $("select#prod_muka").hide();
-                                            $("select#prod_otrub").hide();
-                                            $("select#prod_jmih").hide();
+                                            $("select#prod_muka").val("").hide();
+                                            $("select#prod_otrub").val("").hide();
+                                            $("select#prod_jmih").val("").hide();
                                             $("select#prod_shrot").show();
-                                            $("select#prod_krupa").hide();
-                                            $("select#prod_maslo").hide();
+                                            $("select#prod_krupa").val("").hide();
+                                            $("select#prod_maslo").val("").hide();
                                         }else if($(this).val()=="Крупа"){ 
-                                            $("select#prod_muka").hide();
-                                            $("select#prod_otrub").hide();
-                                            $("select#prod_jmih").hide();
-                                            $("select#prod_shrot").hide();
+                                            $("select#prod_muka").val("").hide();
+                                            $("select#prod_otrub").val("").hide();
+                                            $("select#prod_jmih").val("").hide();
+                                            $("select#prod_shrot").val("").hide();
                                             $("select#prod_krupa").show();
-                                            $("select#prod_maslo").hide();
+                                            $("select#prod_maslo").val("").hide();
                                         }else if($(this).val()=="Масло"){ 
-                                            $("select#prod_muka").hide();
-                                            $("select#prod_otrub").hide();
-                                            $("select#prod_jmih").hide();
-                                            $("select#prod_shrot").hide();
-                                            $("select#prod_krupa").hide();
+                                            $("select#prod_muka").val("").hide();
+                                            $("select#prod_otrub").val("").hide();
+                                            $("select#prod_jmih").val("").hide();
+                                            $("select#prod_shrot").val("").hide();
+                                            $("select#prod_krupa").val("").hide();
                                             $("select#prod_maslo").show();
                                         }
 
@@ -346,38 +346,38 @@
 
 
                                     $("select#prod_zern").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
                                     $("select#prod_masl").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
                                     $("select#prod_bob").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
                                     $("select#prod_cult").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
                                     $("select#prod_drev").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
 
                                     $("select#prod_muka").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
                                     $("select#prod_otrub").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
                                     $("select#prod_jmih").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
                                     $("select#prod_shrot").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
                                     $("select#prod_krupa").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
                                     $("select#prod_maslo").on('change',function(){ 
-                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").hide(); }
+                                        if($(this).val()=="Другое"){ $("#other").show(); }else{ $("#other").val("").hide(); }
                                     });
 
                                 });

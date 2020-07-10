@@ -35,6 +35,8 @@ class AdvertsController extends Controller
 
     public function create_advert_apply(Request $request){
 
+        $t = $request->all();
+        //dd($t);
 
         //Заносим все возможные значения продукта в аррей
         $values = ['prod', 'prod_masl', 'prod_bob', 'prod_cult', 'prod_zern',
@@ -63,9 +65,7 @@ class AdvertsController extends Controller
         // Совмещаем имя 
         foreach($good_values as $g_val){
 
-            if($length == 1){
-               
-            } else {
+            if($length != 1 && $length <= 3){
                 $prod_full_name .= $request[$g_val];
             }
 
@@ -80,6 +80,10 @@ class AdvertsController extends Controller
             $prod_full_name .= $request['other'];
         }
 
+        //Изменяем позиции слова (Крупа Гречнивая = Гречнивая Крупа)
+        $prod_full_name = explode(" ", $prod_full_name);
+        $this->moveElement($prod_full_name, 2, 1);
+        $prod_full_name = implode(" ", $prod_full_name);
         //dd($prod_full_name);
 
         $all_info = $request->all();
@@ -125,5 +129,10 @@ class AdvertsController extends Controller
         return redirect()->back()->with('message_success', 'Спасибо, ваше объявление отправлено на модерацию.');
 
         //return redirect('/');
+    }
+
+    function moveElement(&$array, $a, $b) {
+        $out = array_splice($array, $a, 1);
+        array_splice($array, $b, 0, $out);
     }
 }

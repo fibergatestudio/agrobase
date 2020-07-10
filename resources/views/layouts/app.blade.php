@@ -104,6 +104,9 @@
                                         Импорт
                                     </a>
                                     @endif
+                                    <a class="dropdown-item" href="{{ url('/change_password/') }}">
+                                        Изменить пароль
+                                    </a>
                                     <a class="dropdown-item" href="{{ url('/advert/create/') }}">
                                         Добавить Обьявление
                                     </a>

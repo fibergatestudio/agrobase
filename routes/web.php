@@ -93,5 +93,9 @@ Route::get('/user_cards', 'UserCardsController@index')->middleware('can:admin_ri
 
 
 /* Автокомплит */
+    Route::post('/autocomplete/fetch', 'AdminController@fetch')->name('autocomplete.fetch');
 
-Route::post('/autocomplete/fetch', 'AdminController@fetch')->name('autocomplete.fetch');
+/* Измененеие Пароля */
+    Route::get('/change_password', 'Auth\ResetPasswordController@change_password')->middleware(['can:client_rights' || 'can:admin_rights']);
+        /* Изменение Пароля POST */
+        Route::post('/change_password/apply', 'Auth\ResetPasswordController@postCredentials')->middleware(['can:client_rights' || 'can:admin_rights']);
