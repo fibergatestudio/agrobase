@@ -18,7 +18,7 @@
    </div>
    @endif
 
-    @if($user->status == "confirmed")
+    @if($user->status == "confirmed" || $user->status == "expired" || $user->status == "unconfirmed")
     <div class="container-fluid">
     <h1> Таблица {{ $table_info->table_name }}</h1>
     Кол-во предприятий: {{ $t_count }}<br>
@@ -94,50 +94,70 @@
                                 
                                     <td>
                                         <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <a href="tel:{{ $row->$column }}">
-                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
                                                     <?php 
-                                                    echo 'Телефон ' . $phone_index++; 
+                                                    // Фикс двойных номеров
+                                                    $phones_arr = explode(" ", $row->$column);
+                                                    foreach(array_filter($phones_arr) as $phone){ ?>
+                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>   
+                                                    <?php 
+                                                    //echo 'Телефон ' . $phone_index++; 
+                                                    echo $phone;
                                                     ?>                                       
-                                                </button>
+                                                </button>                                                    
+                                                    <?php } ?>
                                             </a>
+                                            @endif
                                         <?php } else if(preg_match('/^[0-9]{10}$/', $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <?php 
                                             $full_phone = $row->$column;
                                             $full_phone = "+38" . $full_phone;
                                             ?>
                                             <a href="tel:{{ $full_phone }}">
-                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>  
+                                                    {{ $full_phone }}
                                                     <?php 
-                                                    echo 'Телефон ' . $phone_index++; 
+                                                    //echo 'Телефон ' . $phone_index++; 
                                                     ?>                                       
                                                 </button>
                                             </a>
+                                            @endif
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <a href="mailto:{{ $row->$column }}">
                                                 <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
-                                                    Email
+                                                    {{ $row->$column }}
                                                 </button>
                                             </a>
+                                            @endif
                                         <?php } else { ?>
                                             {{ $row->$column }}
                                         <?php } ?>
                                     </td>
                                     @elseif($row_count >= 10)
                                     <td>
-                                        <?php $filter_mail = str_replace("E-mail: ","", $row->$column); ?>
+                                        <?php 
+                                        $filter_mail = str_replace("E-mail: ","", $row->$column); 
+                                        $filter_mail = str_replace(' ', '', $filter_mail);
+                                        ?>
                                         <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <a href="tel:{{ $row->$column }}">
-                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>     
+                                                    {{ $row->$column }} 
                                                     <?php 
-                                                    echo 'Телефон ' . $phone_index++; 
+                                                    //echo 'Телефон ' . $phone_index++; 
                                                     ?>                                       
                                                 </button>
                                             </a>
+                                            @endif
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $filter_mail )) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <a href="mailto:{{ $filter_mail }}">
                                                 <button class="btn btn-success m-1"> <i class="fas fa-envelope"></i>    
-                                                    Email
+                                                    {{ $filter_mail }}
                                                 </button>
                                             </a>
                                           
@@ -148,7 +168,7 @@
                                                 <i class="fa fa-clone" aria-hidden="true"></i>
                                                 Копировать
                                             </button> 
-
+                                            @endif
                                         <?php } else { ?>
                                             {{ $row->$column }}
                                         <?php } ?>

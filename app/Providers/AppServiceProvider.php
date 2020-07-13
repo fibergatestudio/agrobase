@@ -34,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
             foreach($adverts as $advert){
                 $adv = DB::table('users')->where('id', $advert->creator_id)->first();
                 $advert->status = $adv->status;
+                $advert->creator_name = $adv->name;
             }
 
             $view->with('adverts', $adverts);

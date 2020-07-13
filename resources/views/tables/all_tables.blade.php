@@ -30,7 +30,7 @@ position:absolute;
    </div>
    @endif
 
-    @if($user->status == "confirmed")
+    @if($user->status == "confirmed" || $user->status == "expired" || $user->status == "unconfirmed")
     <div class="container text-center">
     <h1>Все таблицы</h1> 
         <br>
@@ -55,27 +55,15 @@ position:absolute;
             @endforeach    
         </div>
     </div>
-    @if($user->role == "admin")
-        <div class="row text-center">
-            <div class="col-md-12 center-block pt-5">
-                <a href="{{ url('/import') }}">
-                    <button class="btn btn-success">Импорт Таблицы</button>
-                </a>
+        @if($user->role == "admin")
+            <div class="row text-center">
+                <div class="col-md-12 center-block pt-5">
+                    <a href="{{ url('/import') }}">
+                        <button class="btn btn-success">Импорт Таблицы</button>
+                    </a>
+                </div>
             </div>
-        </div>
-    @endif
-    @elseif($user->status == "expired")
-        <div class="container">
-            <div class="alert alert-danger" role="alert">
-                Подписка истекла!
-            </div>
-        </div>
-    @else
-        <div class="container">
-            <div class="alert alert-danger" role="alert">
-                Пользователь не подтвержден!
-            </div>
-        </div>
+        @endif
     @endif
 @else
     <div class="container">

@@ -18,7 +18,7 @@
    </div>
    @endif
 
-    @if($user->status == "confirmed")
+    @if($user->status == "confirmed" || $user->status == "expired" || $user->status == "unconfirmed")
     <div class="container-fluid">
     <h1> Таблица {{ $table_info->table_name }}</h1>
     Кол-во предприятий: {{ $t_count }}<br>
@@ -87,19 +87,24 @@
                                     <td>
                                     <?php $row_count++; ?>
                                         <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <a href="tel:{{ $row->$column }}">
                                                 <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
+                                                    {{ $row->$column }}
                                                     <?php 
-                                                    echo 'Телефон ' . $phone_index++; 
+                                                    //echo 'Телефон ' . $phone_index++; 
                                                     ?>                                       
                                                 </button>
                                             </a>
+                                            @endif
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <a href="mailto:{{ $row->$column }}">
                                                 <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
-                                                    Email
+                                                {{ $row->$column }}
                                                 </button>
                                             </a>
+                                            @endif
                                         <?php } else if (preg_match("/(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/", $row->$column) && $row_count == 7) { ?>
                                             <a href="{{ $row->$column }}">{{ $row->$column }}</a>
                                         <?php } else { ?>

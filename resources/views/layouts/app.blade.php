@@ -147,7 +147,7 @@
                                 <div class="alert alert-success">Продажа</div>
                             @endif
                             </li>
-                            <li class="list-group-item">Предприятие: <a href="{{ url('/user_cards/' . $adv->creator_id ) }}"><b>Ссылка</b></a></li>
+                            <li class="list-group-item">Предприятие: <a href="{{ url('/user_cards/' . $adv->creator_id ) }}"><b>{{ $adv->creator_name }}</b></a></li>
                             <li class="list-group-item">Товар: <b>{{ $adv->prod }}</b></li>
                             <li class="list-group-item">Место поставки: <b>{{ $adv->sale_place }}</b></li>
                             <li class="list-group-item">Вид поставки: <b>{{ $adv->delivery }}</b></li>
