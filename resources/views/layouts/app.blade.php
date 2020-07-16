@@ -147,6 +147,15 @@
                                 <div class="alert alert-success">Продажа</div>
                             @endif
                             </li>
+                            <li class="list-group-item">Дата: 
+                                <b> 
+                                <?php
+                                    $timestamp = strtotime( $adv->created_at ); 
+                                    $final_date = date('d-M-Y', $timestamp );
+                                    echo add_weekday( $final_date ); 
+                                ?>
+                                </b>
+                            </li>
                             <li class="list-group-item">Предприятие: <a href="{{ url('/user_cards/' . $adv->creator_id ) }}"><b>{{ $adv->creator_name }}</b></a></li>
                             <li class="list-group-item">Товар: <b>{{ $adv->prod }}</b></li>
                             <li class="list-group-item">Место поставки: <b>{{ $adv->sale_place }}</b></li>
@@ -171,3 +180,20 @@
     @yield('scripts')
 </body>
 </html>
+
+
+<?php 
+
+function add_weekday( $date ) {
+    $ru_months = array( 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' );
+    $en_months = array( 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' );
+    $en_date = str_replace($en_months,$ru_months, $date );
+    //$weekdays = $en_date === $date ? $en_weekdays : $ru_weekdays;
+    // $wday = strptime( $en_date, '%B %e, %Y' );       // Linux/Mac
+    // return $weekdays[ $wday['tm_wday']-1 ]." $date"; // Linux/Mac
+    //return $weekdays[ DateTime::createFromFormat( 'M j, Y', $en_date )->format( 'N' )-1 ]." $date"; // PHP 5.3+
+    return $en_date;
+ }
+ //echo add_weekday( 'Октябрь 13, 2015' ); // Вторник Октябрь 13, 2015
+
+?>
