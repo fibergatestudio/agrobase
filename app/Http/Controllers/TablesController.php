@@ -163,9 +163,16 @@ class TablesController extends Controller
 
         } else {
 
-            $t_count = DB::table($table_name)->distinct('naymenuvannya_oderzhuvacha')->count('naymenuvannya_oderzhuvacha');
-            //dd("False");
-            return view('tables/index_international', compact('user', 'table_info', 't_count', 'table_head_columns', 'table_rows', 'table_id', 'f_region', 'f_area', 'table_heads_text'));
+            if(in_array('naymenuvannya_oderzhuvacha', $table_columns_arr)){
+                $t_count = DB::table($table_name)->distinct('naymenuvannya_oderzhuvacha')->count('naymenuvannya_oderzhuvacha');
+                //dd("False");
+                return view('tables/index_international', compact('user', 'table_info', 't_count', 'table_head_columns', 'table_rows', 'table_id', 'f_region', 'f_area', 'table_heads_text'));
+            } else if(in_array('naymenuvannya_vidpravnika', $table_columns_arr)){
+                $t_count = DB::table($table_name)->distinct('naymenuvannya_vidpravnika')->count('naymenuvannya_vidpravnika');
+                //dd("False");
+                return view('tables/index_international', compact('user', 'table_info', 't_count', 'table_head_columns', 'table_rows', 'table_id', 'f_region', 'f_area', 'table_heads_text'));
+            }
+
 
         }
 

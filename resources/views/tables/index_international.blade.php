@@ -21,7 +21,9 @@
     @if($user->status == "confirmed" || $user->status == "expired" || $user->status == "unconfirmed")
     <div class="container-fluid">
     <h1> Таблица {{ $table_info->table_name }}</h1>
+    @if(isset($t_count))
     Кол-во предприятий: {{ $t_count }}<br>
+    @endif
     <a href="{{ url('/all_tables') }}"><button class="btn btn-success">Выбор Таблицы</button></a>
     <!-- <a href="{{ url('/import') }}"><button class="btn btn-success">Импортировать</button></a> -->
     <br>
