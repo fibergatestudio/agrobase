@@ -131,7 +131,7 @@
             <div class="col-md-10">
             @yield('content')
             </div>
-            @if (\Request::is('tables'))  
+            @if(Route::current()->getName() != 'tables.index')
             <div style="height:600px; overflow:auto;" class="col-md-2">
                 <h5 class="font-weight-bold mb-3">Обьявления</h5>
                 @if(!empty(array_filter((array)$adverts)))
