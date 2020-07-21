@@ -97,7 +97,7 @@
                                                     // Фикс двойных номеров
                                                     $phones_arr = explode(" ", $row->$column);
                                                     foreach(array_filter($phones_arr) as $phone){ ?>
-                                                        <?php if($phone != "+" || $phone != " ") {?>
+                                                        <?php if($phone != "+") {?>
                                                         <a href="tel:{{ $phone }}">
                                                             <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>   
                                                                 <?php 
