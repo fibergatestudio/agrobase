@@ -117,7 +117,7 @@
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", str_replace(" ", "", $row->$column) )) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <?php 
-                                            $mails_arr = explode(array("\n\r", "\n", "\r"), $row->$column);
+                                            $mails_arr = explode("\n", $row->$column);
                                             foreach(array_filter($mails_arr) as $mail){ ?>
                                             <a href="mailto:{{ $mail }}">
                                                 <button class="btn btn-success m-1"> <i class="fas fa-envelope"></i>        
