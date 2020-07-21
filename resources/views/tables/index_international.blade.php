@@ -116,12 +116,16 @@
                                             @endif
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $row->$column)) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
-                                            <a href="mailto:{{ $row->$column }}">
+                                            <?php 
+                                            $mails_arr = explode(" ", $row->$column);
+                                            foreach(array_filter($mails_arr) as $mail){ ?>
+                                            <a href="mailto:{{ $mail }}">
                                                 <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
-                                                {{ $row->$column }}
-                                                <?php $column_count++; ?>
+                                                {{ $mail }}
                                                 </button>
                                             </a>
+                                            <?php } ?>
+                                            <?php $column_count++; ?>
                                             @endif
                                         <?php } else if (preg_match("/(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/", $row->$column) && $row_count == 7) { ?>
                                             <a href="{{ $row->$column }}">{{ $row->$column }}</a>
