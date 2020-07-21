@@ -114,7 +114,7 @@
                                                     <?php $column_count++; ?>
                                                 <?php } ?>
                                             @endif
-                                        <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $row->$column)) { ?>
+                                        <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", str_replace(" ", "", $row->$column)) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <?php 
                                             $mails_arr = explode(" ", $row->$column);
@@ -128,7 +128,7 @@
                                             <?php $column_count++; ?>
                                             @endif
                                         <?php } else if (preg_match("/(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/", $row->$column) ) { ?>
-                                            <?php if($column_count >= 4) { ?>
+                                            <?php if($column_count >= 5) { ?>
                                                 <a href="{{ $row->$column }}">{{ $row->$column }}</a>
                                                 <?php $column_count++; ?>
                                             <?php } ?>
