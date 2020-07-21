@@ -91,12 +91,19 @@
                                         <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <a href="tel:{{ $row->$column }}">
-                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
-                                                    {{ $row->$column }}
+  
+
+                                                <?php 
+                                                    // Фикс двойных номеров
+                                                    $phones_arr = explode(" ", $row->$column);
+                                                    foreach(array_filter($phones_arr) as $phone){ ?>
+                                                <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>   
                                                     <?php 
                                                     //echo 'Телефон ' . $phone_index++; 
+                                                    echo $phone;
                                                     ?>                                       
-                                                </button>
+                                                </button>                                                    
+                                                    <?php } ?>
                                             </a>
                                             @endif
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $row->$column)) { ?>
