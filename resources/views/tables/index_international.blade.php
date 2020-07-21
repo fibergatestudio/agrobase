@@ -83,6 +83,7 @@
                         $phone_index = '1'; 
                         $row_count = 0;
                         $row_c = 0;
+                        $column_count = 0;
                         ?>
                             <tr>
                                 @foreach($table_head_columns as $column)
@@ -90,7 +91,7 @@
                                     <?php $row_count++; ?>
                                         <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
-                                                <?php if($row_count >= 3) { ?>
+                                                <?php if($column_count >= 3) { ?>
                                                     <?php 
                                                     // Фикс двойных номеров
                                                     $phones_arr = explode(" ", $row->$column);
@@ -102,13 +103,15 @@
                                                                 <?php 
                                                                 //echo 'Телефон ' . $phone_index++;  
                                                                 echo $phone;
-                                                                ?>                                       
+                                                                ?>               
+                                                                <?php $column_count++; ?>                        
                                                             </button>    
                                                         </a>    
                                                         <?php } ?>
                                                     <?php } ?>
                                                 <?php } else { ?>
                                                     {{ $row->$column }}
+                                                    <?php $column_count++; ?>
                                                 <?php } ?>
                                             @endif
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $row->$column)) { ?>
@@ -116,13 +119,16 @@
                                             <a href="mailto:{{ $row->$column }}">
                                                 <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      
                                                 {{ $row->$column }}
+                                                <?php $column_count++; ?>
                                                 </button>
                                             </a>
                                             @endif
                                         <?php } else if (preg_match("/(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/", $row->$column) && $row_count == 7) { ?>
                                             <a href="{{ $row->$column }}">{{ $row->$column }}</a>
+                                            <?php $column_count++; ?>
                                         <?php } else { ?>
                                             {{ $row->$column }}
+                                            <?php $column_count++; ?>
                                         <?php } ?>
                                     </td>
                                    
