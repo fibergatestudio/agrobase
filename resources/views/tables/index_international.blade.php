@@ -114,7 +114,7 @@
                                                     <?php $column_count++; ?>
                                                 <?php } ?>
                                             @endif
-                                        <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", str_replace(" ", "", $row->$column)) { ?>
+                                        <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", str_replace(" ", "", $row->$column) )) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <?php 
                                             $mails_arr = explode(" ", $row->$column);
