@@ -116,22 +116,35 @@
                                             @endif
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", str_replace(" ", "", $row->$column) )) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
-                                            <?php 
-                                            $mails_arr = explode("\n", $row->$column);
-                                            foreach(array_filter($mails_arr) as $mail){ ?>
-                                            <a href="mailto:{{ $mail }}">
+
+                                            <a href="mailto:{{ $row->$column }}">
                                                 <button class="btn btn-success m-1"> <i class="fas fa-envelope"></i>        
-                                                {{ $mail }}
+                                                {{ $row->$column }}
                                                 </button>
                                             </a>
-                                            <?php } ?>
                                             <?php $column_count++; ?>
                                             @endif
                                         <?php } else if (preg_match("/(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,63}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?/", $row->$column) ) { ?>
-                                            <?php if($column_count >= 5) { ?>
-                                                <a href="{{ $row->$column }}">{{ $row->$column }}</a>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
+                                                <?php $mails_arr = preg_split('/\s*\R\s*/', trim($row->$column), NULL, PREG_SPLIT_NO_EMPTY); ?>
+                                                <?php if($column_count >= 5) { ?>
+
+                                                <?php foreach($mails_arr as $mail) { ?>
+                                                    <?php if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $mail)) { ?>
+                                                        <a href="mailto:{{ $mail }}">
+                                                            <button class="btn btn-success m-1"> <i class="fas fa-envelope"></i>        
+                                                            {{ $mail }}
+                                                            </button>
+                                                        </a>
+                                                    <?php } else { ?>
+                                                    
+                                                        <a href="{{ $row->$column }}">{{ $row->$column }}</a>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                               
                                                 <?php $column_count++; ?>
                                             <?php } ?>
+                                            @endif
                                         <?php } else { ?>
                                             {{ $row->$column }}
                                             <?php $column_count++; ?>
