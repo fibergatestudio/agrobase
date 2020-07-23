@@ -138,7 +138,11 @@
                                                         </a>
                                                     <?php } else { ?>
                                                     
-                                                        <a href="{{ $row->$column }}">{{ $row->$column }}</a>
+                                                        <a href="{{ $row->$column }}">
+                                                            <button class="btn btn-success m-1"> <i class="fas fa-globe"></i>        
+                                                            {{ $row->$column }}
+                                                            </button>
+                                                        </a>
                                                     <?php } ?>
                                                 <?php } ?>
                                                
