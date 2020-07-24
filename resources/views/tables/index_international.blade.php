@@ -137,10 +137,19 @@
                                                             </button>
                                                         </a>
                                                     <?php } else { ?>
-                                                    
-                                                        <a href="{{ $row->$column }}">
+                                                        <?php   
+                                                        $website = $row->$column;
+                                                        if(!preg_match('/^(http)/', $website)){
+                                                            //echo "Has http";
+                                                            $website = "http://" . $website;
+                                                            //echo $website;
+                                                        }
+   
+
+                                                        ?>
+                                                        <a href="{{ $website }}">
                                                             <button class="btn btn-success m-1"> <i class="fas fa-globe"></i>        
-                                                            {{ $row->$column }}
+                                                            {{ $website}}
                                                             </button>
                                                         </a>
                                                     <?php } ?>
