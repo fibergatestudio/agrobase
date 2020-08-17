@@ -10,18 +10,18 @@
 
 
 @if(isset($user))
-<style>
+    <style>
 
-.frontpage_square{
-position:relative;
-overflow:hidden;
-padding-bottom:100%;
-}
-.frontpage_square img{
-position:absolute;
-}
+    .frontpage_square{
+    position:relative;
+    overflow:hidden;
+    padding-bottom:100%;
+    }
+    .frontpage_square img{
+    position:absolute;
+    }
 
-</style>
+    </style>
 
     @if($message = Session::get('success'))
    <div class="alert alert-success alert-block">
@@ -30,11 +30,10 @@ position:absolute;
    </div>
    @endif
 
-   
-   @if($user->status == "confirmed" || $user->status == "expired" || $user->status == "unconfirmed")
-    <h3 class="tables_title">Все международные таблицы</h3>
+    @if($user->status == "confirmed" || $user->status == "expired" || $user->status == "unconfirmed")
+    <h3 class="tables_title">Все таблицы</h3>
         <div class="tables_regions">
-        @foreach($tables_en as $t)
+        @foreach($tables_ua as $t)
 
             <div class="tables_regions-inner">
                 <a href="#"> {{ $t->table_name }}</a>
@@ -46,7 +45,40 @@ position:absolute;
         @endif
     @endif
 
-   
+    <!-- <div class="container text-center">
+    <h1>Все таблицы</h1> 
+        <br>
+        <div class="row text-center">
+            @foreach($tables_ua as $t)
+                <div class="col-sm-3 bg-success border">
+                    <div class="row text-center h-100">
+                        <a href="{{ url('/table/'. $t->id) }}" class="thumbnail tablelink" style="width: 100%;">
+                            <div class=" card-block justify-content-center" style="line-height: 200px;">
+                                <div class="card-body text-center" style="    
+                                clear: both;
+                                display: inline-block;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                font-size: 22px;">
+                                    {{ $t->table_name }} 
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            @endforeach    
+        </div>
+    </div>
+        @if($user->role == "admin")
+            <div class="row text-center">
+                <div class="col-md-12 center-block pt-5">
+                    <a href="{{ url('/import') }}">
+                        <button class="btn btn-success">Импорт Таблицы</button>
+                    </a>
+                </div>
+            </div>
+        @endif
+    @endif -->
 @else
     <div class="container">
         <div class="alert alert-success" role="alert">
@@ -54,7 +86,6 @@ position:absolute;
         </div>
     </div>
 @endif
-
 
 
 @stop
