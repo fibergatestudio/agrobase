@@ -36,7 +36,7 @@
         @foreach($tables_ua as $t)
 
             <div class="tables_regions-inner">
-                <a href="{{ url('/table/'. $t->id) }}"> {{ $t->table_name }}</a>
+                <a href="#"> {{ $t->table_name }}</a>
             </div>
         @endforeach   
         </div>
