@@ -42,7 +42,7 @@ position:absolute;
         @endforeach   
         </div>
         @if($user->role == "admin")
-            <a href="{{ url('/import') }}"><button class="tables-btn">Импорт таблицы</button></a>
+            <a href="{{ url('/import_international') }}"><button class="tables-btn">Импорт таблицы</button></a>
         @endif
     @endif
 
@@ -60,6 +60,7 @@ position:absolute;
 @stop
 
 @section('scripts')
+    
 
         @if(Auth::guest())
             <!-- Отключение вовзможности выделение текста -->
