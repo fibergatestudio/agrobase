@@ -140,11 +140,8 @@
                                                         <?php   
                                                         $website = $row->$column;
                                                         if(!preg_match('/^(http)/', $website)){
-                                                            //echo "Has http";
                                                             $website = "http://" . $website;
-                                                            //echo $website;
                                                         }
-   
 
                                                         ?>
                                                         <a href="{{ $website }}">
