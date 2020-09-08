@@ -5,12 +5,135 @@
 
 
 @section('content')
+
 @if(session()->has('message_delete'))
     <div class="alert alert-success">
         {{ session()->get('message_delete') }}
     </div>
 @endif
-<div class="container">
+            <div class="allcards-main">
+                <div class="allcards-wrapper">
+                    <h3 class="allcards-title">Все пользователи</h3>
+
+                    <div class="allcards-scroll-container">
+						<div class="allcards-scroll-inner">
+							<div class="allcards-top">
+								<div class="allcards-top_title">#</div>
+								<div class="allcards-top_title">Лого</div>
+								<div class="allcards-top_title">Имя</div>
+								<div class="allcards-top_title">E-Mail</div>
+								<div class="allcards-top_title">Пароль</div>
+								<div class="allcards-top_title">Статус</div>
+								<div class="allcards-top_title">Роль</div>
+								<div class="allcards-top_title">Оплачен до:</div>
+								<div class="allcards-top_title"></div>
+								<!-- <div class="allcards-top_title"></div> -->
+
+							</div>
+                            @foreach($users as $user)
+							<div class="allcards-string">                        
+								<div class="allcards-string_inner">{{$user->id}}. </div>
+								<div class="allcards-string_inner"> <a class="allcards-string_link"> <img src="{{$user->logo}}" width="76" height="76" alt=""></a> </div>
+								<div class="allcards-string_inner">{{$user->name}}</div>
+								<div class="allcards-string_inner">{{$user->email}}</div>
+								<div class="allcards-string_inner">{{$user->password_unveil}}</div>
+								<div class="allcards-string_inner"> 
+                                @if($user->status == 'expired')
+                                    {{$user->status}}
+                                @elseif($user->status == 'unconfirmed')
+                                        Не подтвержден
+                                @else
+                                        Подтвержден
+                                @endif
+                                </div>
+								<div class="allcards-string_inner"> 
+                                @if($user->role == 'admin')
+                                    Админ
+                                @elseif($user->role = 'user')
+                                    Пользователь
+                                @endif
+                                </div>
+								<div class="allcards-string_inner">                    
+                                @if($user->expiry_date >= $date)
+                                    {{$user->expiry_date}} 
+                                @else
+                                    Не оплачен
+                                @endif
+                                </div>
+								<div class="allcards-string_inner">
+								<div class="allcards-string_inner--block"><a class="allcards-string_edit" href="/admin/users/edit/{{$user->id}}">Редактировать</a></div>
+								<div class="allcards-string_inner--block"><a class="allcards-string_delete" >Удалить</a></div>
+								</div>
+							</div>
+                            @endforeach
+						</div>
+					</div>
+                </div>
+            </div>
+
+
+            <!-- cards-mobile-version -->
+            <div class="allcards-mobile-main">
+                <div class="allcards-mobile-wrapper">
+                    <h3 class="allcards-mobile-title">Карточки пользователей</h3>
+                    @foreach($users as $user)
+                    <div class="allcards-mobile-string">
+                        <div class="allmobile-string_left">
+                            <div class="allmobile-left-inner"># {{$user->id}}</div>
+                        </div> 
+                        <div class="allmobile-string_center">
+                            <div class="allmobile-center-inner">Лого</div>
+                            <div class="allmobile-center-inner"><a class="allcards-string_link"> <img src="{{$user->logo}}" width="76" height="76" alt=""></a></div>
+                            <div class="allmobile-center-inner">Имя</div>
+                            <div class="allmobile-center-inner">Email</div>
+                            <div class="allmobile-center-inner">Пароль</div>
+                            <div class="allmobile-center-inner">Статус</div>
+                            <div class="allmobile-center-inner">Роль</div>
+                            <div class="allmobile-center-inner">Оплачен до:</div>
+                        </div>
+                        <div class="allmobile-string_right">
+                            <div class="allmobile-right-inner">.</div>
+                            <div class="allmobile-right-inner"></div>
+                            <div class="allmobile-right-inner">{{$user->name}}</div>
+                            <div class="allmobile-right-inner">{{$user->email}}</div>
+                            <div class="allmobile-right-inner">{{$user->password_unveil}}</div>
+                            <div class="allmobile-right-inner">
+                                @if($user->status == 'expired')
+                                    {{$user->status}}
+                                @elseif($user->status == 'unconfirmed')
+                                        Не подтвержден
+                                @else
+                                        Подтвержден
+                                @endif
+                            </div>
+                            <div class="allmobile-right-inner">
+                                @if($user->role == 'admin')
+                                    Админ
+                                @elseif($user->role = 'user')
+                                    Пользователь
+                                @endif
+                            </div>
+                            <div class="allmobile-right-inner">                               
+                                @if($user->expiry_date >= $date)
+                                    {{$user->expiry_date}} 
+                                @else
+                                    Не оплачен
+                                @endif
+                            </div>
+                        </div>
+                        <div class="allmobile-string_bottom">
+                        <div class="allmobile-bottom-inner"><a class="allmobile-bottom_edit">Редактировать</a></div>
+                        <div class="allmobile-bottom-inner"><a class="allmobile-bottom_delete">Удалить</a></div>
+                        </div>
+                    </div>
+                    @endforeach
+            
+            </div>
+            </div>
+
+
+
+<div style="display:none;" class="container">
     <h1>Все пользователи</h1>
     <table class="table table-bordered data-table">
         <thead>

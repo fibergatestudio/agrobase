@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-
+<div class="tables">
 
 @if(isset($user))
 <style>
@@ -56,7 +56,7 @@ position:absolute;
 @endif
 
 
-
+</div>
 @stop
 
 @section('scripts')

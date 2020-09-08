@@ -5,6 +5,7 @@
 
 
 @section('content')
+
 @if(session()->has('message_delete'))
     <div class="alert alert-danger">
         {{ session()->get('message_delete') }}
@@ -15,7 +16,96 @@
         {{ session()->get('message_success') }}
     </div>
 @endif
-<div class="container">
+
+
+            <div class="alldeclaration-main">
+                <div class="alldeclaration-wrapper">
+                    <h3 class="alldeclaration-title">Все объявления</h3>
+                    <div class="alldeclaration-scroll-container">
+                        <div class="alldeclaration-scroll-inner">
+                            <div class="alldeclaration-top">
+                                <div class="alldeclaration-top_title">#</div>
+                                <div class="alldeclaration-top_title">Предприятие</div>
+                                <div class="alldeclaration-top_title">Предмет торговли</div>
+                                <div class="alldeclaration-top_title">Место продажи</div>
+                                <div class="alldeclaration-top_title">Вид продажи</div>
+                                <div class="alldeclaration-top_title">Цена</div>
+                                <div class="alldeclaration-top_title">Статус</div>
+                                <div class="alldeclaration-top_title">Действия</div>
+                            </div>
+                            @foreach($adverts as $advert)
+                            <div class="alldeclaration-string">
+                                <div class="alldeclaration-string_inner">{{$advert->trading_item}}.</div>
+                                <div class="alldeclaration-string_inner"> <span> {{$advert->company}}</span></div>
+                                <div class="alldeclaration-string_inner">{{$advert->trading_item}}</div>
+                                <div class="alldeclaration-string_inner">{{$advert->sale_place}}</div>
+                                <div class="alldeclaration-string_inner">{{$advert->sale_type}}</div>
+                                <div class="alldeclaration-string_inner">{{$advert->price}}</div>
+                                <div class="alldeclaration-string_inner">
+                                @if($advert->status == 'unconfirmed')
+                                    Не подтвержден
+                                @else
+                                    Подтвержден
+                                @endif
+                                </div>
+                                <div class="alldeclaration-string_inner">
+                                    <div class="alldeclaration-string_inner--block"><a
+                                            class="alldeclaration-string_confirm" href="##">Подтвердить</a></div>
+                                    <div class="alldeclaration-string_inner--block"><a
+                                            class="alldeclaration-string_delete" href="##">Удалить</a></div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- alldeclaration-mobile-version -->
+            <div class="alldeclaration-mobile-main">
+                <div class="alldeclaration-mobile-wrapper">
+                    <h3 class="alldeclaration-mobile-title">Все объявления</h3>
+                    @foreach($adverts as $advert)
+                    <div class="alldeclaration-mobile-string">
+                        <div class="alldeclaration-string_center">
+                            <div class="alldeclaration-center-inner">#</div>
+                            <div class="alldeclaration-center-inner">Предприятие</div>
+                            <div class="alldeclaration-center-inner">Предмет торговли</div>
+                            <div class="alldeclaration-center-inner">Место продажи</div>
+                            <div class="alldeclaration-center-inner">Вид продажи</div>
+                            <div class="alldeclaration-center-inner">Цена</div>
+                            <div class="alldeclaration-center-inner">Статус</div>
+                        </div>
+                        <div class="alldeclaration-string_right">
+                            <div class="alldeclaration-string_inner">{{$advert->trading_item}}.</div>
+                            <div class="alldeclaration-string_inner"> <span> {{$advert->company}}</span></div>
+                            <div class="alldeclaration-string_inner">{{$advert->trading_item}}</div>
+                            <div class="alldeclaration-string_inner">{{$advert->sale_place}}</div>
+                            <div class="alldeclaration-string_inner">{{$advert->sale_type}}</div>
+                            <div class="alldeclaration-string_inner">{{$advert->price}}</div>
+                            <div class="alldeclaration-string_inner">
+                            @if($advert->status == 'unconfirmed')
+                                Не подтвержден
+                            @else
+                                Подтвержден
+                            @endif
+                            </div>
+                        </div>
+                        <div class="alldeclaration-string_bottom">
+                            <div class="alldeclaration-bottom-inner">Действия</div>
+                            <div class="alldeclaration-bottom-inner"><a href="{{ url('/admin/adverts_control/'. $advert->id .'/apply') }}" class="alldeclaration-bottom_confirm">Подтвердить</a></div>
+                            <div class="alldeclaration-bottom-inner"><a href="{{ url('/admin/adverts_control/'. $advert->id .'/delete') }}" class="alldeclaration-bottom_delete">Удалить</a></div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+
+
+
+
+<div style="display:none;" class="container">
     <h1>Все обьявления</h1>
     <table class="table table-bordered data-table">
         <thead>

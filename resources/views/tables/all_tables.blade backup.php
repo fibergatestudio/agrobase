@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-
+<div class="tables">
 
 @if(isset($user))
     <style>
@@ -87,7 +87,7 @@
     </div>
 @endif
 
-
+</div>
 @stop
 
 @section('scripts')

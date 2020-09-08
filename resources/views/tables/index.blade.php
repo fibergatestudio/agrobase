@@ -11,15 +11,203 @@
 
 @if(isset($user))
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    @if($message = Session::get('success'))
-   <div class="alert alert-success alert-block">
+
+@if($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>
            <strong>{{ $message }}</strong>
    </div>
    @endif
 
+
+
+            <div class="carpathians-main">
+                <div class="carpathians-wrapper">
+                    <h3 class="carpathians-title--top">Таблица {{ $table_info->table_name }}</h3>
+                    <h5 class="carpathians-title--bottom">Количество предприятий: <span>{{ $t_count }}</span></h5>
+                    <div class="carpathians-topbtn-wrapper">
+                        <div class="carpathians-topbtn-inner">
+                            <a href="{{ url('/all_tables') }}"><button class="carpathians-topbtn">Выбор таблицы</button></a>
+                            <!-- <div class="selectbtn-region"><span>Выбор области</span>
+                                <a class="selectbtn-region-link" href="##"></a>                              
+                                <div class="selectbtn-region-badge">
+                                    <div class="selectbtn-region-badge_inner"><a href="##">Название области</a></div>
+                                    <div class="selectbtn-region-badge_inner"><a href="##">Название области</a></div>
+                                    <div class="selectbtn-region-badge_inner"><a href="##">Название области</a></div>
+                                    <div class="selectbtn-region-badge_inner"><a href="##">Название области</a></div>
+                                </div>                             
+                            </div> -->
+                            @if(isset($regions))
+                                <select name="region" class="selectbtn-region" onchange="location = this.value;">
+                                @foreach($regions as $region)
+                                    <!-- <option value="{{ $table_id }}/?oblast={{ $region->oblast }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option> -->
+                                    <option value="{{ route('tables.index', ['table_id' => $table_id,'oblast' => $region->oblast]) }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option>
+                                @endforeach
+                                </select>
+                            @endif
+                            <!-- <div class="selectbtn-district"><span>Выбор района</span> 
+                                <a class="selectbtn-district-link" href="##"></a>
+                                <div class="selectbtn-district-badge">
+                                    <div class="selectbtn-district-badge_inner"><a href="##">Название района</a></div>
+                                    <div class="selectbtn-district-badge_inner"><a href="##">Название района</a></div>
+                                    <div class="selectbtn-district-badge_inner"><a href="##">Название района</a></div>
+                                    <div class="selectbtn-district-badge_inner"><a href="##">Название района</a></div>
+                                </div>
+                            </div> -->
+                            @if(isset($areas))
+                            <select name="area" class="selectbtn-district" onchange="location = this.value;">
+                            @foreach($areas as $area)
+                                <!-- <option @if($f_area == $area->rayon) value="{{ $table_id }}/?rayon={{ $area->rayon }}" selected @else
+                                value="{{ $table_id }}/?rayon={{ $f_region }}&rayon={{ $area->rayon }}"
+                                @endif>{{ $area->rayon }}</option> -->
+
+                                <option @if($f_area == $area->rayon) value="{{ route('tables.index', ['table_id' => $table_id,'rayon' => $area->rayon]) }}" selected @else
+                                value="{{ route('tables.index', ['table_id' => $table_id,'rayon' => $area->rayon]) }}"
+                                @endif>{{ $area->rayon }}</option>
+
+                                
+                            @endforeach
+                            </select>
+                        @endif
+
+                        </div>
+                        <div class="carpathians-topbtn-inner">
+
+                            <div class="selectbtn-sort"><span>Сортировка</span>
+                                <a class="selectbtn-sort-link" href="##"></a>
+                                <div class="selectbtn-sort-badge">
+                                    <div class="selectbtn-sort-badge_inner"><a href="{{ route('tables.index', ['table_id' => $table_id,'oblast' => request('oblast'), 'rayon' => request('rayon'),  'sort' => 'asc']) }}">По возрастанию</a></div>
+                                    <div class="selectbtn-sort-badge_inner"><a href="{{ route('tables.index', ['table_id' => $table_id,'oblast' => request('oblast'), 'rayon' => request('rayon'),  'sort' => 'desc']) }}">Убыванию</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carpathians-scroll-container">
+                        <div class="carpathians-scroll-inner">
+                            <div class="carpathians-topmenu">
+                                    <div class="carpathians-topmenu-item">#</div>
+                                    <?php $column_count = 0; ?>
+                                    @foreach($table_heads_text as $column)
+                                        <?php $column_count++; ?>
+                                        @if($column_count <= 5)
+                                            <div class="carpathians-topmenu-item">{{$column}}</div>
+                                        @elseif($column_count >= 9)
+                                            <div class="carpathians-topmenu-item">{{$column}}</div>
+                                        @endif
+                                    @endforeach
+                            </div>
+                            @foreach($table_rows as $row)
+                        <?php 
+                        $phone_index = '1'; 
+                        $row_count = 0;
+                        $row_c = 0;
+                        ?>
+                            <div class="carpathians-string">
+                                @foreach($table_head_columns as $column)
+                                <?php $row_count++; ?>
+                                @if($row_count <= 6)
+                                
+                                    <div class="carpathians-string-item">
+                                        <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
+                                            <a class="carpathians-string_phone" href="tel:{{ $row->$column }}">
+                                                    <?php 
+                                                    // Фикс двойных номеров
+                                                    $phones_arr = explode(" ", $row->$column);
+                                                    foreach(array_filter($phones_arr) as $phone){ ?>
+                                                <!-- <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>   -->
+                                                    <?php 
+                                                    //echo 'Телефон ' . $phone_index++; 
+                                                    echo $phone;
+                                                    ?>                                       
+                                                <!-- </button>  -->                                                   
+                                                    <?php } ?>
+                                            </a>
+                                            @endif
+                                        <?php } else if(preg_match('/^[0-9]{10}$/', $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
+                                            <?php 
+                                            $full_phone = $row->$column;
+                                            $full_phone = "+38" . $full_phone;
+                                            ?>
+                                            <a class="carpathians-string_phone" href="tel:{{ $full_phone }}">
+                                                <!-- <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>   -->
+                                                    {{ $full_phone }}
+                                                    <?php 
+                                                    //echo 'Телефон ' . $phone_index++; 
+                                                    ?>                                       
+                                                <!-- </button> -->
+                                            </a>
+                                            @endif
+                                        <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
+                                            <a class="carpathians-string_phone" href="mailto:{{ $row->$column }}">
+                                                <!-- <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>       -->
+                                                    {{ $row->$column }}
+                                                <!-- </button> -->
+                                            </a>
+                                            @endif
+                                        <?php } else { ?>
+                                            {{ $row->$column }}
+                                        <?php } ?>
+                                    </div>
+                                    @elseif($row_count >= 10)
+                                    <div class="carpathians-string-item">
+                                        <?php 
+                                        $filter_mail = str_replace("E-mail: ","", $row->$column); 
+                                        $filter_mail = str_replace(' ', '', $filter_mail);
+                                        ?>
+                                        <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
+                                            <a class="carpathians-string_phone" href="tel:{{ $row->$column }}">
+                                                <!-- <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      -->
+                                                    {{ $row->$column }} 
+                                                    <?php 
+                                                    //echo 'Телефон ' . $phone_index++; 
+                                                    ?>                                       
+                                                <!-- </button> -->
+                                            </a>
+                                            @endif
+                                        <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $filter_mail )) { ?>
+                                            @if($user->status != "unconfirmed" && $user->status !="expired")
+                                            <a class="carpathians-string_phone" href="mailto:{{ $filter_mail }}">
+                                                <!-- <button class="btn btn-success m-1"> <i class="fas fa-envelope"></i>     -->
+                                                    {{ $filter_mail }}
+                                                <!-- </button> -->
+                                            </a>
+                                          
+                                            
+                                            <input type="hidden" id="copy_{{ $row->id }}" value="{{ $filter_mail }}">
+                                            <!-- <button onclick="copyToClipboard('copy_{{ $row->id }}')" class="btn btn-success m-1">Copy</button> -->
+                                            <button class="btn btn-success m-1" onclick="copyToClipboard('#copy_{{ $row->id }}')">
+                                                <i class="fa fa-clone" aria-hidden="true"></i>
+                                                Копировать
+                                            </button> 
+                                            @endif
+                                        <?php } else { ?>
+                                            {{ $row->$column }}
+                                        <?php } ?>
+                                    </div>
+                                @endif
+
+
+                                @endforeach
+                            </div>
+                        @endforeach
+
+                        </div>
+                    </div>
+
+                    {{ $table_rows->links('vendor.pagination.default') }}
+
+                </div>
+            </div>
+
+
+
     @if($user->status == "confirmed" || $user->status == "expired" || $user->status == "unconfirmed")
-    <div class="container-fluid">
+    <div style="display:none;" class="container-fluid">
     <h1> Таблица {{ $table_info->table_name }}</h1>
     Кол-во предприятий: {{ $t_count }}<br>
     <a href="{{ url('/all_tables') }}"><button class="btn btn-success">Выбор Таблицы</button></a>
@@ -177,23 +365,6 @@
 
 
                                 @endforeach
-                                <!-- <td>
-                                @foreach($table_head_columns as $column)
-                                <?php $row_c++; ?>
-                                @if($row_c > 5)
-                                    @if($column == 'telegram')
-                                        <a href="https://t.me/{{ $row->$column }}"><buttom class="btn btn-success m-1">Telegram</buttom></a>
-                                    @endif
-                                    @if($column == 'vayber')
-                                        <a href="viber://add?number={{ $row->$column }}"><buttom class="btn btn-success m-1">Viber</buttom></a>
-                                    @endif
-                                    @if($column == 'vottsap')
-                                        <a href="https://wa.me/{{ $row->$column }}"><buttom class="btn btn-success m-1">Whatsup</buttom></a>
-                                    @endif
-                                @endif
-                                @endforeach
-                                
-                                </td> -->
                             </tr>
                         @endforeach
                     </tbody>

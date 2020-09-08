@@ -32,7 +32,7 @@
   
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <!-- New -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url('css/style.css') }}">
     
 
     <!-- Styles -->
@@ -42,7 +42,6 @@
     <div class="body-overlay"></div>
     <div class="sidebar">
         <div class="menu-mobile-wrapper">
-            <a class="logo-image-mobile" href="#"><span>Логотип</span></a>
             <div class="menu_burger">
                 <span></span>
                 <span></span>
@@ -54,11 +53,11 @@
             <div class="mobile-navigation">
                 <div class="mobile-languages">
                     <ul class="mobile-languages_inner">
-                        <li class="mobile-languages_item"><a href="#"><img src="image/gm-small.jpg"
+                        <li class="mobile-languages_item"><a href="#"><img src="{{ url('image/gm-small.jpg') }}"
                                     alt="german"></a></li>
-                        <li class="mobile-languages_item"><a href="#"><img src="image/ru-small.jpg"
+                        <li class="mobile-languages_item"><a href="#"><img src="{{ url('image/ru-small.jpg') }}"
                                     alt="russian"></a></li>
-                        <li class="mobile-languages_item"><a href="#"><img src="image/uk-small.jpg"
+                        <li class="mobile-languages_item"><a href="#"><img src="{{ url('image/uk-small.jpg') }}"
                                     alt="english"></a></li>
                     </ul>
                 </div>
@@ -98,13 +97,13 @@
     <header class="header">
         <div class="languages">
             <ul class="languages_inner">
-                <li class="languages_item"><a href="#"><img src="image/gm.jpg" alt="german"></a></li>
-                <li class="languages_item"><a href="#"><img src="image/ru.jpg" alt="russian"></a></li>
-                <li class="languages_item"><a href="#"><img src="image/uk.jpg" alt="english"></a></li>
+                <li class="languages_item"><a href="#"><img src="{{ url('image/gm.jpg') }}" alt="german"></a></li>
+                <li class="languages_item"><a href="#"><img src="{{ url('image/ru.jpg') }}" alt="russian"></a></li>
+                <li class="languages_item"><a href="#"><img src="{{ url('image/uk.jpg') }}" alt="english"></a></li>
             </ul>
         </div>
         <div class="logo_wrapper">
-            <div class="logo-image"><a href="{{ url('/') }}">Логотип</a></div>
+            <div class="logo-image"><a href="{{ url('/') }}"><img class="logo-image_img" src="{{ url('image/logo.png') }}" alt="логтип"></a></div>
             <div class="title-image"><a href="{{ url('/') }}">AgroFoodExport</a></div>
         </div>
         <div class="header_menu">
@@ -142,144 +141,12 @@
             @endguest
         </div>
     </header>
-
-
-        <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/all_tables') }}">
-                    {{ config('app.name', 'Агробаза') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    @guest
-
-                    @else
-                        <ul class="navbar-nav ml-1 mr-1">
-                            <a href="{{ url('/all_tables') }}"><button class="btn btn btn-success">Фермер UA</button></a>
-                        </ul>
-                        <ul class="navbar-nav ml-1 mr-1">
-                            <a href="{{ url('/all_tables_international') }}"><button class="btn btn btn-success">Таблицы Международн.</button></a>
-                        </ul>
-                        <ul class="navbar-nav ml-1 mr-1">
-                            <a href="{{ url('/advert/create/') }}"><button class="btn btn btn-success">Добавить обьявление</button></a>
-                        </ul>
-                        @if(Auth::user()->role  == 'admin')
-                        <ul class="navbar-nav ml-1 mr-1">
-                            <a href="{{ url('/user_cards') }}"><button class="btn btn btn-success">Карточки пользователей</button></a>
-                        </ul>
-                        @endif
-                    @endif
-
-
-                    <ul class="navbar-nav ml-auto">
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Вход</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                    @if(Auth::user()->role  == 'admin')
-                                    <a class="dropdown-item" href="{{ url('/admin/users') }}">
-                                        Управление Пользователями
-                                    </a>
-                                    <a class="dropdown-item" href="{{ url('/admin/tables_control') }}">
-                                        Управление Таблицами
-                                    </a>
-                                    <a class="dropdown-item" href="{{ url('/admin/adverts_control') }}">
-                                        Управление Обьявлениями
-                                    </a>
-                                    <a class="dropdown-item" href="{{ url('/import') }}">
-                                        Импорт
-                                    </a>
-                                    @endif
-                                    <a class="dropdown-item" href="{{ url('/change_password/') }}">
-                                        Изменить пароль
-                                    </a>
-                                    <a class="dropdown-item" href="{{ url('/advert/create/') }}">
-                                        Добавить Обьявление
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Выйти
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav> -->
-
-        <!-- <main class="py-4 row">
-            <div class="col-md-10">
-            @yield('content')
-            </div>
-            @if(Route::current()->getName() != 'tables.index')
-            <div style="height:600px; overflow:auto;" class="col-md-2">
-                <h5 class="font-weight-bold mb-3">Обьявления</h5>
-                @if(!empty(array_filter((array)$adverts)))
-                    @foreach($adverts as $adv)
-                    <div class="card" style="width: auto;">
-                        <ul @if($adv->status == 'confirmed') style="background-color: #e8fbe8;" @endif class="list-group list-group-flush">
-                            <li style="padding: 0;" class="list-group-item">
-                            @if( $adv->action == 'Купить')
-                                <div class="alert alert-primary">Покупка</div>
-                            @else
-                                <div class="alert alert-success">Продажа</div>
-                            @endif
-                            </li>
-                            <li class="list-group-item">Дата: 
-                                <b> 
-                                <?php
-                                    $timestamp = strtotime( $adv->created_at ); 
-                                    $final_date = date('d-M-Y', $timestamp );
-                                    echo add_weekday( $final_date ); 
-                                ?>
-                                </b>
-                            </li>
-                            <li class="list-group-item">Предприятие: <a href="{{ url('/user_cards/' . $adv->creator_id ) }}"><b>{{ $adv->creator_name }}</b></a></li>
-                            <li class="list-group-item">Товар: <b>{{ $adv->prod }}</b></li>
-                            <li class="list-group-item">Место поставки: <b>{{ $adv->sale_place }}</b></li>
-                            <li class="list-group-item">Вид поставки: <b>{{ $adv->delivery }}</b></li>
-                            <li class="list-group-item">Цена: <b>{{ $adv->price }} {{ $adv->currency }}</b> за тонну</li>
-                            @if(!empty($adv->prod_photo))
-                            <img class="list-group-item" src="{{ $adv->prod_photo }}" height="300">
-                            @endif
-                        </ul>
-                    </div>
-                    @endforeach
-                @else
-                    Нет обьявлений!
-                @endif
-            </div>
-            @endif
-        </main> -->
         <section class="start-page">
 
             <div class="start-page_wrapper">
-            <div class="tables">
+            <!-- <div class="tables"> -->
                 @yield('content')
-            </div>
+            <!-- </div> -->
             <div class="advertisement">
                 <div class="advertisement_wrapper">
                 @if(Route::current()->getName() != 'tables.index')
@@ -389,6 +256,79 @@
             mobileMenu.classList.toggle('active');
         };
         }) ();
+
+        (function () {
+    let overlayBtn = document.querySelector('.buttons-overlay');
+
+    let selectbtnRegion = document.querySelector('.selectbtn-region');
+    let selectbtnDistrict = document.querySelector('.selectbtn-district');
+    let selectbtnSort = document.querySelector('.selectbtn-sort');
+    let peaExpselectbtnSort = document.querySelector('.peaexport-selectbtn-sort');
+    let peaImpselectbtnSort = document.querySelector('.peaimport-selectbtn-sort');
+    
+    let selectbtnRegionMobile = document.querySelector('.selectbtn-region--mobile');
+    let selectbtnDistrictMobile = document.querySelector('.selectbtn-district--mobile');
+    let selectbtnSortMobile = document.querySelector('.selectbtn-sort--mobile');
+    let peaExpselectbtnRegionMobile = document.querySelector('.peaexport-selectbtn-region--mobile');
+    let peaImpselectbtnRegionMobile = document.querySelector('.peaimport-selectbtn-region--mobile');
+
+    let btnArr = [
+        selectbtnDistrict, selectbtnSort, 
+        peaExpselectbtnSort,selectbtnRegion, selectbtnDistrictMobile,
+        selectbtnRegionMobile, selectbtnSortMobile,
+        peaExpselectbtnRegionMobile,
+        peaImpselectbtnSort, peaImpselectbtnRegionMobile
+    ];
+      
+    let selectbtnRegionBadge = document.querySelector('.selectbtn-region-badge');
+    let selectbtnDistrictBadge = document.querySelector('.selectbtn-district-badge');
+    let selectbtnSortBadge = document.querySelector('.selectbtn-sort-badge');
+    let peaExpselectbtnSortBadge = document.querySelector('.peaexport-selectbtn-sort-badge');
+    let peaImpselectbtnSortBadge = document.querySelector('.peaimport-selectbtn-sort-badge');
+
+    let selectbtnRegionBadgeMobile = document.querySelector('.selectbtn-region--mobile-badge');
+    let selectbtnDistrictBadgeMobile = document.querySelector('.selectbtn-district--mobile-badge');
+    let selectbtnSortBadgeMobile = document.querySelector('.selectbtn-sort--mobile-badge');
+    let peaExpselectbtnRegionBadgeMobile = document.querySelector('.peaexport-selectbtn-region--mobile-badge');
+    let peaImpselectbtnRegionBadgeMobile = document.querySelector('.peaimport-selectbtn-region--mobile-badge');
+
+    let bageArr = [
+        selectbtnRegionBadge, selectbtnDistrictBadge, selectbtnSortBadge,
+        peaExpselectbtnSortBadge,
+        selectbtnRegionBadgeMobile, selectbtnDistrictBadgeMobile, selectbtnSortBadgeMobile,
+        peaExpselectbtnRegionBadgeMobile,
+        peaImpselectbtnSortBadge, peaImpselectbtnRegionBadgeMobile
+    ];
+
+    for (i = 0; i < btnArr.length; i++) {
+        if (btnArr[i] !== null) {
+        btnArr[i].addEventListener('click', classActive);
+        }
+    }
+
+    function classActive() {
+        for (i = 0; i < bageArr.length; i++) {
+            if (bageArr[i] !== null) {
+                bageArr[i].classList.remove('active');
+            }
+        }
+        // this.childNodes[4].classList.toggle('active')
+        this.children[2].classList.toggle('active')
+        overlayBtn.classList.toggle('active')
+    }       
+   
+    overlayBtn.addEventListener('click', classDisable);
+
+    function classDisable() {
+        for (i = 0; i < bageArr.length; i++) {
+            if (bageArr[i] !== null) {
+                bageArr[i].classList.remove('active');
+            }
+        }
+        overlayBtn.classList.toggle('active')
+    }
+
+})();
     
     </script>
     @yield('scripts')

@@ -99,3 +99,12 @@ Route::get('/user_cards', 'UserCardsController@index')->middleware('can:admin_ri
     Route::get('/change_password', 'Auth\ResetPasswordController@change_password')->middleware(['can:client_rights' || 'can:admin_rights']);
         /* Изменение Пароля POST */
         Route::post('/change_password/apply', 'Auth\ResetPasswordController@postCredentials')->middleware(['can:client_rights' || 'can:admin_rights']);
+
+
+        Route::get('logout', function ()
+        {
+            auth()->logout();
+            Session()->flush();
+        
+            return Redirect::to('/');
+        })->name('logout');
