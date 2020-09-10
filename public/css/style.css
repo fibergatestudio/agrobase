@@ -1087,19 +1087,19 @@ body {
 }
 
 .footer-inner_contacts:nth-of-type(1):before {
-  content: url(../img/geo.svg);
+  content: url(../image/geo.svg);
 }
 
 .footer-inner_contacts:nth-of-type(2):before {
-  content: url(../img/phone.svg);
+  content: url(../image/phone.svg);
 }
 
 .footer-inner_contacts:nth-of-type(3):before {
-  content: url(../img/email.svg);
+  content: url(../image/email.svg);
 }
 
 .footer-inner_contacts:nth-of-type(4):before {
-  content: url(../img/clock.svg);
+  content: url(../image/clock.svg);
 }
 
 .footer-inner_text {
@@ -1164,7 +1164,7 @@ body {
 
 .label-arrow-wrapper::after,
 .label-arrow-wrapper_bottom::after {
-  content: url(../img/arrow-down.png);
+  content: url(../image/arrow-down.png);
   position: absolute;
   top: 50%;
   right: 25px;
@@ -1430,7 +1430,7 @@ body {
 }
 
 .cards-string_phone::before {
-  content: url(../img/phone.png);
+  content: url(../image/phone.png);
   position: absolute;
   left: 10px;
   top: 50%;
@@ -1462,7 +1462,7 @@ body {
 }
 
 .cards-string_email::before {
-  content: url(../img/email.png);
+  content: url(../image/email.png);
   position: absolute;
   left: 10px;
   top: 50%;
@@ -1494,7 +1494,7 @@ body {
 }
 
 .cards-string_web::before {
-  content: url(../img/web.png);
+  content: url(../image/web.png);
   position: absolute;
   left: 10px;
   top: 50%;
@@ -2647,7 +2647,7 @@ body {
 .selectbtn-region:after,
 .selectbtn-district:after,
 .selectbtn-sort:after {
-  content: url(../img/arrow-down.png);
+  content: url(../image/arrow-down.png);
   position: absolute;
   top: 50%;
   right: 32px;
@@ -2850,7 +2850,7 @@ body {
 }
 
 .carpathians-string_phone:before {
-  content: url(../img/phone.png);
+  content: url(../image/phone.png);
   position: absolute;
   left: 12px;
   top: 50%;
@@ -3049,7 +3049,7 @@ body {
 .selectbtn-region:after,
 .selectbtn-district:after,
 .peaexport-selectbtn-sort:after {
-  content: url(../img/arrow-down.png);
+  content: url(../image/arrow-down.png);
   position: absolute;
   top: 50%;
   right: 32px;
@@ -3257,7 +3257,7 @@ body {
 }
 
 .peaexport-string_phone:before {
-  content: url(../img/phone.png);
+  content: url(../image/phone.png);
   position: absolute;
   left: 12px;
   top: 50%;
@@ -3452,7 +3452,7 @@ body {
 }
 
 .peaimport-selectbtn-sort:after {
-  content: url(../img/arrow-down.png);
+  content: url(../image/arrow-down.png);
   position: absolute;
   top: 50%;
   right: 32px;
@@ -3652,7 +3652,7 @@ body {
 }
 
 .peaimport-string_phone:before {
-  content: url(../img/phone.png);
+  content: url(../../assets/img/phone.png);
   position: absolute;
   left: 12px;
   top: 50%;
@@ -3687,7 +3687,7 @@ body {
 }
 
 .peaimport-string_email:before {
-  content: url(../img/email.png);
+  content: url(../image/email.png);
   position: absolute;
   left: 12px;
   top: 50%;
@@ -5385,7 +5385,7 @@ body {
   .selectbtn-region--mobile:after,
   .selectbtn-district--mobile:after,
   .selectbtn-sort--mobile:after {
-    content: url(../img/arrow-down.png);
+    content: url(../image/arrow-down.png);
     position: absolute;
     top: 50%;
     right: 28px;
@@ -5516,7 +5516,7 @@ body {
     position: relative;
   }
   .carpathians-mobile-right-inner:nth-child(6):after {
-    content: url(../img/phone.png);
+    content: url(../image/phone.png);
     position: absolute;
     left: 10px;
     top: 8px;
@@ -5620,7 +5620,7 @@ body {
     position: relative;
   }
   .peaexport-selectbtn-region--mobile:after {
-    content: url(../img/arrow-down.png);
+    content: url(../image/arrow-down.png);
     position: absolute;
     top: 50%;
     right: 28px;
@@ -5743,7 +5743,7 @@ body {
     position: relative;
   }
   .peaexport-mobile-right-inner:nth-child(5):after, .peaexport-mobile-right-inner:nth-child(6):after {
-    content: url(../img/phone.png);
+    content: url(../image/phone.png);
     position: absolute;
     left: 10px;
     top: 8px;
@@ -5848,7 +5848,7 @@ body {
     position: relative;
   }
   .peaimport-selectbtn-region--mobile:after {
-    content: url(../img/arrow-down.png);
+    content: url(../image/arrow-down.png);
     position: absolute;
     top: 50%;
     right: 28px;
@@ -5971,7 +5971,7 @@ body {
     position: relative;
   }
   .peaimport-mobile-right-inner:nth-child(5):after {
-    content: url(../img/phone.png);
+    content: url(../image/phone.png);
     position: absolute;
     left: 10px;
     top: 8px;
@@ -5980,7 +5980,7 @@ body {
     position: relative;
   }
   .peaimport-mobile-right-inner:nth-child(6):after {
-    content: url(../img/email.png);
+    content: url(../image/email.png);
     position: absolute;
     left: 10px;
     top: 8px;
@@ -6528,7 +6528,7 @@ body {
   .selectbtn-region--mobile:after,
   .selectbtn-district--mobile:after,
   .selectbtn-sort--mobile:after {
-    content: url(../img/arrow-down-small.png);
+    content: url(../image/arrow-down-small.png);
     right: 14px;
   }
   .carpathians-mobile-string_left {
@@ -6546,7 +6546,7 @@ body {
     padding-left: 15px;
   }
   .carpathians-mobile-right-inner:nth-child(6):after {
-    content: url(../img/phone-small.png);
+    content: url(../image/phone-small.png);
     left: 8px;
     top: 10px;
   }
@@ -6611,7 +6611,7 @@ body {
             justify-content: start;
   }
   .peaexport-selectbtn-region--mobile:after {
-    content: url(../img/arrow-down-small.png);
+    content: url(../image/arrow-down-small.png);
     right: 14px;
   }
   .peaexport-mobile-string_left {
@@ -6632,7 +6632,7 @@ body {
   }
   .peaexport-mobile-right-inner:nth-child(5):after,
   .peaexport-mobile-right-inner:nth-child(6):after {
-    content: url(../img/phone-small.png);
+    content: url(../image/phone-small.png);
     left: 8px;
     top: 10px;
   }
@@ -6698,7 +6698,7 @@ body {
             justify-content: start;
   }
   .peaimport-selectbtn-region--mobile:after {
-    content: url(../img/arrow-down-small.png);
+    content: url(../image/arrow-down-small.png);
     right: 14px;
   }
   .peaimport-mobile-string_left {
@@ -6718,12 +6718,12 @@ body {
     padding-left: 12px;
   }
   .peaimport-mobile-right-inner:nth-child(5):after {
-    content: url(../img/phone-small.png);
+    content: url(../image/phone-small.png);
     left: 8px;
     top: 11px;
   }
   .peaimport-mobile-right-inner:nth-child(6):after {
-    content: url(../img/email-small.png);
+    content: url(../image/email-small.png);
     left: 8px;
     top: 12px;
   }

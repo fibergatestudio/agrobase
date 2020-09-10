@@ -111,19 +111,21 @@
                                     <div class="carpathians-string-item">
                                         <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
-                                            <a class="carpathians-string_phone" href="tel:{{ $row->$column }}">
+                                            <!-- <a class="carpathians-string_phone" href="tel:{{ $row->$column }}"> -->
                                                     <?php 
                                                     // Фикс двойных номеров
                                                     $phones_arr = explode(" ", $row->$column);
                                                     foreach(array_filter($phones_arr) as $phone){ ?>
-                                                <!-- <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>   -->
+                                                <!-- <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>  -->
+                                                    <a class="carpathians-string_phone" href="tel:{{ $phone }}"> 
                                                     <?php 
                                                     //echo 'Телефон ' . $phone_index++; 
                                                     echo $phone;
-                                                    ?>                                       
-                                                <!-- </button>  -->                                                   
+                                                    ?>              
+                                                    </a>                         
+                                                <!-- </button>                                                     -->
                                                     <?php } ?>
-                                            </a>
+                                            <!-- </a> -->
                                             @endif
                                         <?php } else if(preg_match('/^[0-9]{10}$/', $row->$column)) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
