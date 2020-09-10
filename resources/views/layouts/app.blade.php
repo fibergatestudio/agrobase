@@ -203,34 +203,18 @@
             </div>
 
         </section>
-
     <footer class="footer">
         <div class="footer-wrapper">
             <div class="footer-inner footer-left">
                 <h3 class="footer-inner_title">Контактные Данные</h3>
+            <div class="footer-contacts_wrapper">
                 <p class="footer-inner_contacts">г.Название города ул.Название д.3</p>
                 <p class="footer-inner_contacts">(067) 123-45-67</p>
                 <p class="footer-inner_contacts">почта@gmail.com</p>
                 <p class="footer-inner_contacts">Пн.-Пт.:8:00 - 18:00</p>
                 <p class="footer-inner_contacts">Сб.-Вс: ВЫХОДНОЙ</p>
-
             </div>
-            <div class="footer-inner footer-right">
-                <h3 class="footer-inner_title">Информация о Предприятии</h3>
-                <p class="footer-inner_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. lrem
-                    ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. lrem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-
-            </div>
+            </div>           
         </div>
 
     </footer>
