@@ -28,47 +28,26 @@
                     <div class="carpathians-topbtn-wrapper">
                         <div class="carpathians-topbtn-inner">
                             <a href="{{ url('/all_tables') }}"><button class="carpathians-topbtn">Выбор таблицы</button></a>
-                            <!-- <div class="selectbtn-region"><span>Выбор области</span>
+                            @if(isset($regions))
+                            <div class="selectbtn-region"><span>Выбор области</span>
                                 <a class="selectbtn-region-link" href="##"></a>                              
                                 <div class="selectbtn-region-badge">
-                                    <div class="selectbtn-region-badge_inner"><a href="##">Название области</a></div>
-                                    <div class="selectbtn-region-badge_inner"><a href="##">Название области</a></div>
-                                    <div class="selectbtn-region-badge_inner"><a href="##">Название области</a></div>
-                                    <div class="selectbtn-region-badge_inner"><a href="##">Название области</a></div>
+                                    @foreach($regions as $region)
+                                    <div class="selectbtn-region-badge_inner"><a href="{{ route('tables.index', ['table_id' => $table_id,'oblast' => $region->oblast]) }}">{{ $region->oblast }}</a></div>
+                                    @endforeach
                                 </div>                             
-                            </div> -->
-                            @if(isset($regions))
-                                <select name="region" class="selectbtn-region" onchange="location = this.value;">
-                                @foreach($regions as $region)
-                                    <!-- <option value="{{ $table_id }}/?oblast={{ $region->oblast }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option> -->
-                                    <option value="{{ route('tables.index', ['table_id' => $table_id,'oblast' => $region->oblast]) }}" @if($f_region == $region->oblast) selected @endif>{{ $region->oblast }}</option>
-                                @endforeach
-                                </select>
+                            </div>
                             @endif
-                            <!-- <div class="selectbtn-district"><span>Выбор района</span> 
+                            @if(isset($areas))
+                            <div class="selectbtn-district"><span>Выбор района</span> 
                                 <a class="selectbtn-district-link" href="##"></a>
                                 <div class="selectbtn-district-badge">
-                                    <div class="selectbtn-district-badge_inner"><a href="##">Название района</a></div>
-                                    <div class="selectbtn-district-badge_inner"><a href="##">Название района</a></div>
-                                    <div class="selectbtn-district-badge_inner"><a href="##">Название района</a></div>
-                                    <div class="selectbtn-district-badge_inner"><a href="##">Название района</a></div>
+                                    @foreach($areas as $area)
+                                    <div class="selectbtn-district-badge_inner"><a href="{{ route('tables.index', ['table_id' => $table_id,'rayon' => $area->rayon]) }}">{{ $area->rayon }}</a></div>
+                                    @endforeach
                                 </div>
-                            </div> -->
-                            @if(isset($areas))
-                            <select name="area" class="selectbtn-district" onchange="location = this.value;">
-                            @foreach($areas as $area)
-                                <!-- <option @if($f_area == $area->rayon) value="{{ $table_id }}/?rayon={{ $area->rayon }}" selected @else
-                                value="{{ $table_id }}/?rayon={{ $f_region }}&rayon={{ $area->rayon }}"
-                                @endif>{{ $area->rayon }}</option> -->
-
-                                <option @if($f_area == $area->rayon) value="{{ route('tables.index', ['table_id' => $table_id,'rayon' => $area->rayon]) }}" selected @else
-                                value="{{ route('tables.index', ['table_id' => $table_id,'rayon' => $area->rayon]) }}"
-                                @endif>{{ $area->rayon }}</option>
-
-                                
-                            @endforeach
-                            </select>
-                        @endif
+                            </div>
+                            @endif
 
                         </div>
                         <div class="carpathians-topbtn-inner">
@@ -162,7 +141,7 @@
                                         ?>
                                         <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
-                                            <a class="carpathians-string_phone" href="tel:{{ $row->$column }}">
+                                            <a class="peaimport-string_email" href="tel:{{ $row->$column }}">
                                                 <!-- <button class="btn btn-success m-1"> <i class="fas fa-phone-alt"></i>      -->
                                                     {{ $row->$column }} 
                                                     <?php 
@@ -173,7 +152,7 @@
                                             @endif
                                         <?php } else if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $filter_mail )) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
-                                            <a class="carpathians-string_phone" href="mailto:{{ $filter_mail }}">
+                                            <a class="peaimport-string_email" href="mailto:{{ $filter_mail }}">
                                                 <!-- <button class="btn btn-success m-1"> <i class="fas fa-envelope"></i>     -->
                                                     {{ $filter_mail }}
                                                 <!-- </button> -->
