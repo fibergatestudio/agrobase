@@ -147,9 +147,10 @@
             <!-- <div class="tables"> -->
                 @yield('content')
             <!-- </div> -->
+            <?php //in_array(Route::currentRouteName(), ['home', 'login']); ?>
+            @if (\Route::current()->getName() != 'tables.index')  
             <div class="advertisement">
                 <div class="advertisement_wrapper">
-                @if(Route::current()->getName() != 'tables.index')
                     <h3 class="advertisement_title">Объявления</h3>
                     @if(!empty(array_filter((array)$adverts)))
                         @foreach($adverts as $adv)
@@ -196,10 +197,10 @@
                     @else
                         Нет обьявлений!
                     @endif
-                @endif
                 </div>
 
             </div>
+            @endif
             </div>
 
         </section>
