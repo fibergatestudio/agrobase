@@ -157,7 +157,7 @@
                                         @endforeach
                                     </div>
                                 @endforeach
-                            <div class="carpathians-string">
+                            <!-- <div class="carpathians-string">
                                 <div class="carpathians-string-item">1.</div>
                                 <div class="carpathians-string-item">ФГ ЕРНЕВ-ЕРВIН</div>
                                 <div class="carpathians-string-item">Закарпатская</div>
@@ -167,7 +167,7 @@
                                         123 45
                                         67</a></div>
                                 <div class="carpathians-string-item">Newemail@gmail.com</div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
