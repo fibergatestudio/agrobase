@@ -63,31 +63,32 @@
                     </div>
 
                     <div class="carpathians-scroll-container">
-                        <div class="carpathians-scroll-inner">
-                            <div class="carpathians-topmenu">
-                                    <div class="carpathians-topmenu-item">#</div>
+                    <div class="carpathians-scroll-inner">
+                        <table class="peaexport-table">
+                            <tr class="carpathians-topmenu">
+                                    <td class="carpathians-topmenu-item">#</td>
                                     <?php $column_count = 0; ?>
                                     @foreach($table_heads_text as $column)
                                         <?php $column_count++; ?>
                                         @if($column_count <= 5)
-                                            <div class="carpathians-topmenu-item">{{$column}}</div>
+                                            <td class="carpathians-topmenu-item">{{$column}}</td>
                                         @elseif($column_count >= 9)
-                                            <div class="carpathians-topmenu-item">{{$column}}</div>
+                                            <td class="carpathians-topmenu-item">{{$column}}</td>
                                         @endif
                                     @endforeach
-                            </div>
+                            </tr>
                             @foreach($table_rows as $row)
                         <?php 
                         $phone_index = '1'; 
                         $row_count = 0;
                         $row_c = 0;
                         ?>
-                            <div class="carpathians-string">
+                            <tr class="carpathians-string">
                                 @foreach($table_head_columns as $column)
                                 <?php $row_count++; ?>
                                 @if($row_count <= 6)
                                 
-                                    <div class="carpathians-string-item">
+                                    <td class="carpathians-string-item">
                                         <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
                                             @if($user->status != "unconfirmed" && $user->status !="expired")
                                             <!-- <a class="carpathians-string_phone" href="tel:{{ $row->$column }}"> -->
@@ -132,9 +133,9 @@
                                         <?php } else { ?>
                                             {{ $row->$column }}
                                         <?php } ?>
-                                    </div>
+                                    </td>
                                     @elseif($row_count >= 10)
-                                    <div class="carpathians-string-item">
+                                    <td class="carpathians-string-item">
                                         <?php 
                                         $filter_mail = str_replace("E-mail: ","", $row->$column); 
                                         $filter_mail = str_replace(' ', '', $filter_mail);
@@ -169,16 +170,17 @@
                                         <?php } else { ?>
                                             {{ $row->$column }}
                                         <?php } ?>
-                                    </div>
+                                    </td>
                                 @endif
 
 
                                 @endforeach
-                            </div>
+                            </tr>
                         @endforeach
 
                         </div>
                     </div>
+                    </table>
 
                     {{ $table_rows->links('vendor.pagination.default') }}
 

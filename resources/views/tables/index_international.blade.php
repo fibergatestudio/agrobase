@@ -19,12 +19,12 @@
    </div>
    @endif
 
-   <div class="carpathians-main">
-                <div class="carpathians-wrapper">
-                    <h3 class="carpathians-title--top">Таблица Закарпатская</h3>
-                    <h5 class="carpathians-title--bottom">Количество предприятий: <span>476</span></h5>
-                    <div class="carpathians-topbtn-wrapper">
-                        <div class="carpathians-topbtn-inner">
+            <div class="peaexport-main">
+                <div class="peaexport-wrapper">
+                    <h3 class="peaexport-title--top">Таблица Закарпатская</h3>
+                    <h5 class="peaexport-title--bottom">Количество предприятий: <span>476</span></h5>
+                    <div class="peaexport-topbtn-wrapper">
+                        <div class="peaexport-topbtn-inner">
                             <a href="{{ url('/all_tables') }}"><button class="carpathians-topbtn">Выбор таблицы</button></a>
                             @if(isset($regions))
                             <div class="selectbtn-region"><span>Выбор области</span>
@@ -60,17 +60,22 @@
                         </div>
                     </div>
 
-                    <div class="carpathians-scroll-container">
-                        <div class="carpathians-scroll-inner">
+                    <div class="peaexport-scroll-container">
+                        <div class="peaexport-scroll-inner">
 
+                        <table class="peaexport-table">
+                            <tr class="peaexport-table_top_string">
+                                <td class="peaexport-table_top_column">#</td>
 
-                            <div class="carpathians-topmenu">
-                                <div class="carpathians-topmenu-item">#</div>
+                                <?php $column_count = 0; ?>
+                                    @foreach($table_heads_text as $column)
+                                        <?php $column_count++; ?>
+                                        @if($column_count <= 6)
+                                            <td class="peaexport-table_top_column">{{$column}}</td>
+                                        @endif
+                                    @endforeach
 
-                                @foreach($table_heads_text as $column)
-                                    <div class="carpathians-topmenu-item">{{$column}}</div>
-                                @endforeach
-                            </div>
+                            </tr>
                                 @foreach($table_rows as $row)
                                 <?php 
                                 $phone_index = '1'; 
@@ -78,9 +83,10 @@
                                 $row_c = 0;
                                 $column_count = 0;
                                 ?>
-                                    <div class="carpathians-string">
+                                    <tr class="peaexport-table_string">
                                         @foreach($table_head_columns as $column)
-                                            <div class="carpathians-string-item">
+                                        <?php if ($column_count <= 6) { ?>
+                                            <td class="peaexport-table_column">
                                             <?php $row_count++; ?>
                                                 <?php if(preg_match("/\(?[2-9][0-8][0-9]\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}/", $row->$column)) { ?>
                                                     @if($user->status != "unconfirmed" && $user->status !="expired")
@@ -152,11 +158,13 @@
                                                     {{ $row->$column }}
                                                     <?php $column_count++; ?>
                                                 <?php } ?>
-                                            </div>
+                                            </td>
+                                            <?php } ?>
 
                                         @endforeach
-                                    </div>
+                                    </tr>
                                 @endforeach
+                                </table>
                             <!-- <div class="carpathians-string">
                                 <div class="carpathians-string-item">1.</div>
                                 <div class="carpathians-string-item">ФГ ЕРНЕВ-ЕРВIН</div>

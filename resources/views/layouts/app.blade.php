@@ -65,7 +65,7 @@
                     <ul class="mobile-menu_inner">
                         <li class="mobile-menu_item"><a href="{{ url('/all_tables') }}">Фермеры</a></li>
                         <li class="mobile-menu_item"><a href="{{ url('/all_tables_international') }}">Ипортеры ЕС</a></li>
-                        <li class="mobile-menu_item"><a href="#">Экспортеры СНГ</a></li>
+                        <!-- <li class="mobile-menu_item"><a href="#">Экспортеры СНГ</a></li> -->
                         <li class="mobile-menu_item"><a href="{{ url('/advert/create/') }}">Добавить объявление</a></li>
                         <li class="mobile-menu_item"><a href="{{ route('login') }}">Вход</a></li>
                         <li class="mobile-menu_item separator"><a href="{{ route('register') }}">Регистрация</a></li>
@@ -117,11 +117,11 @@
                     Импортеры ЕС
                 </a>
             </div>
-            <div class="header_menu-item">
+            <!-- <div class="header_menu-item">
                 <a class="header_menu-link" href="#">
                     Экспортеры СНГ
                 </a>
-            </div>
+            </div> -->
             <div class="header_menu-item">
                 <a class="header_menu-link" href="{{ url('/advert/create/') }}">
                     Добавить<br> объявление
