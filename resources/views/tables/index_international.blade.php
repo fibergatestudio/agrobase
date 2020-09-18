@@ -22,7 +22,7 @@
             <div class="peaexport-main">
                 <div class="peaexport-wrapper">
                     <h3 class="peaexport-title--top">Таблица {{ $table_info->table_name }}</h3>
-                    <h5 class="peaexport-title--bottom">Количество предприятий: <span>476</span></h5>
+                    <h5 class="peaexport-title--bottom">Количество предприятий: <span>{{ $t_count }}</span></h5>
                     <div class="peaexport-topbtn-wrapper">
                         <div class="peaexport-topbtn-inner">
                             <a href="{{ url('/all_tables') }}"><button class="carpathians-topbtn">Выбор таблицы</button></a>
