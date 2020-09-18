@@ -143,7 +143,7 @@
                                                                 }
 
                                                                 ?>
-                                                                <a class="peaexport-string-item" href="{{ $website }}"> 1
+                                                                <a class="peaexport-string-item" href="{{ $website }}">
                                                                     <!-- <button class="btn btn-success m-1"> <i class="fas fa-globe"></i>         -->
                                                                     {{ $website}}
                                                                     <!-- </button> -->
