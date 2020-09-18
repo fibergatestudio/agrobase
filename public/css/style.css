@@ -752,7 +752,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  min-height: 418px;
+  min-height: 215px;
   border-bottom-left-radius: 73px;
 }
 
@@ -764,7 +764,7 @@ body {
       -ms-flex-pack: end;
           justify-content: flex-end;
   margin-right: 3%;
-  padding-top: 14px;
+  padding-top: 5px;
 }
 
 .languages_item {
@@ -783,8 +783,8 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 952px;
-  height: 99px;
-  margin-top: 20px;
+  height: 0px;
+  margin-top: -10px;
   margin-left: 62px;
   margin-bottom: 126px;
 }
@@ -826,7 +826,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   width: 1036px;
-  height: 77px;
+  height: 57px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -2637,7 +2637,7 @@ body {
   font-weight: 700;
   font-size: 28px;
   line-height: 35px;
-  margin-top: 36px;
+  margin-top: 0px;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -2647,7 +2647,7 @@ body {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   text-align: center;
 }
 
@@ -3167,7 +3167,7 @@ body {
   font-weight: 700;
   font-size: 28px;
   line-height: 35px;
-  margin-top: 36px;
+  margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -3177,7 +3177,7 @@ body {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   text-align: center;
 }
 
