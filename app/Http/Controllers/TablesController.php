@@ -143,7 +143,7 @@ class TablesController extends Controller
 
         //dd($queries);
 
-        $table_rows = $table_rows->paginate(20)->appends($queries);
+        $table_rows = $table_rows->paginate(10)->appends($queries);
         //*** END ФИЛЬТРЫ ***//
 
         $table_heads_text = json_decode($table_info->head_names);

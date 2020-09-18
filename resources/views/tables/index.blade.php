@@ -168,7 +168,18 @@
                                             </button> 
                                             @endif
                                         <?php } else { ?>
-                                            {{ $row->$column }}
+
+                                            <?php   
+                                                $website = $row->$column;
+                                                if(preg_match('/^(http)/', $website)){
+                                                    //$website = "http://" . $website; ?>
+                                                    <a class="peaimport-string_email" href="{{ $website }}">{{ $website }}</a>
+                                                <?php } else { ?>
+
+                                                    {{ $row->$column }}
+
+                                                <?php } ?>
+                                            
                                         <?php } ?>
                                     </td>
                                 @endif

@@ -21,7 +21,7 @@
 
             <div class="peaexport-main">
                 <div class="peaexport-wrapper">
-                    <h3 class="peaexport-title--top">Таблица Закарпатская</h3>
+                    <h3 class="peaexport-title--top">Таблица {{ $table_info->table_name }}</h3>
                     <h5 class="peaexport-title--bottom">Количество предприятий: <span>476</span></h5>
                     <div class="peaexport-topbtn-wrapper">
                         <div class="peaexport-topbtn-inner">
@@ -143,7 +143,7 @@
                                                                 }
 
                                                                 ?>
-                                                                <a class="peaexport-string-item" href="{{ $website }}">
+                                                                <a class="peaexport-string-item" href="{{ $website }}"> 1
                                                                     <!-- <button class="btn btn-success m-1"> <i class="fas fa-globe"></i>         -->
                                                                     {{ $website}}
                                                                     <!-- </button> -->
