@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('all_tables');
-});
+// Route::get('/', function () {
+//     return redirect('all_tables');
+// });
+Route::get('/', 'HomeController@homepage');
 
 
 /* Стандартная авторизация ларавела */

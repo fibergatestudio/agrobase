@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('tables/all_tables');
     }
+
+    public function homepage(){
+
+
+        return view('homepage');
+    }
 }
