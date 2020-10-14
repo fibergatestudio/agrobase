@@ -32,6 +32,12 @@ class ImportController extends Controller
 
     function import(Request $request){
 
+        $random_name = Str::random(12);
+
+        //Создаем Главную таблицу
+        $new_table = new Tables();
+        $new_table->save();
+
         try {
 
             $this->validate($request, [
@@ -44,11 +50,6 @@ class ImportController extends Controller
             $filename = str_replace(array('.xlsx','.xls'), '', $filename);
             //dd($filename);
 
-            $random_name = Str::random(12);
-
-            //Создаем Главную таблицу
-            $new_table = new Tables();
-            $new_table->save();
 
             $headings = (new HeadingRowImport)->toArray($request->file('select_file'));
             $headings_array = array_filter($headings[0][0]);
@@ -98,6 +99,12 @@ class ImportController extends Controller
 
     function import_international(Request $request){
 
+        $random_name = Str::random(12);
+
+        //Создаем Главную таблицу
+        $new_table = new Tables();
+        $new_table->save();
+
         try {
 
             $this->validate($request, [
@@ -110,11 +117,6 @@ class ImportController extends Controller
             $filename = str_replace(array('.xlsx','.xls'), '', $filename);
             //dd($filename);
 
-            $random_name = Str::random(12);
-
-            //Создаем Главную таблицу
-            $new_table = new Tables();
-            $new_table->save();
 
             $headings = (new HeadingRowImport)->toArray($request->file('select_file'));
             $headings_array = array_filter($headings[0][0]);
