@@ -143,7 +143,7 @@ class ImportController extends Controller
             return back()->with('success', 'Данные успешно импортированы!');
 
         } catch (\Exception $e) {
-            //report($e);
+            report($e);
 
             DB::table('table_imports')->where('id', $new_table->id)->delete();
 
