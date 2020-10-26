@@ -105,7 +105,7 @@ class ImportController extends Controller
         $new_table = new Tables();
         $new_table->save();
 
-        try {
+        //try {
 
             $this->validate($request, [
                 'select_file'  => 'required|mimes:xls,xlsx'
@@ -142,17 +142,17 @@ class ImportController extends Controller
             
             return back()->with('success', 'Данные успешно импортированы!');
 
-        } catch (\Exception $e) {
-            report($e);
+        // } catch (\Exception $e) {
+        //     report($e);
 
-            DB::table('table_imports')->where('id', $new_table->id)->delete();
+        //     DB::table('table_imports')->where('id', $new_table->id)->delete();
 
-            Schema::dropIfExists($random_name);
+        //     Schema::dropIfExists($random_name);
     
-            //return false;
+        //     //return false;
             
-            return back()->with('success', 'Ошибка!');
-        }
+        //     return back()->with('success', 'Ошибка!');
+        // }
 
 
     }
