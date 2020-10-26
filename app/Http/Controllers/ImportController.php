@@ -41,7 +41,7 @@ class ImportController extends Controller
         //try {
 
             $this->validate($request, [
-                'select_file'  => 'required|mimes:xls,xlsx'
+                'select_file'  => 'required|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp'
             ]);
 
             //dd($path);
@@ -108,7 +108,7 @@ class ImportController extends Controller
         //try {
 
             $this->validate($request, [
-                'select_file'  => 'required|mimes:xls,xlsx'
+                'select_file'  => 'required|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp'
             ]);
 
             //dd($path);
