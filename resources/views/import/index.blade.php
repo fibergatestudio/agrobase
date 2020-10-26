@@ -43,7 +43,7 @@
                     <div class="import_inner-btn--wrapper">
                         <a class="import_inner-btn choose-btn" href="##">
                             <span>Выбрать файл</span>
-                            <input class="input-btn" type="file">
+                            <input class="input-btn" type="file" name="select_file">
                         </a>
                     </div>
 
