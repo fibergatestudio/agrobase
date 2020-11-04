@@ -16,7 +16,7 @@
         <p class="text-sm-left"><b>Уважаемые коллеги!</b> Мы приветствуем Вас на нашем сайте-справочнике. Сайт - справочник включает в себя компьютерную и мобильную версию. К нему прикреплены чат-сообщетва в:</p>
         <br>
         <p class="text-sm-left"><b>Telegram:</b> <a href="https://t.me/AgroProdExport">https://t.me/AgroProdExport</a></p>
-        <p class="text-sm-left"><b>Viber:</b> <a href="https://invite.viber.com/?g2=AQAvupAtoR%25">https://invite.viber.com/?g2=AQAvupAtoR%25</a></p>
+        <p class="text-sm-left"><b>Viber:</b> <a href="https://invite.viber.com/?g2=AQAvupAtoR%2Bh00vR3%2BtwQMx0DLc5QqBjHs7O0wCQQca1%2F7DKQdbnBok9Fhbi1dt5">https://invite.viber.com/?g2=AQAvupAtoR%2Bh00vR3%2BtwQMx0DLc5QqBjHs7O0wCQQca1%2F7DKQdbnBok9Fhbi1dt5</a></p>
         <br>
         </p><b>Так же сообщества в:</b></p>
         <br>
