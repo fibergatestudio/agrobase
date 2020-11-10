@@ -210,7 +210,7 @@
                 <h3 class="footer-inner_title">Контактные Данные</h3>
             <div class="footer-contacts_wrapper">
                 <p class="footer-inner_contacts"> г.Херсон  ул. Черноморская 22</p>
-                <p class="footer-inner_contacts">38(066) 668-99-05, 38(095) 680-19-51 (ватсап вайбер телеграмм)</p>
+                <p class="footer-inner_contacts">38(066) 668-99-05, 38(066) 777-31-17 (вайбер, телеграм, ватсап)</p>
                 <p class="footer-inner_contacts">agrofoodexport2020@gmail.com</p>
                 <p class="footer-inner_contacts">Пн.-Пт.:8:00 - 18:00</p>
                 <p class="footer-inner_contacts">Сб.-Вс: ВЫХОДНОЙ</p>
